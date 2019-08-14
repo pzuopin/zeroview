@@ -1,9 +1,21 @@
 <template>
-  <div>
-    hi
+  <div id="app">
+    <z-button></z-button>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import Button from "./components/Button";
+export default {
+  name: "App",
+  components: {
+    "z-button": Button
+  }
+};
+</script>
 
-</style>
+<style lang="scss" scoped>
+  #app {
+    margin: 20px;
+  }
+</style>>

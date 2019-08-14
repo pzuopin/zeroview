@@ -1,5 +1,5 @@
 <template>
-  <button>确定</button>
+  <button class="z-button">按钮</button>
 </template>
 
 <script>
