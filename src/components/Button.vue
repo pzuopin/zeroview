@@ -1,8 +1,9 @@
 <template>
-  <button class="z-button" :class="{[`icon-${position}`]: true }">
-    <svg v-if='icon' class="icon">
+  <button class="z-button" :class="{[`z-icon-${position}`]: true }">
+    <!-- <svg v-if='icon' class="icon">
       <use :xlink:href="`#icon-${icon}`" />
-    </svg>
+    </svg> -->
+    <z-icon :name='icon'></z-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -11,10 +12,12 @@
 
 <script>
 export default {
-  name: "Button",
-  // props: ["icon","position"]
+  // props: ["icon","position"],
   props: {
-    icon: {},
+    icon: {
+      type: String,
+      default: '',
+    },
     position: {
       type: String,
       default: 'left',
@@ -47,26 +50,22 @@ export default {
   &:focus {
     outline: none;
   }
-  > .icon {
+  > .z-icon {
     order: 1;
     margin-right: .3em;
   }
   > .content {
     order: 2;
   }
-  &.icon-right {
+  &.z-icon-right {
     > .content {
       order: 1;
     }
-    > .icon {
+    > .z-icon {
       order: 2;
       margin-left: .3em;
       margin-right: 0;
     }
   }
-}
-.icon {
-  width: 1em;
-  height: 1em;
 }
 </style>
