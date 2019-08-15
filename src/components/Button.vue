@@ -3,7 +3,7 @@
     <!-- <svg v-if='icon' class="icon">
       <use :xlink:href="`#icon-${icon}`" />
     </svg> -->
-    <z-icon :name='icon'></z-icon>
+    <z-icon v-if='icon' :name='icon'></z-icon>
     <div class="content">
       <slot></slot>
     </div>
