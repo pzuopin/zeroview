@@ -1,9 +1,7 @@
 <template>
   <button class="z-button" :class="{[`z-icon-${position}`]: true }">
-    <!-- <svg v-if='icon' class="icon">
-      <use :xlink:href="`#icon-${icon}`" />
-    </svg> -->
-    <z-icon v-if='icon' :name='icon'></z-icon>
+    <z-icon v-if='icon && !loading' :name='icon'></z-icon>
+    <z-icon name='loading' v-if="loading" class="loading"></z-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -14,6 +12,10 @@
 export default {
   // props: ["icon","position"],
   props: {
+    loading: {
+      type: Boolean,
+      default: false
+    },
     icon: {
       type: String,
       default: '',
@@ -30,6 +32,14 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes spin {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
 .z-button {
   display: inline-flex;
   justify-content: center;
@@ -66,6 +76,9 @@ export default {
       margin-left: .3em;
       margin-right: 0;
     }
+  }
+  .loading {
+    animation: spin 2s infinite linear;
   }
 }
 </style>
