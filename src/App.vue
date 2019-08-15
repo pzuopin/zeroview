@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <z-button></z-button>
+    
+    <z-button>按钮</z-button>
+    <z-button icon='setting'>
+      按钮
+    </z-button>
+    <z-button icon='setting' position='right'>按钮</z-button>
   </div>
 </template>
 
@@ -14,8 +19,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   #app {
     margin: 20px;
   }
+  
 </style>>
