@@ -5,6 +5,11 @@
     <z-button icon="setting" position="right" @click="click3" :loading="loading3">按钮</z-button>
     <z-button-group>
       <z-button icon="down" :loading="false">按钮</z-button>
+      <z-button icon='wechat'>微信</z-button>
+      <z-button icon="like" position="right">按钮</z-button>
+    </z-button-group>
+    <z-button-group>
+      <z-button icon="down" :loading="false">按钮</z-button>
       <z-button icon="like" position="right">按钮</z-button>
     </z-button-group>
   </div>
