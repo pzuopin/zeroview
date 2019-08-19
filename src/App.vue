@@ -9,7 +9,9 @@
       <z-button icon="like" position="right">按钮</z-button>
     </z-button-group>
     <z-button-group>
-      <z-button icon="down" :loading="false">按钮</z-button>
+      <div>
+        <z-button icon="down" :loading="false">按钮</z-button>
+      </div>
       <z-button icon="like" position="right">按钮</z-button>
     </z-button-group>
   </div>

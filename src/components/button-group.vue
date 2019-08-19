@@ -4,7 +4,15 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+    mounted(){
+        for(let node of this.$el.children){
+            if(node.nodeName.toLowerCase() !== 'button'){
+                console.log(`z-button-group 的子元素应该全是 z-button，但是你写的${node.nodeName.toLowerCase()}`)
+            }
+        }
+    }
+};
 </script>
 <style lang="scss">
 .z-button-group {
