@@ -19,7 +19,9 @@ export default {
     display: inline-flex;
     vertical-align: middle;
     > .z-button {
-        margin-left: -1px;
+        &:not(:first-child){
+            margin-left: -1px;
+        }
         &:hover {
             // border-color: var;
             position: relative;
