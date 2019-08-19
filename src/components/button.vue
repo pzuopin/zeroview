@@ -10,8 +10,12 @@
 </template>
 
 <script>
+import Icon from './icon'
 export default {
   // props: ["icon","position"],
+  components: {
+    'z-icon': Icon
+  },
   props: {
     loading: {
       type: Boolean,
