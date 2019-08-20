@@ -1,10 +1,11 @@
 {
   "name": "zeroview",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "private": false,
+  "main": "dist/zeroview.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name zeroview src/index.js",
     "test:unit": "vue-cli-service test:unit",
     "test": "karma start --single-run"
   },
