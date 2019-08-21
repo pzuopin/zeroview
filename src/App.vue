@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-      <div class="box">
-        <z-input value="张三" disabled></z-input>
+    <div class="box">
+      <!-- <z-input value="张三" disabled></z-input>
         <z-input value="张三" :disabled="true"></z-input>
         <z-input value="张三" :readonly="true"></z-input>
-        <z-input value="张三"></z-input>
-      </div>
-      <div class="box">
-        <z-input error='姓名不能为空' @change="inputChange"></z-input>
-      </div>
+      <z-input value="张三"></z-input>-->
+    </div>
+    <div class="box">
+      <z-input error="姓名不能为空" @change="inputChange"></z-input>
+    </div>
     <!-- <div>
       <z-button :loading="loading1" @click="click1">按钮</z-button>
       <z-button icon="setting" :loading="loading2" @click="click2">按钮</z-button>
@@ -24,13 +24,21 @@
         </div>
         <z-button icon="like" position="right">按钮</z-button>
       </z-button-group>
-    </div> -->
+    </div>-->
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
+  created() {
+    window.setTimeout(() => {
+      let event = new Event("change");
+      let inputElement = this.$el.querySelector("input");
+      inputElement.dispatchEvent(event);
+      console.log("trigger change");
+    }, 3000);
+  },
   data() {
     return {
       loading1: true,
@@ -51,8 +59,9 @@ export default {
       this.loading3 = !this.loading3;
       console.log("clicked 3 ...");
     },
-    inputChange(event){
-      console.log(event.target.value)
+    inputChange(event) {
+      console.log('event',event)
+      console.log(event.target.value);
     }
   }
 };
