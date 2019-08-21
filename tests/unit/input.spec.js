@@ -75,9 +75,11 @@ describe("Input.vue", () => {
       // 触发 change 事件
       let event = new Event('change')
       let inputElement = vm.$el.querySelector('input')
+      // 这样创建的 event 的 isTrusted 属性是 false
+      // 正常浏览器触发的 event 的 isTrusted 属性是 true
       inputElement.dispatchEvent(event)
       // 期待 callback 被调用
-      expect(callback).to.have.been.called;
+      expect(callback).to.have.been.calledWith(event);
     });
   });
 });
