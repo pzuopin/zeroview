@@ -7,7 +7,7 @@
         <z-input value="张三"></z-input>
       </div>
       <div class="box">
-        <z-input error='姓名不能为空' ></z-input>
+        <z-input error='姓名不能为空' @change="inputChange"></z-input>
       </div>
     <!-- <div>
       <z-button :loading="loading1" @click="click1">按钮</z-button>
@@ -50,6 +50,9 @@ export default {
     click3() {
       this.loading3 = !this.loading3;
       console.log("clicked 3 ...");
+    },
+    inputChange(event){
+      console.log(event.target.value)
     }
   }
 };
