@@ -7,7 +7,8 @@
       <z-input value="张三"></z-input>-->
     </div>
     <div class="box">
-      <z-input error="姓名不能为空" @change="inputChange"></z-input>
+      <z-input v-model="message"></z-input>
+      {{message}}
     </div>
     <!-- <div>
       <z-button :loading="loading1" @click="click1">按钮</z-button>
@@ -41,6 +42,7 @@ export default {
   },
   data() {
     return {
+      message: 'hi',
       loading1: true,
       loading2: true,
       loading3: true
