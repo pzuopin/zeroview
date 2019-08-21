@@ -81,5 +81,53 @@ describe("Input.vue", () => {
       // 期待 callback 被调用
       expect(callback).to.have.been.calledWith(event);
     });
+
+    it("支持 blur 事件", () => {
+      const Constructor = Vue.extend(Input);
+      const vm = new Constructor({
+      }).$mount();
+      const callback = sinon.fake();
+      vm.$on("blur", callback);
+      // 触发 change 事件
+      let event = new Event('blur')
+      let inputElement = vm.$el.querySelector('input')
+      // 这样创建的 event 的 isTrusted 属性是 false
+      // 正常浏览器触发的 event 的 isTrusted 属性是 true
+      inputElement.dispatchEvent(event)
+      // 期待 callback 被调用
+      expect(callback).to.have.been.calledWith(event);
+    });
+
+    it("支持 focus 事件", () => {
+      const Constructor = Vue.extend(Input);
+      const vm = new Constructor({
+      }).$mount();
+      const callback = sinon.fake();
+      vm.$on("focus", callback);
+      // 触发 change 事件
+      let event = new Event('focus')
+      let inputElement = vm.$el.querySelector('input')
+      // 这样创建的 event 的 isTrusted 属性是 false
+      // 正常浏览器触发的 event 的 isTrusted 属性是 true
+      inputElement.dispatchEvent(event)
+      // 期待 callback 被调用
+      expect(callback).to.have.been.calledWith(event);
+    });
+
+    it("支持 input 事件", () => {
+      const Constructor = Vue.extend(Input);
+      const vm = new Constructor({
+      }).$mount();
+      const callback = sinon.fake();
+      vm.$on("input", callback);
+      // 触发 change 事件
+      let event = new Event('input')
+      let inputElement = vm.$el.querySelector('input')
+      // 这样创建的 event 的 isTrusted 属性是 false
+      // 正常浏览器触发的 event 的 isTrusted 属性是 true
+      inputElement.dispatchEvent(event)
+      // 期待 callback 被调用
+      expect(callback).to.have.been.calledWith(event);
+    });
   });
 });
