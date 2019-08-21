@@ -3,6 +3,7 @@ import App from './App'
 import Button from './components/button'
 import Icon from './components/icon'
 import ButtonGroup from './components/button-group'
+import Input from './components/input'
 import router from './router'
 import store from './store'
 
@@ -10,6 +11,7 @@ import store from './store'
 Vue.component('z-button', Button)
 Vue.component('z-icon',Icon)
 Vue.component('z-button-group',ButtonGroup)
+Vue.component('z-input', Input)
 
 Vue.config.productionTip = false
 

@@ -1,19 +1,30 @@
 <template>
   <div id="app">
-    <z-button :loading="loading1" @click="click1">按钮</z-button>
-    <z-button icon="setting" :loading="loading2" @click="click2">按钮</z-button>
-    <z-button icon="setting" position="right" @click="click3" :loading="loading3">按钮</z-button>
-    <z-button-group>
-      <z-button icon="down" :loading="false">按钮</z-button>
-      <z-button icon='wechat'>微信</z-button>
-      <z-button icon="like" position="right">按钮</z-button>
-    </z-button-group>
-    <z-button-group>
-      <div>
-        <z-button icon="down" :loading="false">按钮</z-button>
+      <div class="box">
+        <z-input value="张三" disabled></z-input>
+        <z-input value="张三" :disabled="true"></z-input>
+        <z-input value="张三" :readonly="true"></z-input>
+        <z-input value="张三"></z-input>
       </div>
-      <z-button icon="like" position="right">按钮</z-button>
-    </z-button-group>
+      <div class="box">
+        <z-input error='姓名不能为空' ></z-input>
+      </div>
+    <!-- <div>
+      <z-button :loading="loading1" @click="click1">按钮</z-button>
+      <z-button icon="setting" :loading="loading2" @click="click2">按钮</z-button>
+      <z-button icon="setting" position="right" @click="click3" :loading="loading3">按钮</z-button>
+      <z-button-group>
+        <z-button icon="down" :loading="false">按钮</z-button>
+        <z-button icon='wechat'>微信</z-button>
+        <z-button icon="like" position="right">按钮</z-button>
+      </z-button-group>
+      <z-button-group>
+        <div>
+          <z-button icon="down" :loading="false">按钮</z-button>
+        </div>
+        <z-button icon="like" position="right">按钮</z-button>
+      </z-button-group>
+    </div> -->
   </div>
 </template>
 
@@ -47,5 +58,10 @@ export default {
 <style lang="scss">
 #app {
   margin: 20px;
+  .box {
+    > * {
+      margin-right: 10px;
+    }
+  }
 }
 </style>>
