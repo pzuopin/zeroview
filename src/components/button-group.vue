@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+    name: 'zViewButtonGroup',
     mounted(){
         for(let node of this.$el.children){
             if(node.nodeName.toLowerCase() !== 'button'){
@@ -14,7 +15,7 @@ export default {
     }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .z-button-group {
     display: inline-flex;
     vertical-align: middle;

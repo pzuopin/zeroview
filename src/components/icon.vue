@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+    name: 'zViewIcon',
     props: {
         name:{
             type: String,
@@ -16,7 +17,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .z-icon {
         width: 1em;
         height: 1em;
