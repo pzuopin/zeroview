@@ -1,5 +1,26 @@
 <template>
   <div id="app">
+    <div>
+      <z-row>
+        <z-col></z-col>
+        <z-col></z-col>
+      </z-row>
+      <z-row>
+        <z-col></z-col>
+        <z-col></z-col>
+        <z-col></z-col>
+      </z-row>
+      <z-row>
+        <!-- 这是字符串的2 -->
+        <z-col span="2"></z-col>
+        <!-- 这是数字22 -->
+        <z-col :span="22"></z-col>
+      </z-row>
+      <z-row>
+        <z-col span='4'></z-col>
+        <z-col span='20'></z-col>
+      </z-row>
+    </div>
     <div class="box">
       <!-- <z-input value="张三" disabled></z-input>
         <z-input value="张三" :disabled="true"></z-input>
@@ -10,7 +31,7 @@
       <z-input v-model="message"></z-input>
       {{message}}
     </div>
-    <!-- <div>
+    <div>
       <z-button :loading="loading1" @click="click1">按钮</z-button>
       <z-button icon="setting" :loading="loading2" @click="click2">按钮</z-button>
       <z-button icon="setting" position="right" @click="click3" :loading="loading3">按钮</z-button>
@@ -25,7 +46,7 @@
         </div>
         <z-button icon="like" position="right">按钮</z-button>
       </z-button-group>
-    </div>-->
+    </div>
   </div>
 </template>
 
