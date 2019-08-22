@@ -106,6 +106,7 @@ export default {
 <style lang="scss">
 #app {
   margin: 20px;
+  border: 1px solid #000;
   .box {
     > * {
       margin-right: 10px;
