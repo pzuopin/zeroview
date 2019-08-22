@@ -1,73 +1,39 @@
 <template>
-  <div id="app">
-    <div>
-      <z-row gutter="20">
-        <z-col >
-          xxx
-        </z-col>
-        <z-col >
-          bbb
-        </z-col>
-      </z-row>
-      <z-row gutter="20">
-        <z-col ></z-col>
-        <z-col ></z-col>
-        <z-col ></z-col>
-      </z-row>
-      <z-row gutter='20'>
-        <z-col></z-col>
-        <z-col></z-col>
-        <z-col></z-col>
-        <z-col></z-col>
-      </z-row>
-      <z-row gutter="20">
-        <!-- 这是字符串的2 -->
-        <z-col span="2">
-          xxx
-        </z-col>
-        <!-- 这是数字22 -->
-        <z-col :span="20">
-          bbb
-        </z-col>
-      </z-row>
-      <z-row gutter="20">
-        <z-col span='2'></z-col>
-        <z-col span='18' offset='3'></z-col>
-      </z-row>
-      <z-row gutter="20">
-        <z-col span='4'>1</z-col>
-        <z-col span='10' offset="2">2</z-col>
-        <z-col span='4' offset="4">3</z-col>
-      </z-row>
-  
-      
-    </div>
-    <div class="box">
-      <!-- <z-input value="张三" disabled></z-input>
-        <z-input value="张三" :disabled="true"></z-input>
-        <z-input value="张三" :readonly="true"></z-input>
-      <z-input value="张三"></z-input>-->
-    </div>
-    <div class="box">
-      <z-input v-model="message"></z-input>
-      {{message}}
-    </div>
-    <div>
-      <z-button :loading="loading1" @click="click1">按钮</z-button>
-      <z-button icon="setting" :loading="loading2" @click="click2">按钮</z-button>
-      <z-button icon="setting" position="right" @click="click3" :loading="loading3">按钮</z-button>
-      <z-button-group>
-        <z-button icon="down" :loading="false">按钮</z-button>
-        <z-button icon='wechat'>微信</z-button>
-        <z-button icon="like" position="right">按钮</z-button>
-      </z-button-group>
-      <z-button-group>
-        <div>
-          <z-button icon="down" :loading="false">按钮</z-button>
-        </div>
-        <z-button icon="like" position="right">按钮</z-button>
-      </z-button-group>
-    </div>
+  <div>
+    <z-row class="topbar">
+      <z-col span="9" class="demoBox">
+        <z-row>
+          <z-col>1</z-col>
+          <z-col>2</z-col>
+          <z-col>3</z-col>
+          <z-col>4</z-col>
+        </z-row>
+      </z-col>
+      <z-col span="15" class="demoBox">
+        <z-row align='right'>
+          <z-col>1</z-col>
+          <z-col>2</z-col>
+          <z-col>3</z-col>
+          <z-col>4</z-col>
+          <z-col>5</z-col>
+          <z-col>6</z-col>
+          <z-col>7</z-col>
+        </z-row>
+      </z-col>
+    </z-row>
+    <z-row class="logo-and-search-and-qrcode">
+      <z-col span="4" class="demoBox">
+        <z-row align='center'>
+          <z-col>
+            <div class="logo-wrapper">
+              <img src="https://img.alicdn.com/tfs/TB1_uT8a5ERMeJjSspiXXbZLFXa-143-59.png" alt="taobao">
+            </div>
+          </z-col>
+        </z-row>
+      </z-col>
+      <z-col span="14" class="demoBox"></z-col>
+      <z-col span="6" class="demoBox"></z-col>
+    </z-row>
   </div>
 </template>
 
@@ -75,12 +41,12 @@
 export default {
   name: "App",
   created() {
-    window.setTimeout(() => {
-      let event = new Event("change");
-      let inputElement = this.$el.querySelector("input");
-      inputElement.dispatchEvent(event);
-      console.log("trigger change");
-    }, 3000);
+    // window.setTimeout(() => {
+    //   let event = new Event("change");
+    //   let inputElement = this.$el.querySelector("input");
+    //   inputElement.dispatchEvent(event);
+    //   console.log("trigger change");
+    // }, 3000);
   },
   data() {
     return {
@@ -120,5 +86,13 @@ export default {
       margin-right: 10px;
     }
   }
+}
+.demoBox {
+  min-height: 50px;
+  // background: lightblue;
+  border: 1px solid #000;
+}
+.logo-wrapper {
+  padding: 10px;
 }
 </style>>
