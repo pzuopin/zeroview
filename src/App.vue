@@ -11,15 +11,28 @@
         <z-col></z-col>
       </z-row>
       <z-row>
+        <z-col></z-col>
+        <z-col></z-col>
+        <z-col></z-col>
+        <z-col></z-col>
+      </z-row>
+      <z-row>
         <!-- 这是字符串的2 -->
         <z-col span="2"></z-col>
         <!-- 这是数字22 -->
-        <z-col :span="22"></z-col>
+        <z-col :span="22" offset='2'></z-col>
+      </z-row>
+      <z-row>
+        <z-col span='3'></z-col>
+        <z-col span='18' offset='3'></z-col>
       </z-row>
       <z-row>
         <z-col span='4'></z-col>
-        <z-col span='20'></z-col>
+        <z-col span='10' offset="2"></z-col>
+        <z-col span='4' offset="4"></z-col>
       </z-row>
+  
+      
     </div>
     <div class="box">
       <!-- <z-input value="张三" disabled></z-input>

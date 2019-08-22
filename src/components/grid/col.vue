@@ -1,5 +1,5 @@
 <template>
-    <div class="col" :class="[`col-${span}`]">
+    <div class="col" :class="[`col-${span}`, offset && `offset-${offset}`]">
         <slot></slot>
     </div>
 </template>
@@ -7,7 +7,12 @@
 export default {
     name: 'zViewCol',
     props: {
-        span: [Number, String]
+        span: {
+            type: [Number, String]
+        },
+        offset: {
+            type: [Number, String]
+        }
     }
 }
 </script>
@@ -25,5 +30,13 @@ export default {
               width: ($n / 24) * 100%;
           }
       }
+
+      $offset: offset-;
+      @for $n from 1 through 24 {
+          &.#{$offset}#{$n} {
+              margin-left: ($n / 24) * 100%;
+          }
+      }
+      
     }
 </style>
