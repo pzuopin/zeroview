@@ -1,5 +1,9 @@
 <template>
-  <div class="col" :class="[`col-${span}`, offset && `offset-${offset}`]">
+  <div
+    class="col"
+    :class="[span && `col-${span}`, offset && `offset-${offset}`]"
+    :style="{paddingLeft: gutter/2 + 'px', paddingRight: gutter/2 + 'px'}"
+  >
     <div style="border: 1px solid green; height: 100px;">
       <slot></slot>
     </div>
@@ -15,16 +19,21 @@ export default {
     offset: {
       type: [Number, String]
     }
+  },
+  data(){
+      return {
+          gutter: 0
+      }
   }
 };
 </script>
 <style lang="scss" scoped>
 .col {
-  height: 100px;
-//   background: lightblue;
+//   height: 100px;
+  //   background: lightblue;
   width: 50%;
-  padding: 0 10px;
-//   border: 1px solid red;
+//   padding: 0 10px;
+  //   border: 1px solid red;
   // scss 的 loop
   $class-prefix: col-;
 
