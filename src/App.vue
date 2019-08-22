@@ -2,8 +2,12 @@
   <div id="app">
     <div>
       <z-row gutter="20">
-        <z-col ></z-col>
-        <z-col ></z-col>
+        <z-col >
+          xxx
+        </z-col>
+        <z-col >
+          bbb
+        </z-col>
       </z-row>
       <z-row gutter="20">
         <z-col ></z-col>
@@ -18,18 +22,22 @@
       </z-row>
       <z-row gutter="20">
         <!-- 这是字符串的2 -->
-        <z-col span="2"></z-col>
+        <z-col span="2">
+          xxx
+        </z-col>
         <!-- 这是数字22 -->
-        <z-col :span="20"></z-col>
+        <z-col :span="20">
+          bbb
+        </z-col>
       </z-row>
       <z-row gutter="20">
         <z-col span='2'></z-col>
         <z-col span='18' offset='3'></z-col>
       </z-row>
       <z-row gutter="20">
-        <z-col span='4'></z-col>
-        <z-col span='10' offset="2"></z-col>
-        <z-col span='4' offset="4"></z-col>
+        <z-col span='4'>1</z-col>
+        <z-col span='10' offset="2">2</z-col>
+        <z-col span='4' offset="4">3</z-col>
       </z-row>
   
       
