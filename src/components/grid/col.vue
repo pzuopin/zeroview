@@ -58,7 +58,7 @@ export default {
     },
     colClass() {
       const { span, offset, phone, ipad, narrowPc, pc, widePc } = this
-      let phoneClass, ipadClass, narrowPcClass,pcClass,widePcClass = []
+      let phoneClass = [], ipadClass = [], narrowPcClass = [],pcClass = [],widePcClass = []
       if(phone){
         let { span, offset } = phone
         phoneClass = [span && `col-phone-${span}`,

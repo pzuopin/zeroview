@@ -14,6 +14,10 @@
         :pc="{span:18}"
         :widePc="{span:20}">22</z-col>
     </z-row>
+    <z-row gutter="20">
+      <z-col class='demo' span=4 >1</z-col>
+      <z-col class='demo' span=20 >22</z-col>
+    </z-row>
   </div>
 </template>
 
