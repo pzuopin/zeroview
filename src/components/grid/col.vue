@@ -46,6 +46,19 @@ export default {
       gutter: 0
     };
   },
+  methods: {
+    createClass(obj, str = ''){
+      if(!obj) return []
+      let arr = []
+      if(obj.span){
+        arr.push(`col-${str}${obj.span}`)
+      }
+      if(obj.offset){
+        arr.push(`offset-${str}${obj.offset}`)
+      }
+      return arr
+    }
+  },
   computed: {
     colStyle() {
       return {
@@ -54,39 +67,14 @@ export default {
       };
     },
     colClass() {
-      const { span, offset, ipad, narrowPc, pc, widePc } = this
-      let ipadClass = [], narrowPcClass = [],
-      pcClass = [],
-      widePcClass = []
-      if(ipad){
-        let { span, offset } = ipad
-        ipadClass = [span && `col-ipad-${span}`,
-        offset && `offset-ipad-${offset}`]
-      }
-      if(narrowPc){
-        let { span, offset } = narrowPc
-        narrowPcClass = [span && `col-narrow-pc-${span}`,
-        offset && `offset-narrow-pc-${offset}`]
-      }
-      if(pc){
-        let { span, offset } = pc
-        pcClass = [span && `col-pc-${span}`,
-        offset && `offset-pc-${offset}`]
-      }
-      if(widePc){
-        let { span, offset } = widePc
-        widePcClass = [span && `col-wide-pc-${span}`,
-        offset && `offset-wide-pc-${offset}`]
-      }
-      
-      return [
-        span && `col-${span}`,
-        offset && `offset-${offset}`,
-        [...ipadClass],
-        [...narrowPcClass],
-        [...pcClass],
-        [...widePcClass]
-      ];
+      const { span, offset, ipad, narrowPc, pc, widePc, createClass } = this
+      return ([
+        [...createClass({span, offset},'')],
+        [...createClass(ipad,'ipad-')],
+        [...createClass(narrowPc,'narrow-pc-')],
+        [...createClass(pc,'pc-')],
+        [...createClass(widePc,'wide-pc-')],
+      ])
     }
   }
 };
