@@ -17,16 +17,12 @@ let validator = (value) => {
 export default {
   name: "zViewCol",
   props: {
-    // 默认是 pc 样式 993px ~ 1200px
+    // 默认是 phone 样式
     span: {
       type: [Number, String]
     },
     offset: {
       type: [Number, String]
-    },
-    phone: {
-      type: Object,
-      validator
     },
     ipad: {
       type: Object,
@@ -36,10 +32,10 @@ export default {
       type: Object,
       validator
     },
-    // pc: {
-    //   type: Object,
-    //   validator
-    // },
+    pc: {
+      type: Object,
+      validator
+    },
     widePc: {
       type: Object,
       validator
@@ -58,15 +54,10 @@ export default {
       };
     },
     colClass() {
-      const { span, offset, phone, ipad, narrowPc, pc, widePc } = this
-      let phoneClass = [], ipadClass = [], narrowPcClass = [],
-      // pcClass = [],
+      const { span, offset, ipad, narrowPc, pc, widePc } = this
+      let ipadClass = [], narrowPcClass = [],
+      pcClass = [],
       widePcClass = []
-      if(phone){
-        let { span, offset } = phone
-        phoneClass = [span && `col-phone-${span}`,
-        offset && `offset-phone-${offset}`]
-      }
       if(ipad){
         let { span, offset } = ipad
         ipadClass = [span && `col-ipad-${span}`,
@@ -77,11 +68,11 @@ export default {
         narrowPcClass = [span && `col-narrow-pc-${span}`,
         offset && `offset-narrow-pc-${offset}`]
       }
-      // if(pc){
-      //   let { span, offset } = pc
-      //   pcClass = [span && `col-pc-${span}`,
-      //   offset && `offset-pc-${offset}`]
-      // }
+      if(pc){
+        let { span, offset } = pc
+        pcClass = [span && `col-pc-${span}`,
+        offset && `offset-pc-${offset}`]
+      }
       if(widePc){
         let { span, offset } = widePc
         widePcClass = [span && `col-wide-pc-${span}`,
@@ -91,10 +82,9 @@ export default {
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
-        [...phoneClass],
         [...ipadClass],
         [...narrowPcClass],
-        // [...pcClass],
+        [...pcClass],
         [...widePcClass]
       ];
     }
@@ -117,23 +107,7 @@ export default {
     }
   }
 
-  @media (max-width: 576px){
-    $class-prefix: col-phone-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
-      }
-    }
-
-    $offset: offset-phone-;
-    @for $n from 1 through 24 {
-      &.#{$offset}#{$n} {
-        margin-left: ($n / 24) * 100%;
-      }
-    }
-  }
-
-  @media (min-width: 577px) and (max-width: 768px){
+  @media (min-width: 577px){
     $class-prefix: col-ipad-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -149,7 +123,7 @@ export default {
     }
   }
 
-  @media (min-width: 769px) and (max-width: 992px){
+  @media (min-width: 769px){
     $class-prefix: col-narrow-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -165,23 +139,23 @@ export default {
     }
   }
 
-  // @media (min-width: 993px) and (max-width: 1200px){
-  //   $class-prefix: col-pc-;
-  //   @for $n from 1 through 24 {
-  //     &.#{$class-prefix}#{$n} {
-  //       width: ($n / 24) * 100%;
-  //     }
-  //   }
+  @media (min-width: 992px){
+    $class-prefix: col-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
 
-  //   $offset: offset-pc-;
-  //   @for $n from 1 through 24 {
-  //     &.#{$offset}#{$n} {
-  //       margin-left: ($n / 24) * 100%;
-  //     }
-  //   }
-  // }
+    $offset: offset-pc-;
+    @for $n from 1 through 24 {
+      &.#{$offset}#{$n} {
+        margin-left: ($n / 24) * 100%;
+      }
+    }
+  }
 
-  @media (min-width: 1201px){
+  @media (min-width: 1200px){
     $class-prefix: col-wide-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -196,8 +170,6 @@ export default {
       }
     }
   }
-
-
   
 }
 </style>
