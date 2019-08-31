@@ -11,6 +11,7 @@ import Content from './components/grid/content'
 import Footer from './components/grid/footer'
 import Header from './components/grid/header'
 import Sider from './components/grid/sider'
+import Toast from './components/toast'
 import router from './router'
 import store from './store'
 
@@ -26,6 +27,7 @@ Vue.component('z-header', Header)
 Vue.component('z-content', Content)
 Vue.component('z-footer', Footer)
 Vue.component('z-sider', Sider)
+Vue.component('z-toast', Toast)
 
 Vue.config.productionTip = false
 
