@@ -1,14 +1,16 @@
 <template>
   <div>
-    
+    <button @click="showToast">show toast</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
-  created(){
-    this.$toast()
+  methods: {
+    showToast(){
+      this.$toast('lalala')
+    }
   }
 };
 </script>
