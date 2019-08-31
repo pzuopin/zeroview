@@ -14,6 +14,7 @@ import Sider from './components/grid/sider'
 import Toast from './components/toast'
 import router from './router'
 import store from './store'
+import plugin from './plugin'
 
 // 注册为 Vue 的全局组件
 Vue.component('z-button', Button)
@@ -30,6 +31,7 @@ Vue.component('z-sider', Sider)
 Vue.component('z-toast', Toast)
 
 Vue.config.productionTip = false
+Vue.use(plugin)
 
 new Vue({
   router,

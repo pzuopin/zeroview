@@ -4,10 +4,6 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
-Vue.prototype.$toast = function(){
-    console.log('I am toast')
-}
 export default {
     name: 'zViewToast'
 }
