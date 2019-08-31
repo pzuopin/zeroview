@@ -1,12 +1,12 @@
 <template>
   <div>
     <z-layout class="layout">
-      <z-header class="demo">header</z-header>
+      <z-sider>sider</z-sider>
       <z-layout>
-        <z-sider class="sider">sider</z-sider>
-        <z-content class="demo content">content</z-content>
+        <z-header>header</z-header>
+        <z-content>content</z-content>
+        <z-footer>footer</z-footer>
       </z-layout>
-      <z-footer class="demo">footer</z-footer>
     </z-layout>
   </div>
 </template>
@@ -19,14 +19,30 @@ export default {
 
 <style lang="scss">
 .demo {
-  border: 1px solid #000;
-  min-height: 100px;
+  // border: 1px solid #000;
+  // min-height: 100px;
   // &.content {
   //   flex-grow: 1;
   // }
 }
 .layout {
   height: 100vh;
-  border: 1px solid red;
+  // border: 1px solid red;
+}
+.sider {
+  background: #333;
+  width: 300px;
+}
+.sider.fade-enter, .sider.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+//   opacity: 0;
+margin: -300px;
+}
+.header {
+  background: #999;
+  height: 100px;
+}
+.footer {
+  background: #ccc;
+  height: 50px;
 }
 </style>>
