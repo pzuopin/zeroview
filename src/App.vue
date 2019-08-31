@@ -1,34 +1,13 @@
 <template>
   <div>
-    
-    
-    <z-row>
-      <z-col span=24 :ipad="{span: 12}"
-         :pc="{span: 8}"
-         :wide-pc="{span: 6}"
-         :narrow-pc="{span: 10}">
-        <div class="demo"></div>
-      </z-col>
-      <z-col span=24 :ipad="{span: 12}"
-         :pc="{span: 8}"
-         :wide-pc="{span: 6}"
-         :narrow-pc="{span: 10}">
-        <div class="demo"></div>
-      </z-col>
-      <z-col span=24 :ipad="{span: 12}"
-         :pc="{span: 8}"
-         :wide-pc="{span: 6}"
-         :narrow-pc="{span: 10}">
-        <div class="demo"></div>
-      </z-col>
-      <z-col span=24 :ipad="{span: 12}"
-         :pc="{span: 8}"
-         :wide-pc="{span: 6}"
-         :narrow-pc="{span: 10}">
-        <div class="demo"></div>
-      </z-col>
-    </z-row>
-
+    <z-layout class="layout">
+      <z-header class="demo">header</z-header>
+      <z-layout>
+        <z-sider class="sider">sider</z-sider>
+        <z-content class="demo content">content</z-content>
+      </z-layout>
+      <z-footer class="demo">footer</z-footer>
+    </z-layout>
   </div>
 </template>
 
@@ -40,7 +19,14 @@ export default {
 
 <style lang="scss">
 .demo {
-  height: 100px;
   border: 1px solid #000;
+  min-height: 100px;
+  // &.content {
+  //   flex-grow: 1;
+  // }
+}
+.layout {
+  height: 100vh;
+  border: 1px solid red;
 }
 </style>>

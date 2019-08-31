@@ -6,6 +6,11 @@ import ButtonGroup from './components/button/button-group'
 import Input from './components/input'
 import Row from './components/grid/row'
 import Col from './components/grid/col'
+import Layout from './components/grid/layout'
+import Content from './components/grid/content'
+import Footer from './components/grid/footer'
+import Header from './components/grid/header'
+import Sider from './components/grid/sider'
 import router from './router'
 import store from './store'
 
@@ -16,6 +21,11 @@ Vue.component('z-button-group',ButtonGroup)
 Vue.component('z-input', Input)
 Vue.component('z-col', Col)
 Vue.component('z-row', Row)
+Vue.component('z-layout', Layout)
+Vue.component('z-header', Header)
+Vue.component('z-content', Content)
+Vue.component('z-footer', Footer)
+Vue.component('z-sider', Sider)
 
 Vue.config.productionTip = false
 
