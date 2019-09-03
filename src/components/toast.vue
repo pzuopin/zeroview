@@ -1,7 +1,9 @@
 <template>
   <div class="toast" ref="wrapper">
-    <slot v-if="!enableHTML"></slot>
-    <div v-else class="content" v-html="$slots.default[0]"></div>
+    <div class="message">
+      <slot v-if="!enableHTML"></slot>
+      <div v-else class="content" v-html="$slots.default[0]"></div>
+    </div>
     <div class="line" ref="line"></div>
     <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
   </div>
@@ -11,10 +13,6 @@ import { setTimeout } from "timers";
 export default {
   name: "zViewToast",
   props: {
-    // content: {
-    //   type: String,
-    //   default: ''
-    // },
     enableHTML: {
       type: Boolean,
       default: false
@@ -38,6 +36,20 @@ export default {
     }
   },
   methods: {
+    setAutoClose() {
+      if (this.autoClose) {
+        setTimeout(() => {
+          this.close();
+        }, this.autoCloseDelay * 1000);
+      }
+    },
+    updateStyles() {
+      this.$nextTick(() => {
+        let height = this.$refs.wrapper.getBoundingClientRect().height;
+        console.log("height", height);
+        this.$refs.line.style.height = `${height}px`;
+      });
+    },
     close() {
       this.$el.remove();
       this.$destroy();
@@ -52,16 +64,8 @@ export default {
     }
   },
   mounted() {
-    if (this.autoClose) {
-      setTimeout(() => {
-        this.close();
-      }, this.autoCloseDelay * 1000);
-    }
-    this.$nextTick(()=>{
-      let height = this.$refs.wrapper.getBoundingClientRect().height;
-      console.log("height", height);
-      this.$refs.line.style.height = `${height}px`;
-    })
+    this.updateStyles();
+    this.setAutoClose();
   }
 };
 </script>
@@ -84,13 +88,13 @@ export default {
   border-radius: 4px;
   display: flex;
   align-items: center;
+  .message {
+    padding: 8px 0;
+  }
   .close {
     flex-shrink: 0;
-    // padding-left: 16px;
-    // border: 1px solid red;
   }
   .line {
-    // height: 100px;
     height: 100%;
     border: 1px solid #fff;
     margin: 0 16px;
