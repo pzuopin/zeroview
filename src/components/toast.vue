@@ -1,14 +1,24 @@
 <template>
-  <div class="toast">
-    <slot></slot>
-    <div class="line"></div>
+  <div class="toast" ref="wrapper">
+    <slot v-if="!enableHTML"></slot>
+    <div v-else class="content" v-html="$slots.default[0]"></div>
+    <div class="line" ref="line"></div>
     <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
   </div>
 </template>
 <script>
+import { setTimeout } from "timers";
 export default {
   name: "zViewToast",
   props: {
+    // content: {
+    //   type: String,
+    //   default: ''
+    // },
+    enableHTML: {
+      type: Boolean,
+      default: false
+    },
     autoClose: {
       type: Boolean,
       default: true
@@ -34,9 +44,9 @@ export default {
     },
     onClickClose() {
       this.close();
-      const { closeButton } = this
-      const { callback } = closeButton
-      if(closeButton && callback && typeof callback === 'function'){
+      const { closeButton } = this;
+      const { callback } = closeButton;
+      if (closeButton && callback && typeof callback === "function") {
         this.closeButton.callback();
       }
     }
@@ -47,6 +57,11 @@ export default {
         this.close();
       }, this.autoCloseDelay * 1000);
     }
+    this.$nextTick(()=>{
+      let height = this.$refs.wrapper.getBoundingClientRect().height;
+      console.log("height", height);
+      this.$refs.line.style.height = `${height}px`;
+    })
   }
 };
 </script>
@@ -63,21 +78,22 @@ export default {
   padding: 0 16px;
   color: white;
   background: $toast-bg;
-  height: $toast-height;
+  min-height: $toast-height;
   font-size: $font-size;
   line-height: 1.8;
   border-radius: 4px;
   display: flex;
   align-items: center;
-}
-.close {
-  padding-left: 16px;
-  // border: 1px solid red;
-}
-.line {
-  // height: 100px;
-  height: 100%;
-  border: 1px solid red;
-  margin: 0 16px;
+  .close {
+    flex-shrink: 0;
+    // padding-left: 16px;
+    // border: 1px solid red;
+  }
+  .line {
+    // height: 100px;
+    height: 100%;
+    border: 1px solid #fff;
+    margin: 0 16px;
+  }
 }
 </style>

@@ -5,6 +5,7 @@ export default {
             const Constructor = Vue.extend(Toast)
             const toast = new Constructor({
                 propsData: {
+                    // content: message,
                     ...props
                 }
             })
