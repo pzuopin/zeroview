@@ -1,5 +1,5 @@
 <template>
-  <div class="toast" ref="wrapper">
+  <div class="toast" ref="wrapper" :class="toastClasses">
     <div class="message">
       <slot v-if="!enableHTML"></slot>
       <div v-else class="content" v-html="$slots.default[0]"></div>
@@ -33,6 +33,19 @@ export default {
           callback: undefined
         };
       }
+    },
+    position: {
+      type: String,
+      default: 'top',
+      validator(value){
+        console.log('11',value)
+        return ['bottom','middle','top'].indexOf(value) >= 0
+      }
+    }
+  },
+  computed:{
+    toastClasses(){
+      return [`position-${this.position}`]
     }
   },
   methods: {
@@ -59,7 +72,7 @@ export default {
       const { closeButton } = this;
       const { callback } = closeButton;
       if (closeButton && callback && typeof callback === "function") {
-        this.closeButton.callback();
+        this.closeButton.callback(this);
       }
     }
   },
@@ -98,6 +111,18 @@ export default {
     height: 100%;
     border: 1px solid #fff;
     margin: 0 16px;
+  }
+  &.position-bottom {
+    position: fixed;
+    bottom: 0;
+    top: unset;
+  }
+  &.position-middle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    bottom: unset;
+    transform: translate(-50%,-50%)
   }
 }
 </style>

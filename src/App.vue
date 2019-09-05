@@ -1,6 +1,8 @@
 <template>
   <div>
-    <button @click="showToast">show toast</button>
+    <button @click="showToast('top')">toast top</button>
+    <button @click="showToast('bottom')">toast bottom</button>
+    <button @click="showToast('middle')">toast middle</button>
   </div>
 </template>
 
@@ -8,10 +10,11 @@
 export default {
   name: "App",
   mounted() {
-    this.showToast();
+    // this.showToast();
   },
   methods: {
-    showToast() {
+    showToast(pos) {
+      console.log(pos)
       this.$toast(
         // '你好',
         '<strong>加粗文字</strong><p>段落</p><a href="http://baidu.com">百度</a><br>很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字看到我了',
@@ -19,6 +22,7 @@ export default {
           enableHTML: true,
           autoClose: false,
           autoCloseDelay: 3,
+          position: pos,
           // content: '你好',
           closeButton: {
             text: "关闭",
