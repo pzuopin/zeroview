@@ -14,10 +14,10 @@ export default {
   },
   methods: {
     showToast(pos) {
-      console.log(pos)
+      // console.log(pos)
       this.$toast(
-        // '你好',
-        '<strong>加粗文字</strong><p>段落</p><a href="http://baidu.com">百度</a><br>很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字看到我了',
+        `你好${parseInt(Math.random()*100)}`,
+        // '<strong>加粗文字</strong><p>段落</p><a href="http://baidu.com">百度</a><br>很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字很多很多文字看到我了',
         {
           enableHTML: true,
           autoClose: false,
