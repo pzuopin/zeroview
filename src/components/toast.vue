@@ -65,6 +65,7 @@ export default {
     },
     close() {
       this.$el.remove();
+      this.$emit('close');
       this.$destroy();
     },
     onClickClose() {
@@ -83,11 +84,16 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.toast {
   $toast-bg: rgba(0, 0, 0, 0.75);
   $font-size: 14px;
   $toast-height: 40px;
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(100%);}
+    100% { opacity: 1; transform: translateY(0%);}
+  }
+.toast {
   // border: 1px solid red;
+  animation: fadeIn 1s;
   position: fixed;
   top: 0;
   left: 50%;
