@@ -1,11 +1,13 @@
 <template>
-  <div class="toast" ref="wrapper" :class="toastClasses">
-    <div class="message">
-      <slot v-if="!enableHTML"></slot>
-      <div v-else class="content" v-html="$slots.default[0]"></div>
+  <div class="wrapper" :class="toastClasses">
+    <div class="toast" ref="toast" >
+      <div class="message">
+        <slot v-if="!enableHTML"></slot>
+        <div v-else class="content" v-html="$slots.default[0]"></div>
+      </div>
+      <div class="line" ref="line"></div>
+      <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
     </div>
-    <div class="line" ref="line"></div>
-    <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
   </div>
 </template>
 <script>
@@ -58,7 +60,7 @@ export default {
     },
     updateStyles() {
       this.$nextTick(() => {
-        let height = this.$refs.wrapper.getBoundingClientRect().height;
+        let height = this.$refs.toast.getBoundingClientRect().height;
         console.log("height", height);
         this.$refs.line.style.height = `${height}px`;
       });
@@ -87,17 +89,60 @@ export default {
   $toast-bg: rgba(0, 0, 0, 0.75);
   $font-size: 14px;
   $toast-height: 40px;
-  @keyframes fadeIn {
+  $animation-duration: 300ms;
+  @keyframes slide-up {
     0% { opacity: 0; transform: translateY(100%);}
     100% { opacity: 1; transform: translateY(0%);}
   }
-.toast {
-  // border: 1px solid red;
-  animation: fadeIn 1s;
+  @keyframes slide-down {
+    0% { opacity: 0; transform: translateY(-100%);}
+    100% { opacity: 1; transform: translateY(0%);}
+  }
+  @keyframes fade-in {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+  }
+  // 外层做定位
+.wrapper {
   position: fixed;
-  top: 0;
   left: 50%;
+  top: 0;
   transform: translateX(-50%);
+  // .toast {
+  //   animation: fade-in 1s;
+  // }
+
+  &.position-top {
+    // bottom: 0;
+    // top: unset;
+    .toast {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      animation: slide-down $animation-duration;
+    }
+  }
+
+  &.position-bottom {
+    bottom: 0;
+    top: unset;
+    .toast {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      animation: slide-up $animation-duration;
+    }
+  }
+  &.position-middle {
+    top: 50%;
+    bottom: unset;
+    transform: translateX(-50%) translateY(-50%);
+    .toast {
+      animation: fade-in $animation-duration;
+    }
+  }
+}
+// toast做动画
+.toast {
+  // animation: slide-up 1s;
   padding: 0 16px;
   color: white;
   background: $toast-bg;
@@ -117,18 +162,6 @@ export default {
     height: 100%;
     border: 1px solid #fff;
     margin: 0 16px;
-  }
-  &.position-bottom {
-    position: fixed;
-    bottom: 0;
-    top: unset;
-  }
-  &.position-middle {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    bottom: unset;
-    transform: translate(-50%,-50%)
   }
 }
 </style>
