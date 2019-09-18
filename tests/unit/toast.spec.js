@@ -15,14 +15,31 @@ describe('Toast.vue', () => {
         expect(Toast).to.be.exist
     })
     describe('props', function () {
-        it('接受 autoClose', (done) => {
+        it('接受 autoClose 是 false', (done) => {
             let div = document.createElement('div')
             document.body.appendChild(div)
             const Constructor = Vue.extend(Toast)
             const vm = new Constructor({
                 propsData: {
-                    autoClose: true,
-                    autoCloseDelay: 1
+                    autoClose: false,
+                    // autoCloseDelay: 1
+                }
+            }).$mount(div)
+
+            setTimeout(()=>{
+                expect(document.body.contains(vm.$el)).to.eq(true)
+                done()
+            },1500)
+        })
+
+        it('接受 autoClose 是 数字', (done) => {
+            let div = document.createElement('div')
+            document.body.appendChild(div)
+            const Constructor = Vue.extend(Toast)
+            const vm = new Constructor({
+                propsData: {
+                    autoClose: 1,
+                    // autoCloseDelay: 1
                 }
             }).$mount(div)
 
@@ -31,6 +48,8 @@ describe('Toast.vue', () => {
                 done()
             },1500)
         })
+
+        
     })
 
     //   it('可以设置icon',()=>{
