@@ -43,7 +43,7 @@ export default {
       type: String,
       default: 'top',
       validator(value){
-        console.log('11',value)
+        // console.log('11',value)
         return ['bottom','middle','top'].indexOf(value) >= 0
       }
     }
@@ -64,7 +64,7 @@ export default {
     updateStyles() {
       this.$nextTick(() => {
         let height = this.$refs.toast.getBoundingClientRect().height;
-        console.log("height", height);
+        // console.log("height", height);
         this.$refs.line.style.height = `${height}px`;
       });
     },

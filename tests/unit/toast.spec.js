@@ -49,69 +49,52 @@ describe('Toast.vue', () => {
             },1500)
         })
 
-        
+        it('接受 closeButton', () => {
+            const callback = sinon.fake()
+            // let div = document.createElement('div')
+            // document.body.appendChild(div)
+            const Constructor = Vue.extend(Toast)
+            const vm = new Constructor({
+                propsData: {
+                    closeButton: {
+                        text: '知道了',
+                        callback
+                    }
+                }
+            }).$mount()
+            // console.log(vm.$el.outerHTML)
+            let span = vm.$el.querySelector('.close')
+            expect(span.textContent.trim()).to.eq('知道了')
+            span.click()
+            expect(callback).to.have.been.called
+            
+        })
+
+        it('接受 enableHTML ',()=>{
+            const Constructor = Vue.extend(Toast)
+            const vm = new Constructor({
+                propsData: {
+                    enableHTML: true
+                }
+            })
+            vm.$slots.default = ['<strong id="test">hi</strong>']
+            vm.$mount()
+            const strong = vm.$el.querySelector('#test')
+            expect(strong).to.be.exist
+        })
+
+        it('接受 position = bottom,top,middle', ()=>{
+            ['bottom','top','middle'].forEach(position => {
+                const Constructor = Vue.extend(Toast)
+                const vm = new Constructor({
+                    propsData: {
+                        position
+                    }
+                }).$mount()
+                expect(vm.$el.classList.contains(`position-${position}`)).to.eq(true)
+            })
+        })
     })
 
-    //   it('可以设置icon',()=>{
-    //       const wrapper = mount(Button, {
-    //           propsData: {
-    //               icon: 'like'
-    //           }
-    //       })
-    //       const useElement = wrapper.find('use')
-    //       expect(useElement.attributes()['href']).to.eq('#icon-like')
-    //   })
-
-    //   it('可以设置loading',()=>{
-    //       const wrapper = mount(Button, {
-    //           propsData: {
-    //               icon: 'like',
-    //               loading: true
-    //           }
-    //       })
-    //       const vm = wrapper.vm
-    //       const useElement = vm.$el.querySelectorAll('use')
-    //       expect(useElement.length).to.eq(1)
-    //       expect(useElement[0].getAttribute('xlink:href')).to.equal('#icon-loading')
-    //   })
-
-    //   it('icon 默认的 order 是1', ()=>{
-    //       const wrapper = mount(Button, {
-    //           attachToDocument: true,
-    //           propsData: {
-    //               icon: 'like'
-    //           }
-    //       })
-    //       const vm = wrapper.vm
-    //       const icon = vm.$el.querySelector('svg')
-    //       expect(getComputedStyle(icon).order).to.eq('1')
-    //       wrapper.destroy()
-    //   })
-
-    //   it('设置 position 可以改变 icon 的 order', ()=>{
-    //       const wrapper = mount(Button, {
-    //           attachToDocument: true,
-    //           propsData: {
-    //               icon: 'like',
-    //               position: 'right'
-    //           }
-    //       })
-    //       const vm = wrapper.vm
-    //       const icon = vm.$el.querySelector('svg')
-    //       expect(getComputedStyle(icon).order).to.eq('2')
-    //       wrapper.destroy()
-    //   })
-
-    //   it('点击 button 触发 click 事件', ()=>{
-    //       const wrapper = mount(Button, {
-    //           propsData: {
-    //               icon: 'like'
-    //           }
-    //       })
-    //       const vm = wrapper.vm
-    //       const callback = sinon.fake()
-    //       vm.$on('click',callback)
-    //       vm.$el.click()
-    //       expect(callback).to.have.been.called
-    //   })
+    
 })
