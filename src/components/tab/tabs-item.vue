@@ -5,7 +5,13 @@
 </template>
 <script>
 export default {
-  name: "zViewTabsItem"
+  name: "zViewTabsItem",
+  props: {
+      disabled: {
+          type: Boolean,
+          default: false
+      }
+  }
 };
 </script>
 <style lang="scss">

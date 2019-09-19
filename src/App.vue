@@ -1,9 +1,16 @@
 <template>
   <div>
-    <z-tabs selected='women'>
+    <z-tabs :selected.sync='tab'>
+    <!-- .sync 等价写法 <z-tabs selected='tab' @update:selected='tab = $event' -->
       <z-tabs-head>
-        <z-tabs-item name='women'>美女</z-tabs-item>
-        <z-tabs-item name='finance'>财经</z-tabs-item>
+        <template slot='action'>
+          <button>action</button>
+        </template>
+        <z-tabs-item name='women'>
+          <z-icon name='wechat'></z-icon>
+          美女
+        </z-tabs-item>
+        <z-tabs-item name='finance' disabled>财经</z-tabs-item>
         <z-tabs-item name='sports'>体育</z-tabs-item>
       </z-tabs-head>
       <z-tabs-body>
@@ -19,7 +26,10 @@
 export default {
   name: "App",
   mounted() {},
-  methods: {}
+  methods: {},
+  data: {
+    tab: 'sports'
+  }
 };
 </script>
 
