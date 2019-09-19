@@ -4,6 +4,7 @@
   </div>
 </template>
 <script>
+import Vue from 'vue'
 export default {
   name: "zViewTabs",
   props: {
@@ -19,7 +20,19 @@ export default {
           }
       }
   },
+  data(){
+      return {
+          eventBus: new Vue()
+      }
+  },
+  // 提供 eventBus，子组件都能通过 inject 属性注入 eventBus
+  provide(){
+      return {
+          eventBus: this.eventBus
+      }
+  },
   created(){
+      console.log(this)
     //   this.$emit('update:selected', 'xxx')
   }
 };

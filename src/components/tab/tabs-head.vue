@@ -6,7 +6,12 @@
 </template>
 <script>
 export default {
-  name: "zViewTabsHead"
+  name: "zViewTabsHead",
+  inject: ['eventBus'],
+  created(){
+    // console.log('tabs-head 收到 tabs 提供的 eventBus')
+    // console.log(this.eventBus)
+  }
 };
 </script>
 <style lang="scss">

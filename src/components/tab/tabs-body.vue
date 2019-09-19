@@ -5,7 +5,12 @@
 </template>
 <script>
 export default {
-  name: "zViewTabsBody"
+  name: "zViewTabsBody",
+  inject: ['eventBus'],
+  created(){
+    // console.log('tabs-body 收到 tabs 提供的 eventBus')
+    // console.log(this.eventBus)
+  }
 };
 </script>
 <style lang="scss">

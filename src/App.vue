@@ -27,9 +27,12 @@ export default {
   name: "App",
   mounted() {},
   methods: {},
-  data: {
-    tab: 'sports'
+  data(){
+    return {
+      tab: 'sports'
+    }
   }
+  
 };
 </script>
 
