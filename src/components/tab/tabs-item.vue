@@ -33,6 +33,9 @@ export default {
 </script>
 <style lang="scss">
 .tabs-item {
+    // flex-grow: 1;
+    flex-shrink: 0;
+    padding: 0 1em;
 //   outline: 1px solid red;
 }
 </style>
