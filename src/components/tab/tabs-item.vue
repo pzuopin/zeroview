@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click='xxx'>
+  <div class="tabs-item" @click='xxx' :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -17,11 +17,24 @@ export default {
           required: true
       }
   },
+  data() {
+    return {
+      active: false
+    };
+  },
+  computed: {
+    classes(){
+      return {
+        active: this.active
+      }
+    }
+  },
   created(){
     // console.log('tabs-item 收到 tabs 提供的 eventBus')
     // console.log(this.eventBus)
     this.eventBus.$on('update:selected',(name)=>{
-        console.log('item 组件收到了 update:selected 事件', name)
+      this.active = name === this.name
+        // console.log('item 组件收到了 update:selected 事件', name)
     })
   },
   methods: {
@@ -32,10 +45,15 @@ export default {
 };
 </script>
 <style lang="scss">
+$blue: blue;
 .tabs-item {
     // flex-grow: 1;
     flex-shrink: 0;
-    padding: 0 1em;
+    padding: 1em;
+    cursor: pointer;
+    &.active {
+      color: $blue;
+    }
 //   outline: 1px solid red;
 }
 </style>

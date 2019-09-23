@@ -17,11 +17,12 @@ export default {
 };
 </script>
 <style lang="scss">
+// $tab-height: 40px;
 .tabs-head {
-  $tab-height: 40px;
-  outline: 1px solid red;
+  // outline: 1px solid red;
+  border-bottom: 1px solid #ccc;
   display: flex;
-  height: $tab-height;
+  // height: $tab-height;
   justify-content: start;
   align-items: center;
   > .action-wrapper {

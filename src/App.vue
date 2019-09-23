@@ -4,6 +4,7 @@
     <!-- .sync 等价写法 <z-tabs selected='tab' @update:selected='tab = $event' -->
       <z-tabs-head>
         <template slot='action'>
+          <span>设置</span>
           <button>action</button>
         </template>
         <z-tabs-item name='women'>
