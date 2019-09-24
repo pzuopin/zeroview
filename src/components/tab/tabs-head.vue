@@ -41,9 +41,10 @@ export default {
     margin-left: auto;
   }
   > .line {
+    transition: width 350ms, left 350ms;
     position: absolute;
     bottom: 0;
-    width: 100px;
+    // width: 100px;
     border-bottom: 1px solid blue;
   }
 }
