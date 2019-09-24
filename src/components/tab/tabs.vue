@@ -36,7 +36,7 @@ export default {
           if(vm.$options.name === 'zViewTabsHead'){
               vm.$children.forEach((childVm, index) => {
                   if(childVm.$options.name === 'zViewTabsItem' && childVm.name === this.selected){
-                      console.log(childVm.$el)
+                    //   console.log(childVm.$el)
                       this.eventBus.$emit('update:selected', this.selected, childVm)
                   }
               })
