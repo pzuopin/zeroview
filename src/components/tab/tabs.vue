@@ -32,7 +32,16 @@ export default {
       }
   },
   mounted(){
-      this.eventBus.$emit('update:selected', this.selected)
+      this.$children.forEach(vm => {
+          if(vm.$options.name === 'zViewTabsHead'){
+              vm.$children.forEach((childVm, index) => {
+                  if(childVm.$options.name === 'zViewTabsItem' && childVm.name === this.selected){
+                      console.log(childVm.$el)
+                      this.eventBus.$emit('update:selected', this.selected, childVm)
+                  }
+              })
+          }
+      })
   },
   created(){
     //   console.log(this)

@@ -7,7 +7,7 @@
 export default {
   name: "zViewTabsBody",
   inject: ['eventBus'],
-  created(){
+  mounted(){
     // console.log('tabs-body 收到 tabs 提供的 eventBus')
     // console.log(this.eventBus)
   }

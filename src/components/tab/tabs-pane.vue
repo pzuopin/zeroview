@@ -25,7 +25,7 @@ export default {
       };
     }
   },
-  created() {
+  mounted() {
     // console.log("tabs-pane 收到 tabs 提供的 eventBus");
     // console.log(this.eventBus);
     this.eventBus.$on("update:selected", name => {

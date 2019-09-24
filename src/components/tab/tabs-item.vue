@@ -29,7 +29,7 @@ export default {
       }
     }
   },
-  created(){
+  mounted(){
     // console.log('tabs-item 收到 tabs 提供的 eventBus')
     // console.log(this.eventBus)
     this.eventBus.$on('update:selected',(name)=>{
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
       xxx(){
-          this.eventBus.$emit('update:selected', this.name)
+          this.eventBus.$emit('update:selected', this.name, this)
       }
   }
 };
