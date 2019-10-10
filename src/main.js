@@ -17,6 +17,7 @@ import TabsPane from './components/tab/tabs-pane'
 import TabsBody from './components/tab/tabs-body'
 import TabsItem from './components/tab/tabs-item'
 import TabsHead from './components/tab/tabs-head'
+import Popover from './components/popover'
 import router from './router'
 import store from './store'
 import plugin from './plugin'
@@ -39,6 +40,7 @@ Vue.component('z-tabs-head', TabsHead)
 Vue.component('z-tabs-body', TabsBody)
 Vue.component('z-tabs-item', TabsItem)
 Vue.component('z-tabs-pane', TabsPane)
+Vue.component('z-popover', Popover)
 
 
 Vue.config.productionTip = false
