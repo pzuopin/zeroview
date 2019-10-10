@@ -1,6 +1,6 @@
 <template>
   <div>
-    <z-tabs :selected.sync='tab'>
+    <z-tabs :selected.sync='tab' direction='vertical'>
     <!-- .sync 等价写法 <z-tabs selected='tab' @update:selected='tab = $event' -->
       <z-tabs-head>
         <template slot='action'>
@@ -19,6 +19,9 @@
         <z-tabs-pane name='finance'>财经相关资讯</z-tabs-pane>
         <z-tabs-pane name='sports'>体育相关资讯</z-tabs-pane>
       </z-tabs-body>
+    </z-tabs>
+    <z-tabs>
+      <div>hello</div>
     </z-tabs>
   </div>
 </template>

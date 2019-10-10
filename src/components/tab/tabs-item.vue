@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click='onClick' :class="classes">
+  <div class="tabs-item" @click='onClick' :class="classes" :data-name='name'>
     <slot></slot>
   </div>
 </template>
@@ -33,6 +33,7 @@ export default {
   mounted(){
     // console.log('tabs-item 收到 tabs 提供的 eventBus')
     // console.log(this.eventBus)
+    this.eventBus && 
     this.eventBus.$on('update:selected',(name)=>{
       this.active = name === this.name
         // console.log('item 组件收到了 update:selected 事件', name)
@@ -41,7 +42,9 @@ export default {
   methods: {
       onClick(){
           if(this.disabled) return
-          this.eventBus.$emit('update:selected', this.name, this)
+          this.eventBus && this.eventBus.$emit('update:selected', this.name, this)
+          // 为了测试
+          this.$emit('click', this)
       }
   }
 };
