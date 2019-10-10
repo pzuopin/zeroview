@@ -59,6 +59,7 @@ $disabled-color: gray;
     }
     &.disabled {
       color: $disabled-color;
+      cursor: not-allowed;
     }
 //   outline: 1px solid red;
 }
