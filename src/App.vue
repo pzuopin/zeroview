@@ -28,6 +28,7 @@ export default {
 
 <style lang="scss">
 .app {
-  margin: 200px;
+  padding: 200px 200px 0 200px;
+  border: 1px solid red;
 }
 </style>>
