@@ -1,4 +1,4 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 import App from './App'
 import Button from './components/button/index.js'
 // import Icon from './components/icon'
@@ -27,7 +27,7 @@ import plugin from './plugin'
 const components = [
     Button,
     // Icon,
-    ButtonGroup,
+    // ButtonGroup,
     // Input,
     // Row,
     // Col,
@@ -50,7 +50,7 @@ const install = function(Vue, opts = {}){
     })
 }
 
-install(Vue)
+// install(Vue)
 
 // if(typeof window !== 'undefined' && window.Vue){
 //     install(window.Vue)
@@ -60,7 +60,7 @@ export default {
     install,
     Button,
     // Icon,
-    ButtonGroup,
+    // ButtonGroup,
     // Input,
     // Row,
     // Col,

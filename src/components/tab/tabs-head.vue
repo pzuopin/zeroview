@@ -34,7 +34,7 @@ export default {
   border-bottom: 1px solid #ccc;
   display: flex;
   // height: $tab-height;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
   > .action-wrapper {
