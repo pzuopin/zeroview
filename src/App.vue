@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+    <z-button>button</z-button>
     <z-popover>
       <template slot="content">
         <div>popover内容</div>
