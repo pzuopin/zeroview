@@ -3,7 +3,7 @@ import sinon from "sinon";
 import Vue from "vue";
 import sinonChai from "sinon-chai";
 import { mount } from "@vue/test-utils";
-import Input from "@/components/input.vue";
+import Input from "@/components/input/input.vue";
 chai.use(sinonChai);
 
 describe("Input.vue", () => {

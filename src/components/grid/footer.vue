@@ -3,7 +3,12 @@
         <slot></slot>
     </div>
 </template>
-s <style lang="scss" scoped>
+<script>
+export default {
+    name: 'zViewFooter'
+}
+</script>
+<style lang="scss" scoped>
 .footer {
     
 }
