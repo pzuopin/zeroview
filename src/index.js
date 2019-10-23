@@ -4,6 +4,7 @@ import ButtonGroup from './components/button-group/index.js'
 import Input from './components/input/index.js'
 import Grid from './components/grid/index.js'
 import Tab from './components/tab/index.js'
+import Toast from './components/toast/index.js'
 
 const components = [
     Button,
@@ -11,7 +12,8 @@ const components = [
     ButtonGroup,
     Input,
     Grid,
-    Tab
+    Tab,
+    Toast
 ]
 
 const install = Vue => {
@@ -26,7 +28,8 @@ export {
     ButtonGroup,
     Input,
     Grid,
-    Tab
+    Tab,
+    Toast
 }
 
 export default install
