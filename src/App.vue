@@ -1,7 +1,5 @@
 <template>
   <div class="app">
-    <z-button icon='wechat' @click="showToast">showToast</z-button>
-    <!-- <z-icon name='wechat'>11</z-icon> -->
     <z-popover>
       <template slot="content">
         <div>popover内容</div>
@@ -22,11 +20,7 @@ export default {
   name: "App",
   mounted() {},
   methods: {
-    showToast(){
-      this.$toast('hello', {
-        position: 'bottom'
-      })
-    }
+    
   },
   data() {
     return {};

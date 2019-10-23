@@ -18,7 +18,7 @@ import TabsItem from './components/tab/tabs-item'
 import TabsHead from './components/tab/tabs-head'
 
 import Toast from './components/toast/index.js'
-import Popover from './components/popover'
+import Popover from './components/popover/popover.vue'
 
 import router from './router'
 import store from './store'

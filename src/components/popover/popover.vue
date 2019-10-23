@@ -1,6 +1,6 @@
 <template>
-  <div class="popover" @click="xxx">
-    <div class="content-wrapper" v-if="visible">
+  <div class="popover" @click.stop="xxx">
+    <div class="content-wrapper" v-if="visible" @click.stop>
       <slot name="content"></slot>
     </div>
     <slot></slot>
@@ -17,8 +17,22 @@ export default {
   },
   methods: {
     xxx() {
+      console.log('xxx called..')
       this.visible = !this.visible;
+      let closeFn = () => {
+        console.log('closeFn called..')
+        this.visible = false
+      }
+      if(this.visible){
+        console.log('add eventListener..')
+        document.body.addEventListener('click', closeFn)
+      }else{
+        console.log('remove eventListener..')
+        document.body.removeEventListener('click',closeFn)
+      }
     }
+  },
+  mounted(){
   }
 };
 </script>
