@@ -18,42 +18,47 @@ export default {
     };
   },
   methods: {
+    open() {
+      this.visible = true;
+      this.$nextTick(() => {
+        this.positionContent();
+        console.log('document 添加 click 监听...')
+        document.addEventListener("click", this.onClickDocument);
+      });
+    },
+    close() {
+      this.visible = false;
+      console.log("document 移除 click 监听..");
+      document.removeEventListener("click", this.onClickDocument);
+    },
+    onClickDocument(event) {
+      if (
+        (this.$refs.contentWrapper &&
+          this.$refs.contentWrapper.contains(event.target)) ||
+        this.$refs.triggerWrapper.contains(event.target)
+      ) {
+        console.log("popover 自身的click 事件，document 不处理");
+        return;
+      }
+      this.close()
+    },
+    positionContent() {
+      document.body.appendChild(this.$refs.contentWrapper);
+      const {
+        width,
+        height,
+        left,
+        top
+      } = this.$refs.triggerWrapper.getBoundingClientRect();
+      console.log(width, height, left, top);
+      this.$refs.contentWrapper.style.left = `${left}px`;
+      this.$refs.contentWrapper.style.top = `${top}px`;
+    },
     onClick() {
-      console.log("onClick called..");
-      this.visible = !this.visible;
-
-      if (this.visible) {
-        console.log("添加 document 监听..");
-        this.$nextTick(() => {
-          document.body.appendChild(this.$refs.contentWrapper);
-          const {
-            width,
-            height,
-            left,
-            top
-          } = this.$refs.triggerWrapper.getBoundingClientRect();
-          console.log(width, height, left, top);
-          this.$refs.contentWrapper.style.left = `${left}px`;
-          this.$refs.contentWrapper.style.top = `${top}px`;
-          let closeFn = event => {
-            console.log("closeFn called 1..");
-            console.log(event.target);
-            if (
-              (this.$refs.contentWrapper &&
-                this.$refs.contentWrapper.contains(event.target)) ||
-              this.$refs.triggerWrapper.contains(event.target)
-            ) {
-              console.log("popover 自身的click 事件，document 不处理");
-              return;
-            }
-            this.visible = false;
-            console.log("document 隐藏 popover，并移除监听..");
-            document.removeEventListener("click", closeFn);
-          };
-          document.addEventListener("click", closeFn);
-        });
+      if (!this.visible) {
+        this.open();
       } else {
-        console.log("vm 隐藏 popover");
+        this.close();
       }
     }
   },
