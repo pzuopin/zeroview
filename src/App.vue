@@ -1,17 +1,19 @@
 <template>
   <div class="app">
-    <z-popover>
-      <template slot="content">
-        <div>popover内容</div>
-      </template>
-      <button>点我1</button>
-    </z-popover>
-    <z-popover>
-      <template slot="content">
-        <div>popover内容</div>
-      </template>
-      <button>点我2</button>
-    </z-popover>
+    <div class="xxx">
+      <z-popover>
+        <template slot="content">
+          <div>popover内容1</div>
+        </template>
+        <z-button>点我1</z-button>
+      </z-popover>
+      <z-popover>
+        <template slot="content">
+          <div>popover内容2</div>
+        </template>
+        <z-button>点我2</z-button>
+      </z-popover>
+    </div>
   </div>
 </template>
 
@@ -19,9 +21,7 @@
 export default {
   name: "App",
   mounted() {},
-  methods: {
-    
-  },
+  methods: {},
   data() {
     return {};
   }
@@ -32,5 +32,9 @@ export default {
 .app {
   padding: 200px 200px 0 200px;
   border: 1px solid red;
+  // width: 3500px;
+}
+.xxx {
+  // margin-left: 2000px;
 }
 </style>>
