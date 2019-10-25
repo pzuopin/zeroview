@@ -51,8 +51,9 @@ export default {
         top
       } = this.$refs.triggerWrapper.getBoundingClientRect();
       console.log(width, height, left, top);
-      this.$refs.contentWrapper.style.left = `${left}px`;
-      this.$refs.contentWrapper.style.top = `${top}px`;
+      console.log(window.scrollX, window.scrollY)
+      this.$refs.contentWrapper.style.left = `${window.scrollX + left}px`;
+      this.$refs.contentWrapper.style.top = `${window.scrollY + top}px`;
     },
     onClick() {
       if (!this.visible) {
@@ -79,10 +80,34 @@ $border-radius: 4px;
   left: 0;
   border: 1px solid $border-color;
   border-radius: $border-radius;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+  // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
   transform: translateY(-100%);
   margin-top: -10px;
   padding: 0.5em 1em;
+  max-width: 20em;
+  word-break: break-all;
   background: #fff;
+  &::before {
+    position: absolute;
+    // height: 1px;
+    content: '';
+    display: inline-block;
+    border: 10px solid transparent;
+    border-top-color: #000; 
+    bottom: 0;
+    left: 10px;
+    transform: translateY(100%);
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    border: 10px solid transparent;
+    border-top-color: #fff; 
+    bottom: 1px;
+    left: 10px;
+    transform: translateY(100%);
+  }
 }
 </style>

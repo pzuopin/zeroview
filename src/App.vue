@@ -1,19 +1,19 @@
 <template>
   <div class="app">
-    <div class="xxx">
+    <span class="xxx">
       <z-popover>
         <template slot="content">
-          <div>popover内容1</div>
+          <div>我是内容我是内容2</div>
         </template>
         <z-button>点我1</z-button>
       </z-popover>
       <z-popover>
         <template slot="content">
-          <div>popover内容2</div>
+          <div>我是内容我是内容2</div>
         </template>
         <z-button>点我2</z-button>
       </z-popover>
-    </div>
+    </span>
   </div>
 </template>
 
@@ -32,9 +32,10 @@ export default {
 .app {
   padding: 200px 200px 0 200px;
   border: 1px solid red;
-  // width: 3500px;
 }
 .xxx {
-  // margin-left: 2000px;
+  border: 1px solid blue;
+  display: inline-block;
 }
+
 </style>>
