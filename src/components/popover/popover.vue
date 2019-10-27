@@ -59,13 +59,13 @@ export default {
       this.visible = true;
       this.$nextTick(() => {
         this.positionContent();
-        console.log("document 添加 click 监听...");
+        // console.log("document 添加 click 监听...");
         document.addEventListener("click", this.onClickDocument);
       });
     },
     close() {
       this.visible = false;
-      console.log("document 移除 click 监听..");
+      // console.log("document 移除 click 监听..");
       document.removeEventListener("click", this.onClickDocument);
     },
     onClickDocument(event) {
@@ -74,7 +74,7 @@ export default {
           this.$refs.contentWrapper.contains(event.target)) ||
         this.$refs.triggerWrapper.contains(event.target)
       ) {
-        console.log("popover 自身的click 事件，document 不处理");
+        // console.log("popover 自身的click 事件，document 不处理");
         return;
       }
       this.close();
@@ -89,10 +89,10 @@ export default {
         top
       } = triggerWrapper.getBoundingClientRect();
       const { height: contentHeight } = contentWrapper.getBoundingClientRect()
-      console.log(width, height, left, top);
-      console.log(window.scrollX, window.scrollY);
-      console.log('contentWrapper height')
-      console.log(contentHeight)
+      // console.log(width, height, left, top);
+      // console.log(window.scrollX, window.scrollY);
+      // console.log('contentWrapper height')
+      // console.log(contentHeight)
       if (this.position === "top") {
         contentWrapper.style.left = `${window.scrollX + left}px`;
         contentWrapper.style.top = `${window.scrollY + top}px`;
@@ -151,6 +151,7 @@ $border-radius: 4px;
     margin-top: -10px;
     &::before,
     &::after {
+      border-bottom:none;
       left: 10px;
       transform: translateY(100%);
     }
@@ -168,6 +169,7 @@ $border-radius: 4px;
     margin-top: 10px;
     &::before,
     &::after {
+      border-top:none;
       left: 10px;
       transform: translateY(-100%);
     }
@@ -186,6 +188,7 @@ $border-radius: 4px;
     margin-left: -10px;
     &::before,
     &::after {
+      border-right:none;
       top: 50%;
       transform: translate(100%,-50%);
     }
@@ -203,6 +206,7 @@ $border-radius: 4px;
     margin-left: 10px;
     &::before,
     &::after {
+      border-left:none;
       top: 50%;
       transform: translate(-100%,-50%);
     }
