@@ -5,21 +5,21 @@
         <template slot="content">
           <div>我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2</div>
         </template>
-        <z-button>点我1</z-button>
+        <z-button>hover</z-button>
       </z-popover>
       <z-popover position='bottom'>
         <template slot="content">
           <div>我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2</div>
         </template>
-        <z-button>点我1</z-button>
+        <z-button>hover</z-button>
       </z-popover>
-      <z-popover position='left'>
+      <z-popover position='left' trigger='click'>
         <template slot="content">
           <div>我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2</div>
         </template>
         <z-button>点我1</z-button>
       </z-popover>
-      <z-popover position='right'>
+      <z-popover position='right' trigger='click'>
         <template slot="content">
           <div>我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2</div>
         </template>

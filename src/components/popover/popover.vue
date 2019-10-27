@@ -59,14 +59,18 @@ export default {
       this.visible = true;
       this.$nextTick(() => {
         this.positionContent();
-        // console.log("document 添加 click 监听...");
-        document.addEventListener("click", this.onClickDocument);
+        if(this.trigger === 'click'){
+          // console.log('document 添加 click 监听..')
+          document.addEventListener("click", this.onClickDocument);
+        }
       });
     },
     close() {
       this.visible = false;
-      // console.log("document 移除 click 监听..");
-      document.removeEventListener("click", this.onClickDocument);
+      if(this.trigger === 'click'){
+        // console.log("document 移除 click 监听..");
+        document.removeEventListener("click", this.onClickDocument);
+      }
     },
     onClickDocument(event) {
       if (
