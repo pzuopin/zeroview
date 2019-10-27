@@ -1,11 +1,12 @@
 <template>
   <div class="app">
     <span class="xxx">
-      <z-popover>
-        <template slot="content">
+      <z-popover trigger='click' >
+        <template slot="content" slot-scope="{ close }">
           <div>我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2</div>
+          <z-button @click="close">关闭</z-button>
         </template>
-        <z-button>hover</z-button>
+        <z-button>点我</z-button>
       </z-popover>
       <z-popover position='bottom'>
         <template slot="content">
