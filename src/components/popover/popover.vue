@@ -93,25 +93,27 @@ export default {
         top
       } = triggerWrapper.getBoundingClientRect();
       const { height: contentHeight } = contentWrapper.getBoundingClientRect()
-      // console.log(width, height, left, top);
-      // console.log(window.scrollX, window.scrollY);
-      // console.log('contentWrapper height')
-      // console.log(contentHeight)
-      if (this.position === "top") {
-        contentWrapper.style.left = `${window.scrollX + left}px`;
-        contentWrapper.style.top = `${window.scrollY + top}px`;
-      } else if (this.position === "bottom") {
-        contentWrapper.style.left = `${window.scrollX + left}px`;
-        contentWrapper.style.top = `${window.scrollY + height + top}px`;
-      } else if (this.position === "left") {
-        contentWrapper.style.left = `${window.scrollX + left}px`;
-        let delta = (height - contentHeight) / 2
-        contentWrapper.style.top = `${window.scrollY + top + delta}px`;
-      } else if (this.position === "right") {
-        contentWrapper.style.left = `${window.scrollX + left + width}px`;
-        let delta = (height - contentHeight) / 2
-        contentWrapper.style.top = `${window.scrollY + top + delta}px`;
+      const delta = (height - contentHeight) / 2
+      const map = {
+        top: {
+          left: window.scrollX + left,
+          top: window.scrollY + top
+        },
+        bottom: {
+          left: window.scrollX + left,
+          top: window.scrollY + height + top
+        },
+        left: {
+          left: window.scrollX + left,
+          top: window.scrollY + top + delta,
+        },
+        right: {
+          left: window.scrollX + left + width,
+          top: window.scrollY + top + delta
+        }
       }
+      contentWrapper.style.left = map[this.position].left + 'px'
+      contentWrapper.style.top = map[this.position].top + 'px'
     },
     onClick() {
       if (!this.visible) {
