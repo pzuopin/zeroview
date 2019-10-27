@@ -8,7 +8,7 @@
     >
       <slot name="content"></slot>
     </div>
-    <span ref="triggerWrapper" @click="onClick" style="display: inline-block">
+    <span ref="triggerWrapper" style="display: inline-block">
       <slot></slot>
     </span>
   </div>
@@ -23,12 +23,35 @@ export default {
     };
   },
   props: {
+    trigger: {
+      type: String,
+      default: 'hover',
+      validator(value){
+        return ['click','hover'].indexOf(value) >= 0
+      }
+    },
     position: {
       type: String,
       default: "top",
       validator(value) {
         return ["top", "bottom", "left", "right"].indexOf(value) >= 0;
       }
+    }
+  },
+  mounted(){
+    if(this.trigger === 'click'){
+      this.$refs.triggerWrapper.addEventListener('click',this.onClick)
+    }else if(this.trigger === 'hover'){
+      this.$refs.triggerWrapper.addEventListener('mouseenter',this.open)
+      this.$refs.triggerWrapper.addEventListener('mouseleave',this.close)
+    }
+  },
+  destroyed(){
+    if(this.trigger === 'click'){
+      this.$refs.triggerWrapper.removeEventListener('click',this.onClick)
+    }else if(this.trigger === 'hover'){
+      this.$refs.triggerWrapper.removeEventListener('mouseleave',this.close)
+      this.$refs.triggerWrapper.removeEventListener('mouseenter',this.open)
     }
   },
   methods: {
@@ -94,7 +117,6 @@ export default {
       }
     }
   },
-  mounted() {}
 };
 </script>
 
