@@ -49,7 +49,7 @@ describe('Tabs.vue', () => {
         })
     })
 
-    it('接受 direction 属性',()=>{
+    xit('接受 direction 属性',()=>{
         console.log('还未实现')
         // expect(false).to.eq(true)
     })
