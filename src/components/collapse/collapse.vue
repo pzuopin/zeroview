@@ -18,7 +18,8 @@ export default {
   },
   data() {
     return {
-      eventBus: new Vue()
+      eventBus: new Vue(),
+      selectData: this.selected
     };
   },
   provide() {
@@ -26,13 +27,33 @@ export default {
       eventBus: this.eventBus
     };
   },
+  methods:{
+    onRemove(name){
+      if(this.single){
+        this.eventBus.$emit('update:selected',[])
+      }else{
+        const selectCopy = this.selectData.filter(select => select !== name)
+        this.selectData = selectCopy
+        this.eventBus.$emit('update:selected',selectCopy)
+      }
+    },
+    onAdd(name){
+      if(this.single){
+        this.eventBus.$emit('update:selected',[name])
+      }else{
+        const selectCopy = [name].concat(this.selectData)
+        this.selectData = selectCopy
+        this.eventBus.$emit('update:selected',selectCopy)
+      }
+    }
+  },
   mounted() {
-    console.log("this.single", this.single);
-    console.log('this.selected', this.selected)
-    if (this.single && this.selected) {
-      this.eventBus.$emit("update:selected", this.selected.slice(0,1));
+    this.eventBus.$on('remove:selected',this.onRemove)
+    this.eventBus.$on('add:selected',this.onAdd)
+    if (this.single && this.selectData) {
+      this.eventBus.$emit("update:selected", this.selectData.slice(0,1));
     } else {
-      this.eventBus.$emit("update:selected", this.selected);
+      this.eventBus.$emit("update:selected", this.selectData);
     }
   }
 };
@@ -53,7 +74,8 @@ $border-radius: 4px;
       border-bottom-right-radius: $border-radius;
   }
   :not(:first-child) {
-    border-top: 1px solid red;
+    // background: pink;
+    border-top: 1px solid #c3c3c3;
   }
 }
 </style>

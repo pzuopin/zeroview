@@ -1,6 +1,6 @@
 <template>
   <div class="collapse-item">
-    <p class="title">{{ this.title }}</p>
+    <p class="title" @click="this.click">{{ this.title }}</p>
     <div class="content" v-if="visible">
       <slot></slot>
     </div>
@@ -28,8 +28,15 @@ export default {
     }
   },
   methods: {
+      click(){
+        this.visible = !this.visible
+        if(this.visible){
+          this.eventBus && this.eventBus.$emit('add:selected', this.name)
+        }else{
+          this.eventBus && this.eventBus.$emit('remove:selected', this.name)
+        }
+      },
       onSelectChange(selected){
-          console.log(`我是 item ${this.name}, 收到 selected`, selected)
           if(Array.isArray(selected)){
               this.visible = selected.indexOf(this.name) >= 0
           }
@@ -48,6 +55,9 @@ export default {
     .title,.content {
         padding: 1em;
     }
+    // .content {
+    //   border: none;
+    // }
   
 }
 </style>
