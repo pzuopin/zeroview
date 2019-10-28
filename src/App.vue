@@ -1,32 +1,10 @@
 <template>
   <div class="app">
-    <span class="xxx">
-      <z-popover trigger='click' >
-        <template slot="content" slot-scope="{ close }">
-          <div>我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2</div>
-          <z-button @click="close">关闭</z-button>
-        </template>
-        <z-button>点我</z-button>
-      </z-popover>
-      <z-popover position='bottom'>
-        <template slot="content">
-          <div>我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2</div>
-        </template>
-        <z-button>hover</z-button>
-      </z-popover>
-      <z-popover position='left' trigger='click'>
-        <template slot="content">
-          <div>我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2</div>
-        </template>
-        <z-button>点我1</z-button>
-      </z-popover>
-      <z-popover position='right' trigger='click'>
-        <template slot="content">
-          <div>我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2我是内容我是内容2</div>
-        </template>
-        <z-button>点我1</z-button>
-      </z-popover>
-    </span>
+    <z-collapse single :selected="['1']">
+      <z-collapse-item title='标题1' name='1'>内容1</z-collapse-item>
+      <z-collapse-item title='标题2' name='2'>内容2</z-collapse-item>
+      <z-collapse-item title='标题3' name='3'>内容3</z-collapse-item>
+    </z-collapse>
   </div>
 </template>
 
@@ -43,15 +21,9 @@ export default {
 
 <style lang="scss">
 .app {
-  padding: 200px;
+  padding: 50px;
   border: 1px solid red;
 }
-.xxx {
-  // border: 1px solid blue;
-  display: inline-block;
-  > div {
-    margin: 0 10px;
-  }
-}
+
 
 </style>>

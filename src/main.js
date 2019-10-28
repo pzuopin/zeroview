@@ -16,9 +16,10 @@ import TabsPane from './components/tab/tabs-pane'
 import TabsBody from './components/tab/tabs-body'
 import TabsItem from './components/tab/tabs-item'
 import TabsHead from './components/tab/tabs-head'
-
 import Toast from './components/toast/index.js'
 import Popover from './components/popover/popover.vue'
+import Collapse from './components/collapse/collapse.vue'
+import CollapseItem from './components/collapse/collapse-item.vue'
 
 import router from './router'
 import store from './store'
@@ -41,6 +42,8 @@ Vue.component('z-tabs-body', TabsBody)
 Vue.component('z-tabs-item', TabsItem)
 Vue.component('z-tabs-pane', TabsPane)
 Vue.component('z-popover', Popover)
+Vue.component('z-collapse', Collapse)
+Vue.component('z-collapse-item', CollapseItem)
 
 
 Vue.config.productionTip = false
