@@ -1,7 +1,7 @@
 <template>
   <div class="collapse-item">
     <p class="title" @click="this.click">{{ this.title }}</p>
-    <div class="content" v-if="visible">
+    <div class="content" :data-name="this.name" v-if="visible">
       <slot></slot>
     </div>
   </div>
