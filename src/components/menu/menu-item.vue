@@ -1,7 +1,9 @@
 <template>
-  <li class="menu-item" ref="menuItem" :class="classes" @click="onClick">
+  <li class="menu-item" ref="menuItem" 
+    :data-name="name"
+    :class="classes" @click="onClick">
     <slot></slot>
-    <!-- __ {{ this.level }} -->
+    __ {{ this.name }}
   </li>
 </template>
 <script>
@@ -35,14 +37,11 @@ export default {
     },
     onClick() {
       this.eventBus && this.eventBus.$emit("update:selected", this.name);
-      if(this.$parent.$options.name === 'zViewSubMenu'){
-          this.eventBus && this.eventBus.$emit('update:sub-item', this.name)
-      }
     },
     updateStyle() {
       let parent = this.$parent;
       let level = 0;
-      console.log(parent.$options.name);
+      // console.log(parent.$options.name);
       while (parent.$options.name !== "zViewMenu") {
         parent = parent.$parent;
         level += 1;
@@ -55,6 +54,8 @@ export default {
   },
 
   mounted() {
+
+    // console.log('menu-item mounted..')
     if (this.eventBus) {
       this.eventBus.$on("update:selected", this.onSelectedChange);
     }

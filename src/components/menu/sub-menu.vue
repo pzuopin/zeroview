@@ -1,14 +1,17 @@
 <template>
-  <li class="sub-menu" :class="{ 'sub-item-open': this.visible}">
+  <li class="sub-menu" 
+    :data-name="name"
+    :class="{ 'sub-item-open': this.visible}">
     <div class="title" :class="{ 'sub-item-selected': this.active }" ref="title" @click="onClick">
       <span>
         <slot name="title"></slot>
+        __ {{ this.name}}
       </span>
       <span name="icon">
         <z-icon name="down"></z-icon>
       </span>
     </div>
-    <ul v-if="visible" class="sub-menu-list">
+    <ul v-show="visible" class="sub-menu-list">
       <slot></slot>
     </ul>
   </li>
@@ -28,7 +31,7 @@ export default {
     updateStyle() {
       let parent = this.$parent;
       let level = 0;
-      console.log(parent.$options.name);
+      // console.log(parent.$options.name);
       while (parent.$options.name !== "zViewMenu") {
         parent = parent.$parent;
         level += 1;
@@ -38,23 +41,39 @@ export default {
         this.$refs.title.style.paddingLeft = `${level + 2}em`; // 基础 paddingLeft = 2em
       }
     },
-    updateSelf(name) {
-      this.active = true;
-    //   if (this.$parent.$options.name === "zViewSubMenu") {
-    //     this.eventBus && this.eventBus.$emit("update:sub-item", this.name);
-    //   }
+    onSelectChange(name){
+      if(this.childMenuNames.indexOf(name) >= 0){
+        this.active = true
+      }else{
+        this.active = false
+      }
+    },
+    getChildMenuNames(){
+      const names = []
+      this.$children.forEach(vm => {
+        if(vm.$options.name === 'zViewSubMenu'){
+          names.push(...vm.getChildMenuNames())
+        }else{
+          names.push(vm.name)
+        }
+      })
+      console.log(`我是${this.name},我的孩子有`)
+      console.log(names)
+      return names
     }
   },
   inject: ["eventBus"],
   mounted() {
     this.updateStyle();
-    this.eventBus && this.eventBus.$on("update:sub-item", this.updateSelf);
+    this.childMenuNames = this.getChildMenuNames();
+    this.eventBus && this.eventBus.$on("update:selected", this.onSelectChange);
   },
   data() {
     return {
       visible: false,
       level: 0,
-      active: false
+      active: false,
+      childMenuNames: []
     };
   }
 };
