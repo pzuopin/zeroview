@@ -3,7 +3,6 @@
     :data-name="name"
     :class="classes" @click="onClick">
     <slot></slot>
-    __ {{ this.name }}
   </li>
 </template>
 <script>

@@ -8,6 +8,9 @@ import Vue from 'vue'
 export default {
     name: 'zViewMenu',
     props: {
+        singleOpen: {
+            type: Boolean
+        },
         selected: {
             type: String,
         },
@@ -26,7 +29,8 @@ export default {
     },
     data(){
         return {
-            eventBus: new Vue()
+            eventBus: new Vue(),
+            openMenu:[]
         }
     },
     provide(){
@@ -34,8 +38,17 @@ export default {
             eventBus: this.eventBus
         }
     },
+    methods:{
+        onMenuOpen(name){
+            if(this.singleOpen){
+                this.eventBus.$emit('update:open',name)
+            }
+        }
+    },
     mounted(){
         this.eventBus.$emit('update:selected', this.selected)
+        this.eventBus.$on('add:open',this.onMenuOpen)
+        // this.eventBus.$on('remove:open',this.onMenuClose)
     }
 }
 </script>

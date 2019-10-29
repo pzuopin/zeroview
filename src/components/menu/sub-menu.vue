@@ -5,7 +5,6 @@
     <div class="title" :class="{ 'sub-item-selected': this.active }" ref="title" @click="onClick">
       <span>
         <slot name="title"></slot>
-        __ {{ this.name}}
       </span>
       <span name="icon">
         <z-icon name="down"></z-icon>
@@ -27,6 +26,17 @@ export default {
   methods: {
     onClick() {
       this.visible = !this.visible;
+      if(this.visible){
+        this.eventBus && this.eventBus.$emit('add:open',this.name)
+      }
+    },
+    onOpenChange(name){
+      console.log(`${this.name} openChange `, name)
+      if(name === this.name || this.childMenuNames.indexOf(name) >= 0){
+        this.visible = true
+      }else{
+        this.visible = false
+      }
     },
     updateStyle() {
       let parent = this.$parent;
@@ -51,10 +61,9 @@ export default {
     getChildMenuNames(){
       const names = []
       this.$children.forEach(vm => {
+        names.push(vm.name)
         if(vm.$options.name === 'zViewSubMenu'){
           names.push(...vm.getChildMenuNames())
-        }else{
-          names.push(vm.name)
         }
       })
       console.log(`我是${this.name},我的孩子有`)
@@ -67,6 +76,7 @@ export default {
     this.updateStyle();
     this.childMenuNames = this.getChildMenuNames();
     this.eventBus && this.eventBus.$on("update:selected", this.onSelectChange);
+    this.eventBus && this.eventBus.$on("update:open", this.onOpenChange);
   },
   data() {
     return {
