@@ -38,11 +38,11 @@ export default {
         this.$refs.title.style.paddingLeft = `${level + 2}em`; // 基础 paddingLeft = 2em
       }
     },
-    updateStyle(name) {
+    updateSelf(name) {
       this.active = true;
-      if (this.$parent.$options.name === "zViewSubMenu") {
-        this.eventBus && this.eventBus.$emit("update:sub-item", this.name);
-      }
+    //   if (this.$parent.$options.name === "zViewSubMenu") {
+    //     this.eventBus && this.eventBus.$emit("update:sub-item", this.name);
+    //   }
     }
   },
   inject: ["eventBus"],
@@ -73,6 +73,9 @@ $active-bg: #e6f7ff;
     align-items: center;
     &:hover {
       color: $active-color;
+    }
+    &.sub-item-selected {
+        color: $active-color;
     }
   }
 
