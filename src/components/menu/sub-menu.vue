@@ -1,6 +1,6 @@
 <template>
-  <li class="sub-menu" :class="{ 'menu-item-open': this.visible}">
-    <div class="title" ref="title" @click="onClick">
+  <li class="sub-menu" :class="{ 'sub-item-open': this.visible}">
+    <div class="title" :class="{ 'sub-item-selected': this.active }" ref="title" @click="onClick">
       <span>
         <slot name="title"></slot>
       </span>
@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     onClick() {
-      console.log(`sub-menu,${this.name} clicked..`);
       this.visible = !this.visible;
     },
     updateStyle() {
@@ -35,20 +34,27 @@ export default {
         level += 1;
       }
       if (level > 0) {
-          this.level = level
-        //   console.log(`${this.name} ${level}`)
+        this.level = level;
         this.$refs.title.style.paddingLeft = `${level + 2}em`; // 基础 paddingLeft = 2em
+      }
+    },
+    updateStyle(name) {
+      this.active = true;
+      if (this.$parent.$options.name === "zViewSubMenu") {
+        this.eventBus && this.eventBus.$emit("update:sub-item", this.name);
       }
     }
   },
   inject: ["eventBus"],
   mounted() {
-      this.updateStyle()
+    this.updateStyle();
+    this.eventBus && this.eventBus.$on("update:sub-item", this.updateSelf);
   },
   data() {
     return {
       visible: false,
-      level: 0
+      level: 0,
+      active: false
     };
   }
 };
@@ -73,7 +79,7 @@ $active-bg: #e6f7ff;
   span[name="icon"] {
     transition: all 350ms;
   }
-  &.menu-item-open {
+  &.sub-item-open {
     & > .title > span[name="icon"] {
       transform: rotate(180deg);
     }

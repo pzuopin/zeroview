@@ -35,6 +35,9 @@ export default {
     },
     onClick() {
       this.eventBus && this.eventBus.$emit("update:selected", this.name);
+      if(this.$parent.$options.name === 'zViewSubMenu'){
+          this.eventBus && this.eventBus.$emit('update:sub-item', this.name)
+      }
     },
     updateStyle() {
       let parent = this.$parent;

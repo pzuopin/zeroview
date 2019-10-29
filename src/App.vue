@@ -2,9 +2,9 @@
   <div class="app">
     <div class="xxx">
       <z-menu direction="vertical">
-        <!-- <z-menu-item name="1">菜单1</z-menu-item> -->
-        <!-- <z-menu-item name="2">菜单2</z-menu-item> -->
-        <!-- <z-menu-item name="3">菜单3</z-menu-item> -->
+        <z-menu-item name="1">菜单1</z-menu-item>
+        <z-menu-item name="2">菜单2</z-menu-item>
+        <z-menu-item name="3">菜单3</z-menu-item>
         <z-sub-menu name="4">
           <template slot="title">次级菜单1</template>
           <z-menu-item name="4-1">菜单1-1</z-menu-item>
