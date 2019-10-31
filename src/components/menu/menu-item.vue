@@ -63,8 +63,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$active-color: rgb(24, 144, 255);
-$active-bg: #e6f7ff;
+
 .menu-item {
   display: inline-block;
   padding: 0.5em 2em;
