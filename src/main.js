@@ -23,6 +23,9 @@ import CollapseItem from './components/collapse/collapse-item.vue'
 import Menu from './components/menu/menu.vue'
 import MenuItem from './components/menu/menu-item.vue'
 import SubMenu from './components/menu/sub-menu.vue'
+import Nav from './components/nav/nav.vue'
+import NavItem from './components/nav/nav-item.vue'
+import SubNav from './components/nav/sub-nav.vue'
 
 import router from './router'
 import store from './store'
@@ -50,7 +53,9 @@ Vue.component('z-collapse-item', CollapseItem)
 Vue.component('z-menu',Menu)
 Vue.component('z-menu-item', MenuItem)
 Vue.component('z-sub-menu', SubMenu)
-
+Vue.component('z-nav',Nav)
+Vue.component('z-sub-nav',SubNav)
+Vue.component('z-nav-item',NavItem)
 
 Vue.config.productionTip = false
 Vue.use(Toast)
