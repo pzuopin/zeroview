@@ -1,7 +1,5 @@
 <template>
-  <li class="menu-item" ref="menuItem" 
-    :data-name="name"
-    :class="classes" @click="onClick">
+  <li class="menu-item" ref="menuItem" :data-name="name" :class="classes" @click="onClick">
     <slot></slot>
   </li>
 </template>
@@ -28,7 +26,7 @@ export default {
       };
     }
   },
-  inject: ["eventBus"],
+  inject: ["eventBus", "direction"],
   methods: {
     onSelectedChange(name) {
       // console.log(`item - ${this.name}, 收到 name: ${name}`)
@@ -46,26 +44,26 @@ export default {
         level += 1;
       }
       if (level > 0) {
-        this.level = level
+        this.level = level;
         this.$refs.menuItem.style.paddingLeft = `${level + 2}em`; // 基础 paddingLeft = 2em
       }
     }
   },
 
   mounted() {
-
     // console.log('menu-item mounted..')
     if (this.eventBus) {
       this.eventBus.$on("update:selected", this.onSelectedChange);
     }
-    this.updateStyle();
+    if (this.direction === "vertical") {
+      this.updateStyle();
+    }
   }
 };
 </script>
 <style lang="scss" scoped>
-
 .menu-item {
-  display: inline-block;
+  display: block;
   padding: 0.5em 2em;
   &.active {
     background: $active-bg;

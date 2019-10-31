@@ -1,15 +1,39 @@
 <template>
-  <div class="app">
-    <z-nav>
-      <z-nav-item name="home">首页</z-nav-item>
-      <z-sub-nav name="about">
-        <template slot="title">关于</template>
-        <z-nav-item name="culture">公司文化</z-nav-item>
-        <z-nav-item name="team">团队建设</z-nav-item>
-        <z-nav-item name="contact">联系方式</z-nav-item>
-      </z-sub-nav>
-      <z-nav-item name="other">其他</z-nav-item>
-    </z-nav>
+  <div>
+    <div class="app">
+      <z-menu>
+        <z-menu-item name="home">首页</z-menu-item>
+        <z-sub-menu name="about">
+          <template slot="title">关于</template>
+          <z-menu-item name="culture">公司文化</z-menu-item>
+          <z-menu-item name="team">团队建设</z-menu-item>
+          <z-sub-menu name="contact">
+            <template slot="title">contact</template>
+            <z-menu-item name="mobile">mobile</z-menu-item>
+            <z-menu-item name="uni">uni</z-menu-item>
+            <z-menu-item name="tele">tele</z-menu-item>
+          </z-sub-menu>
+        </z-sub-menu>
+        <z-menu-item name="other">其他</z-menu-item>
+      </z-menu>
+    </div>
+    <div class="app">
+      <z-menu direction="vertical">
+        <z-menu-item name="home">首页</z-menu-item>
+        <z-sub-menu name="about">
+          <template slot="title">关于</template>
+          <z-menu-item name="culture">公司文化</z-menu-item>
+          <z-menu-item name="team">团队建设</z-menu-item>
+          <z-sub-menu name="contact">
+            <template slot="title">contact</template>
+            <z-menu-item name="mobile">mobile</z-menu-item>
+            <z-menu-item name="uni">uni</z-menu-item>
+            <z-menu-item name="tele">tele</z-menu-item>
+          </z-sub-menu>
+        </z-sub-menu>
+        <z-menu-item name="other">其他</z-menu-item>
+      </z-menu>
+    </div>
   </div>
 </template>
 
@@ -28,5 +52,6 @@ export default {
 .app {
   width: 600px;
   margin: 50px;
+  border: 1px solid red;
 }
 </style>>

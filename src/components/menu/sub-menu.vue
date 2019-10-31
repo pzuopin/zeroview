@@ -1,7 +1,9 @@
 <template>
-  <li class="sub-menu" 
+  <li
+    class="sub-menu"
     :data-name="name"
-    :class="{ 'sub-item-open': this.visible}">
+    :class="{ 'sub-item-open': this.visible, 'vertical': this.direction === 'vertical'}"
+  >
     <div class="title" :class="{ 'sub-item-selected': this.active }" ref="title" @click="onClick">
       <span>
         <slot name="title"></slot>
@@ -26,16 +28,16 @@ export default {
   methods: {
     onClick() {
       this.visible = !this.visible;
-      if(this.visible){
-        this.eventBus && this.eventBus.$emit('add:open',this.name)
+      if (this.visible) {
+        this.eventBus && this.eventBus.$emit("add:open", this.name);
       }
     },
-    onOpenChange(name){
-      console.log(`${this.name} openChange `, name)
-      if(name === this.name || this.childMenuNames.indexOf(name) >= 0){
-        this.visible = true
-      }else{
-        this.visible = false
+    onOpenChange(name) {
+      console.log(`${this.name} openChange `, name);
+      if (name === this.name || this.childMenuNames.indexOf(name) >= 0) {
+        this.visible = true;
+      } else {
+        this.visible = false;
       }
     },
     updateStyle() {
@@ -51,29 +53,31 @@ export default {
         this.$refs.title.style.paddingLeft = `${level + 2}em`; // 基础 paddingLeft = 2em
       }
     },
-    onSelectChange(name){
-      if(this.childMenuNames.indexOf(name) >= 0){
-        this.active = true
-      }else{
-        this.active = false
+    onSelectChange(name) {
+      if (this.childMenuNames.indexOf(name) >= 0) {
+        this.active = true;
+      } else {
+        this.active = false;
       }
     },
-    getChildMenuNames(){
-      const names = []
+    getChildMenuNames() {
+      const names = [];
       this.$children.forEach(vm => {
-        names.push(vm.name)
-        if(vm.$options.name === 'zViewSubMenu'){
-          names.push(...vm.getChildMenuNames())
+        names.push(vm.name);
+        if (vm.$options.name === "zViewSubMenu") {
+          names.push(...vm.getChildMenuNames());
         }
-      })
-      console.log(`我是${this.name},我的孩子有`)
-      console.log(names)
-      return names
+      });
+      console.log(`我是${this.name},我的孩子有`);
+      console.log(names);
+      return names;
     }
   },
-  inject: ["eventBus"],
+  inject: ["eventBus", "direction"],
   mounted() {
-    this.updateStyle();
+    if (this.direction === "vertical") {
+      this.updateStyle();
+    }
     this.childMenuNames = this.getChildMenuNames();
     this.eventBus && this.eventBus.$on("update:selected", this.onSelectChange);
     this.eventBus && this.eventBus.$on("update:open", this.onOpenChange);
@@ -104,22 +108,24 @@ $active-bg: #e6f7ff;
       color: $active-color;
     }
     &.sub-item-selected {
-        color: $active-color;
+      color: $active-color;
     }
   }
 
   span[name="icon"] {
     transition: all 350ms;
   }
-  &.sub-item-open {
-    & > .title > span[name="icon"] {
-      transform: rotate(180deg);
+  &.vertical {
+    .sub-item-open {
+      & > .title > span[name="icon"] {
+        transform: rotate(180deg);
+      }
     }
-  }
-  .sub-menu-list {
-    // padding-left: 1em;
-    display: flex;
-    flex-direction: column;
+    .sub-menu-list {
+      // padding-left: 1em;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 </style>
