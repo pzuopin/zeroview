@@ -12,6 +12,12 @@
             <z-menu-item name="mobile">mobile</z-menu-item>
             <z-menu-item name="uni">uni</z-menu-item>
             <z-menu-item name="tele">tele</z-menu-item>
+            <z-sub-menu name="other-contact">
+              <template slot="title">other contact</template>
+              <z-menu-item name="qq">qq</z-menu-item>
+              <z-menu-item name="wechat">wechat</z-menu-item>
+              <z-menu-item name="douyin">douyin</z-menu-item>
+            </z-sub-menu>
           </z-sub-menu>
         </z-sub-menu>
         <z-menu-item name="other">其他</z-menu-item>
@@ -29,6 +35,12 @@
             <z-menu-item name="mobile">mobile</z-menu-item>
             <z-menu-item name="uni">uni</z-menu-item>
             <z-menu-item name="tele">tele</z-menu-item>
+            <z-sub-menu name="other-contact">
+              <template slot="title">other contact</template>
+              <z-menu-item name="qq">qq</z-menu-item>
+              <z-menu-item name="wechat">wechat</z-menu-item>
+              <z-menu-item name="douyin">douyin</z-menu-item>
+            </z-sub-menu>
           </z-sub-menu>
         </z-sub-menu>
         <z-menu-item name="other">其他</z-menu-item>
