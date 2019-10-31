@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="app">
-      <z-menu>
+      <z-menu direction="vertical">
         <z-menu-item name="home">首页</z-menu-item>
         <z-sub-menu name="about">
           <template slot="title">关于</template>
@@ -18,7 +18,7 @@
       </z-menu>
     </div>
     <div class="app">
-      <z-menu direction="vertical">
+      <z-menu>
         <z-menu-item name="home">首页</z-menu-item>
         <z-sub-menu name="about">
           <template slot="title">关于</template>

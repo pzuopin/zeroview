@@ -22,7 +22,9 @@ export default {
   computed: {
     classes() {
       return {
-        active: this.active
+        active: this.active,
+        vertical: this.direction === "vertical",
+        horizontal: this.direction === "horizontal"
       };
     }
   },
@@ -65,12 +67,31 @@ export default {
 .menu-item {
   display: block;
   padding: 0.5em 2em;
-  &.active {
-    background: $active-bg;
-    color: $active-color;
-    border-right: 2px solid $active-color;
-    margin-right: -1px;
+  position: relative;
+  &.vertical {
+    &.active {
+      background: $active-bg;
+      color: $active-color;
+      border-right: 2px solid $active-color;
+      margin-right: -1px;
+    }
   }
+  &.horizontal {
+    &.active {
+      color: $active-color;
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 0;
+        border-bottom: 2px solid $active-color;
+        left: 0;
+        bottom: 0;
+      }
+    }
+  }
+
   &:hover {
     color: $active-color;
   }

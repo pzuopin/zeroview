@@ -2,13 +2,18 @@
   <li
     class="sub-menu"
     :data-name="name"
-    :class="{ 'sub-item-open': this.visible, 'vertical': this.direction === 'vertical'}"
+    :class="{ 'sub-item-open': this.visible,
+     'horizontal': this.direction === 'horizontal',
+     'vertical': this.direction === 'vertical'}"
   >
     <div class="title" :class="{ 'sub-item-selected': this.active }" ref="title" @click="onClick">
       <span>
         <slot name="title"></slot>
       </span>
-      <span name="icon">
+      <span name="icon" v-if="this.direction === 'horizontal'">
+        <z-icon name="right"></z-icon>
+      </span>
+      <span name="icon" v-if="this.direction === 'vertical'">
         <z-icon name="down"></z-icon>
       </span>
     </div>
@@ -97,7 +102,7 @@ $active-color: rgb(24, 144, 255);
 $active-bg: #e6f7ff;
 .sub-menu {
   display: inline-block;
-  //   border: 1px solid green;
+  position: relative;
   .title {
     // background: #ccc;
     padding: 0.5em 2em;
@@ -114,6 +119,30 @@ $active-bg: #e6f7ff;
 
   span[name="icon"] {
     transition: all 350ms;
+  }
+  &.horizontal {
+    .sub-item-open {
+      & > .title > span[name="icon"] {
+        transform: rotate(180deg);
+      }
+    }
+
+    .sub-menu-list {
+      position: absolute;
+      border: 1px solid #ccc;
+      .sub-menu-list {
+        border: 1px solid #ccc;
+        position: absolute;
+        left: 100%;
+        top: 0;
+      }
+    }
+    .menu-item.active {
+      background: $active-bg;
+      &::after {
+        display: none;
+      }
+    }
   }
   &.vertical {
     .sub-item-open {
