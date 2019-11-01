@@ -2,15 +2,17 @@
   <li
     class="sub-menu"
     :data-name="name"
+    :menu-level="this.level"
     :class="{ 'sub-item-open': this.visible,
      'horizontal': this.direction === 'horizontal',
-     'vertical': this.direction === 'vertical'}"
+     'vertical': this.direction === 'vertical',
+     'active': this.active}"
   >
     <div class="title" :class="{ 'sub-item-selected': this.active }" ref="title" @click="onClick">
       <span>
         <slot name="title"></slot>
       </span>
-      <span name="icon" v-if="this.direction === 'horizontal'">
+      <span name="icon" v-if="this.direction === 'horizontal' && this.level > 0">
         <z-icon name="right"></z-icon>
       </span>
       <span name="icon" v-if="this.direction === 'vertical'">
@@ -36,6 +38,10 @@ export default {
       if (this.visible) {
         this.eventBus && this.eventBus.$emit("add:open", this.name);
       }
+      if (this.direction === "horizontal" && this.level === 0) {
+        // this.active = true;
+        this.eventBus && this.eventBus.$emit("update:selected", this.name);
+      }
     },
     onOpenChange(name) {
       console.log(`${this.name} openChange `, name);
@@ -45,7 +51,7 @@ export default {
         this.visible = false;
       }
     },
-    updateStyle() {
+    computeLevel() {
       let parent = this.$parent;
       let level = 0;
       // console.log(parent.$options.name);
@@ -53,16 +59,19 @@ export default {
         parent = parent.$parent;
         level += 1;
       }
-      if (level > 0) {
-        this.level = level;
-        this.$refs.title.style.paddingLeft = `${level + 2}em`; // 基础 paddingLeft = 2em
+      this.level = level;
+    },
+    updateStyle() {
+      if (this.level > 0) {
+        this.$refs.title.style.paddingLeft = `${this.level + 2}em`; // 基础 paddingLeft = 2em
       }
     },
     onSelectChange(name) {
-      if (this.childMenuNames.indexOf(name) >= 0) {
+      if (this.name === name || this.childMenuNames.indexOf(name) >= 0) {
         this.active = true;
       } else {
         this.active = false;
+        // this.visible = false;
       }
     },
     getChildMenuNames() {
@@ -80,6 +89,7 @@ export default {
   },
   inject: ["eventBus", "direction"],
   mounted() {
+    this.computeLevel();
     if (this.direction === "vertical") {
       this.updateStyle();
     }
@@ -115,12 +125,28 @@ $active-bg: #e6f7ff;
     &.sub-item-selected {
       color: $active-color;
     }
+    span {
+      white-space: nowrap;
+    }
   }
 
   span[name="icon"] {
+    margin-left: 1em;
     transition: all 350ms;
   }
   &.horizontal {
+    &.active[menu-level="0"] {
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 0;
+        border-bottom: 2px solid $active-color;
+        left: 0;
+        bottom: 0;
+      }
+    }
     .sub-item-open {
       & > .title > span[name="icon"] {
         transform: rotate(180deg);
@@ -130,11 +156,13 @@ $active-bg: #e6f7ff;
     .sub-menu-list {
       position: absolute;
       border: 1px solid #ccc;
+      margin-top: 5px;
       .sub-menu-list {
         border: 1px solid #ccc;
         position: absolute;
         left: 100%;
         top: 0;
+        margin-left: 5px;
       }
     }
     .menu-item.active {

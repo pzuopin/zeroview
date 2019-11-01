@@ -55,14 +55,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 .menu {
-  // border: 1px solid blue;
-  border-right: 1px solid #ccc;
   display: flex;
+  $border-color: #ccc;
   &.direction-horizontal {
+    border-bottom: 1px solid $border-color;
   }
 
   &.direction-vertical {
     flex-direction: column;
+    border-right: 1px solid $border-color;
   }
   &:hover {
     cursor: pointer;
