@@ -71,7 +71,9 @@ export default {
         this.active = true;
       } else {
         this.active = false;
-        // this.visible = false;
+        if (this.direction === "horizontal") {
+          this.visible = false;
+        }
       }
     },
     getChildMenuNames() {
