@@ -119,7 +119,7 @@ $active-bg: #e6f7ff;
     // background: #ccc;
     padding: 0.5em 2em;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
     &:hover {
       color: $active-color;
@@ -133,10 +133,14 @@ $active-bg: #e6f7ff;
   }
 
   span[name="icon"] {
+    display: inline-flex;
     margin-left: 1em;
     transition: all 350ms;
   }
   &.horizontal {
+    .title {
+      justify-content: center;
+    }
     &.active[menu-level="0"] {
       &::after {
         position: absolute;
@@ -175,6 +179,9 @@ $active-bg: #e6f7ff;
     }
   }
   &.vertical {
+    .title {
+      justify-content: space-between;
+    }
     .sub-item-open {
       & > .title > span[name="icon"] {
         transform: rotate(180deg);
