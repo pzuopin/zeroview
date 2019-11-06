@@ -34,8 +34,12 @@
   </li>
 </template>
 <script>
+import Icon from '@/components/icon/icon.vue'
 export default {
   name: "zViewSubMenu",
+  components: {
+    'z-icon': Icon
+  },
   props: {
     name: {
       type: String
