@@ -19,9 +19,18 @@
         <z-icon name="down"></z-icon>
       </span>
     </div>
-    <ul v-show="visible" class="sub-menu-list">
-      <slot></slot>
-    </ul>
+    <template v-if="this.direction === 'vertical'">
+      <transition @enter="enter" @after-enter="afterEnter" @leave="leave" @after-leave="afterLeave">
+        <ul v-show="visible" class="sub-menu-list">
+          <slot></slot>
+        </ul>
+      </transition>
+    </template>
+    <template v-else>
+      <ul v-show="visible" class="sub-menu-list">
+        <slot></slot>
+      </ul>
+    </template>
   </li>
 </template>
 <script>
@@ -84,15 +93,40 @@ export default {
           names.push(...vm.getChildMenuNames());
         }
       });
-      console.log(`我是${this.name},我的孩子有`);
-      console.log(names);
+      // console.log(`我是${this.name},我的孩子有`);
+      // console.log(names);
       return names;
+    },
+    enter(el, done) {
+      let { height } = el.getBoundingClientRect();
+      el.style.height = 0;
+      el.getBoundingClientRect();
+      el.style.height = `${height}px`;
+      el.addEventListener("transitionend", () => {
+        done();
+      });
+    },
+    leave(el, done) {
+      let { height } = el.getBoundingClientRect();
+      el.style.height = `${height}px`;
+      el.getBoundingClientRect();
+      el.style.height = 0;
+      el.addEventListener("transitionend", () => {
+        done();
+      });
+    },
+    afterEnter(el) {
+      el.style.height = "auto";
+    },
+    afterLeave(el) {
+      el.style.height = "auto";
     }
   },
   inject: ["eventBus", "direction"],
   mounted() {
     this.computeLevel();
     if (this.direction === "vertical") {
+      console.log("this.direction = vertical");
       this.updateStyle();
     }
     this.childMenuNames = this.getChildMenuNames();
@@ -179,15 +213,17 @@ $active-bg: #e6f7ff;
     }
   }
   &.vertical {
+    overflow: hidden;
     .title {
       justify-content: space-between;
     }
-    .sub-item-open {
+    &.sub-item-open {
       & > .title > span[name="icon"] {
         transform: rotate(180deg);
       }
     }
     .sub-menu-list {
+      transition: height 250ms;
       // padding-left: 1em;
       display: flex;
       flex-direction: column;
