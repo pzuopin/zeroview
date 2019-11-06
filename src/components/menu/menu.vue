@@ -56,6 +56,7 @@ export default {
 <style lang="scss" scoped>
 .menu {
   display: flex;
+  user-select: none;
   $border-color: #ccc;
   &.direction-horizontal {
     border-bottom: 1px solid $border-color;
