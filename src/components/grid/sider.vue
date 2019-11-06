@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="z-view-sider" v-if="visible">
       <slot></slot>
-      <button @click="visible = false">close</button>
+      <!-- <button @click="visible = false">close</button> -->
     </div>
   </transition>
 </template>
