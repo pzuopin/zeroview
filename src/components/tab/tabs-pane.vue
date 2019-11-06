@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-pane" :class="classes" v-show="active">
+  <div class="z-view-tabs-pane" :class="classes" v-show="active">
     <slot></slot>
   </div>
 </template>
@@ -44,7 +44,7 @@ export default {
 </script>
 <style lang="scss">
 // $blue: blue;
-.tabs-pane {
+.z-view-tabs-pane {
   margin-top: 1em;
   &.active {
     // color: $blue;

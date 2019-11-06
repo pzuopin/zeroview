@@ -1,5 +1,5 @@
 <template>
-    <div class="footer">
+    <div class="z-view-footer">
         <slot></slot>
     </div>
 </template>
@@ -9,7 +9,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.footer {
-    
+.z-view-footer {
+
 }
 </style>

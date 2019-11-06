@@ -1,28 +1,28 @@
 <template>
-    <svg v-if='name' class="z-icon">
-      <use :xlink:href="`#icon-${name}`" />
-    </svg>
+  <svg v-if="name" class="z-view-icon">
+    <use :xlink:href="`#icon-${name}`" />
+  </svg>
 </template>
 <script>
-import './svgIcon.js'
+import "./svgIcon.js";
 export default {
-    name: 'zViewIcon',
-    props: {
-        name:{
-            type: String,
-            default:'',
-            validator(value){
-                return value !== undefined
-            }
-        },
+  name: "zViewIcon",
+  props: {
+    name: {
+      type: String,
+      default: "",
+      validator(value) {
+        return value !== undefined;
+      }
     }
-}
+  }
+};
 </script>
 <style lang="scss" scoped>
-    .z-icon {
-        width: 1em;
-        height: 1em;
-    }
+.z-view-icon {
+  width: 1em;
+  height: 1em;
+}
 </style>
 
 

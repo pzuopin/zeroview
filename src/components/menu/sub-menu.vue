@@ -1,6 +1,6 @@
 <template>
   <li
-    class="sub-menu"
+    class="z-view-sub-menu"
     :data-name="name"
     :menu-level="this.level"
     :class="{ 'sub-item-open': this.visible,
@@ -150,7 +150,7 @@ export default {
 <style lang="scss" scoped>
 $active-color: rgb(24, 144, 255);
 $active-bg: #e6f7ff;
-.sub-menu {
+.z-view-sub-menu {
   display: inline-block;
   position: relative;
   .title {

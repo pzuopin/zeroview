@@ -1,5 +1,5 @@
 <template>
-  <button class="z-button" :class="{[`z-icon-${position}`]: true }" 
+  <button class="z-view-button" :class="{[`z-icon-${position}`]: true }"
   @click="$emit('click')">
     <z-icon v-if='icon && !loading' :name='icon'></z-icon>
     <z-icon name='loading' v-if="loading" class="loading"></z-icon>
@@ -46,7 +46,7 @@ export default {
     transform: rotate(360deg)
   }
 }
-.z-button {
+.z-view-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +66,7 @@ export default {
   &:focus {
     outline: none;
   }
-  > .z-icon {
+  > .z-view-icon {
     order: 1;
     margin-right: .3em;
   }
@@ -77,7 +77,7 @@ export default {
     > .content {
       order: 1;
     }
-    > .z-icon {
+    > .z-view-icon {
       order: 2;
       margin-left: .3em;
       margin-right: 0;

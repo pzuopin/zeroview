@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="z-view-header">
         <slot></slot>
     </div>
 </template>
@@ -9,7 +9,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.header {
-    
+.z-view-header {
+
 }
 </style>

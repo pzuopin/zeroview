@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-body">
+  <div class="z-view-tabs-body">
     <slot></slot>
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.tabs-body {
+.z-view-tabs-body {
 //   outline: 1px solid red;
 }
 </style>

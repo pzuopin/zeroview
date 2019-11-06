@@ -1,7 +1,7 @@
 <template>
-  <div class="popover">
+  <div class="z-view-popover">
     <div
-      class="content-wrapper"
+      class="z-view-content-wrapper"
       :class="[`position-${position}`]"
       ref="contentWrapper"
       v-if="visible"
@@ -129,12 +129,12 @@ export default {
 <style lang="scss" scoped>
 $border-color: #333;
 $border-radius: 4px;
-.popover {
+.z-view-popover {
   display: inline-block;
   vertical-align: top;
   position: relative;
 }
-.content-wrapper {
+.z-view-content-wrapper {
   position: absolute;
   border: 1px solid $border-color;
   border-radius: $border-radius;

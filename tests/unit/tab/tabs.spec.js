@@ -43,7 +43,7 @@ describe('Tabs.vue', () => {
             el: div,
         })
         vm.$nextTick(() => {
-            let x = vm.$el.querySelector('.tabs-item[data-name="finance"]')
+            let x = vm.$el.querySelector('.z-view-tabs-item[data-name="finance"]')
             expect(x.classList.contains('active')).to.be.true
             done()
         })

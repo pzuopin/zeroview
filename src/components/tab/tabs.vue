@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs">
+  <div class="z-view-tabs">
     <slot></slot>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
   mounted(){
       // 检查子组件
       if(this.$children.length === 0){
-          console && console.warn && 
+          console && console.warn &&
           console.warn('tabs 的子组件应该是 tabs-head 和 tabs-body，但是没有找到')
       }
       this.$children.forEach(vm => {
@@ -54,7 +54,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.tabs {
+.z-view-tabs {
 //   outline: 1px solid red;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="col" :class="colClass" :style="colStyle">
+  <div class="z-view-col" :class="colClass" :style="colStyle">
     <slot></slot>
   </div>
 </template>
@@ -80,7 +80,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.col {
+.z-view-col {
   $class-prefix: col-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
@@ -158,6 +158,6 @@ export default {
       }
     }
   }
-  
+
 }
 </style>

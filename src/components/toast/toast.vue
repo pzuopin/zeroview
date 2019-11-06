@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper" :class="toastClasses">
-    <div class="toast" ref="toast" >
+  <div class="z-view-wrapper" :class="toastClasses">
+    <div class="z-view-toast" ref="toast" >
       <div class="message">
         <slot v-if="!enableHTML"></slot>
         <div v-else class="content" v-html="$slots.default[0]"></div>
@@ -106,7 +106,7 @@ export default {
     100% { opacity: 1;}
   }
   // 外层做定位
-.wrapper {
+.z-view-wrapper {
   position: fixed;
   left: 50%;
   top: 0;
@@ -144,7 +144,7 @@ export default {
   }
 }
 // toast做动画
-.toast {
+.z-view-toast {
   // animation: slide-up 1s;
   padding: 0 16px;
   color: white;

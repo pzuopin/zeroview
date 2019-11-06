@@ -1,5 +1,5 @@
 <template>
-  <ul class="menu" :class="classes">
+  <ul class="z-view-menu" :class="classes">
     <slot></slot>
   </ul>
 </template>
@@ -54,7 +54,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.menu {
+.z-view-menu {
   display: flex;
   user-select: none;
   $border-color: #ccc;

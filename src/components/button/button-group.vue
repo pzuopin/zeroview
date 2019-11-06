@@ -1,5 +1,5 @@
 <template>
-  <div class="z-button-group">
+  <div class="z-view-button-group">
     <slot></slot>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.z-button-group {
+.z-view-button-group {
     display: inline-flex;
     vertical-align: middle;
     > .z-button {

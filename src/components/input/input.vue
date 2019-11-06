@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="{ 'error': error }">
+  <div class="z-view-input-wrapper" :class="{ 'error': error }">
     <input
       :value="value"
       type="text"
@@ -49,7 +49,7 @@ $border-radius: 4px;
 $font-size: 12px;
 $box-shadow-color: rgba(0, 0, 0, 0.5);
 $error-color: #f1453d;
-.wrapper {
+.z-view-input-wrapper {
   font-size: $font-size;
   display: inline-flex;
   align-items: center;

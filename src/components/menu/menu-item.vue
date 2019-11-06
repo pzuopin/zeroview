@@ -1,5 +1,5 @@
 <template>
-  <li class="menu-item" ref="menuItem" :data-name="name" :class="classes" @click="onClick">
+  <li class="z-view-menu-item" ref="menuItem" :data-name="name" :class="classes" @click="onClick">
     <slot></slot>
   </li>
 </template>
@@ -64,7 +64,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.menu-item {
+.z-view-menu-item {
   display: block;
   padding: 0.5em 2em;
   position: relative;

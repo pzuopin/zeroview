@@ -1,5 +1,5 @@
 <template>
-  <div class="collapse">
+  <div class="z-view-collapse">
     <slot></slot>
   </div>
 </template>
@@ -60,7 +60,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 $border-radius: 4px;
-.collapse {
+.z-view-collapse {
   border: 1px solid #d9d9d9;
   border-radius: $border-radius;
   &:first-child {

@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="sider" v-if="visible">
+    <div class="z-view-sider" v-if="visible">
       <slot></slot>
       <button @click="visible = false">close</button>
     </div>
@@ -17,7 +17,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.sider {
+.z-view-sider {
   position: relative;
   > button {
     position: absolute;

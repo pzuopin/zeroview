@@ -32,12 +32,12 @@ describe('Collapse.vue', ()=>{
 
         vm.$nextTick(()=>{
             // console.log(vm.$el.innerHTML)
-            expect(vm.$el.querySelector('.content[data-name="2"]')).to.be.exist
-            vm.$el.querySelectorAll('.title')[2].click()
+            expect(vm.$el.querySelector('.z-view-collapse-item-content[data-name="2"]')).to.be.exist
+            vm.$el.querySelectorAll('.z-view-collapse-item-title')[2].click()
             vm.$nextTick(()=>{
                 // console.log(vm.$el.innerHTML)
-                expect(vm.$el.querySelector('.content[data-name="2"]')).to.be.not.exist
-                expect(vm.$el.querySelector('.content[data-name="3"]')).to.be.exist
+                expect(vm.$el.querySelector('.z-view-collapse-item-content[data-name="2"]')).to.be.not.exist
+                expect(vm.$el.querySelector('.z-view-collapse-item-content[data-name="3"]')).to.be.exist
                 done()
             })
         })
@@ -62,13 +62,13 @@ describe('Collapse.vue', ()=>{
 
         vm.$nextTick(()=>{
             // console.log(vm.$el.innerHTML)
-            expect(vm.$el.querySelector('.content[data-name="2"]')).to.be.exist
-            expect(vm.$el.querySelector('.content[data-name="3"]')).to.be.exist
+            expect(vm.$el.querySelector('.z-view-collapse-item-content[data-name="2"]')).to.be.exist
+            expect(vm.$el.querySelector('.z-view-collapse-item-content[data-name="3"]')).to.be.exist
             done()
         })
     })
 
-    
 
-    
+
+
 })

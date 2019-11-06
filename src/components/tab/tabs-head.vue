@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-head">
+  <div class="z-view-tabs-head">
     <slot></slot>
     <div class="line" ref="line"></div>
     <div class="action-wrapper">
@@ -29,7 +29,7 @@ export default {
 </script>
 <style lang="scss">
 // $tab-height: 40px;
-.tabs-head {
+.z-view-tabs-head {
   // outline: 1px solid red;
   border-bottom: 1px solid #ccc;
   display: flex;

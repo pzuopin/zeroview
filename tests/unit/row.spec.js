@@ -29,10 +29,10 @@ describe('Row.vue', ()=>{
         })
         setTimeout(()=>{
             // console.log(vm.$el.outerHTML)
-            const row = vm.$el.querySelector('.row')
+            const row = vm.$el.querySelector('.z-view-row')
             expect(getComputedStyle(row).marginLeft).to.eq('-10px')
             expect(getComputedStyle(row).marginRight).to.eq('-10px')
-            const cols = vm.$el.querySelectorAll('.col')
+            const cols = vm.$el.querySelectorAll('.z-view-col')
             expect(getComputedStyle(cols[0]).paddingRight).to.eq('10px')
             expect(getComputedStyle(cols[0]).paddingLeft).to.eq('10px')
             done()
