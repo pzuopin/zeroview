@@ -24,8 +24,8 @@ import Menu from "./components/menu/menu.vue";
 import MenuItem from "./components/menu/menu-item.vue";
 import SubMenu from "./components/menu/sub-menu.vue";
 
-import router from "./router";
-import store from "./store";
+// import router from "./router";
+// import store from "./store";
 
 // 注册为 Vue 的全局组件
 Vue.component("z-button", Button);
@@ -55,7 +55,7 @@ Vue.config.productionTip = false;
 Vue.use(Toast);
 
 new Vue({
-  router,
-  store,
+  // router,
+  // store,
   render: h => h(App)
 }).$mount("#app");

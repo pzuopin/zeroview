@@ -12,13 +12,21 @@
               <z-view-menu-item name="intro">介绍</z-view-menu-item>
               <z-view-sub-menu name="components">
                 <template slot="title">组件</template>
-                <z-view-menu-item name="button">Button</z-view-menu-item>
-                <z-view-menu-item name="icon">Icon</z-view-menu-item>
-                <z-view-menu-item name="input">Input</z-view-menu-item>
+                <router-link to="/button">
+                  <z-view-menu-item name="button">Button</z-view-menu-item>
+                </router-link>
+                <router-link to="/icon">
+                  <z-view-menu-item name="icon">Icon</z-view-menu-item>
+                </router-link>
+                <router-link to="/input">
+                  <z-view-menu-item name="input">Input</z-view-menu-item>
+                </router-link>
               </z-view-sub-menu>
             </z-view-menu>
           </z-view-sider>
-          <z-view-content class="content">content</z-view-content>
+          <z-view-content class="content">
+            <router-view></router-view>
+          </z-view-content>
         </z-view-layout>
       </z-view-layout>
     </div>
@@ -54,6 +62,9 @@ ol {
   height: calc(100vh - 50px);
   .nav-menu {
     height: 100%;
+    a {
+      text-decoration: none;
+    }
   }
 }
 .content {
