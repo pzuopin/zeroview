@@ -209,7 +209,7 @@ $active-bg: #e6f7ff;
         margin-left: 5px;
       }
     }
-    .menu-item.active {
+    .z-view-menu-item.active {
       background: $active-bg;
       &::after {
         display: none;

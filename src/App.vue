@@ -50,6 +50,7 @@
 </template>
 
 <script>
+
 export default {
   name: "App",
   mounted() {},
@@ -61,6 +62,17 @@ export default {
 </script>
 
 <style lang="scss">
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+ol {
+  list-style: none;
+}
 .app {
   width: 600px;
   margin: 50px;
