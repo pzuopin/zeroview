@@ -1,21 +1,24 @@
 <template>
-  <button class="z-view-button" :class="{[`z-icon-${position}`]: true }"
-  @click="$emit('click')">
-    <z-icon v-if='icon && !loading' :name='icon'></z-icon>
-    <z-icon name='loading' v-if="loading" class="loading"></z-icon>
-    <div class="content">
+  <button
+    class="z-view-button"
+    :class="{[`z-view-icon-${position}`]: true }"
+    @click="$emit('click')"
+  >
+    <z-icon v-if="icon && !loading" :name="icon"></z-icon>
+    <z-icon name="loading" v-if="loading" class="loading"></z-icon>
+    <div class="z-view-button-content">
       <slot></slot>
     </div>
   </button>
 </template>
 
 <script>
-import Icon from '../icon/icon.vue'
+import Icon from "../icon/icon.vue";
 export default {
   // props: ["icon","position"],
-  name: 'zViewButton',
+  name: "zViewButton",
   components: {
-    'z-icon': Icon
+    "z-icon": Icon
   },
   props: {
     loading: {
@@ -24,13 +27,13 @@ export default {
     },
     icon: {
       type: String,
-      default: '',
+      default: ""
     },
     position: {
       type: String,
-      default: 'left',
-      validator(value){
-        return value === 'left' || value === 'right'
+      default: "left",
+      validator(value) {
+        return value === "left" || value === "right";
       }
     }
   }
@@ -40,10 +43,10 @@ export default {
 <style lang="scss" scoped>
 @keyframes spin {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
   }
 }
 .z-view-button {
@@ -68,18 +71,18 @@ export default {
   }
   > .z-view-icon {
     order: 1;
-    margin-right: .3em;
+    margin-right: 0.3em;
   }
-  > .content {
+  &-content {
     order: 2;
   }
-  &.z-icon-right {
+  &.z-view-icon-right {
     > .content {
       order: 1;
     }
     > .z-view-icon {
       order: 2;
-      margin-left: .3em;
+      margin-left: 0.3em;
       margin-right: 0;
     }
   }
