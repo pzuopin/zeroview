@@ -1,7 +1,7 @@
 <template>
   <button
     class="z-view-button"
-    :class="{[`z-view-icon-${position}`]: true }"
+    :class="{[`z-view-icon-${position}`]: true, [`z-view-button-${type}`]: true }"
     @click="$emit('click')"
   >
     <z-icon v-if="icon && !loading" :name="icon"></z-icon>
@@ -21,6 +21,13 @@ export default {
     "z-icon": Icon
   },
   props: {
+    type: {
+      type: String,
+      default: 'normal',
+      validator(value){
+        return ['normal','primary','dashed','text'].indexOf(value) >= 0
+      }
+    },
     loading: {
       type: Boolean,
       default: false
@@ -88,6 +95,17 @@ export default {
   }
   .loading {
     animation: spin 2s infinite linear;
+  }
+  &-primary {
+    background: $--primary-color;
+    border: none;
+    color: white;
+  }
+  &-dashed {
+    border-style: dashed;
+  }
+  &-text {
+    border: none;
   }
 }
 </style>
