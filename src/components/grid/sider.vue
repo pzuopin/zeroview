@@ -18,6 +18,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .z-view-sider {
+  flex-shrink: 0;
   position: relative;
   > button {
     position: absolute;
