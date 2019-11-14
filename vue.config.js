@@ -25,8 +25,8 @@ module.exports = {
 
     config.module
       .rule('markdown')
-      .test(/\.md$/).use(require.resolve('./md-loader.js'))
-      .loader(require.resolve('./md-loader.js'))
+      .test(/\.md$/).use(require.resolve('./md-loader/index.js'))
+      .loader(require.resolve('./md-loader/index.js'))
       .end()
   }
 }
