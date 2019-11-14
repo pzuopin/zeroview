@@ -1,8 +1,8 @@
-const {
-  stripScript,
-  stripTemplate,
-  genInlineComponentText
-} = require('./util');
+// const {
+//   stripScript,
+//   stripTemplate,
+//   genInlineComponentText
+// } = require('./util');
 const md = require('./config');
 
 module.exports = function(source) {
