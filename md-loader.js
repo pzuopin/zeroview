@@ -17,12 +17,13 @@ function setCustomContainer(md) {
       const m = tokens[idx].info.trim().match(/^demo\s*(.*)$/);
       if (tokens[idx].nesting === 1) {
         const description = m && m.length > 1 ? m[1] : '';
-        const content = tokens[idx + 1].type === 'fence' ? tokens[idx + 1].content : '';
+        let str1 = description ? `<template slot="description">${md.render(description)}</template>` : `<template slot="description">description</template>`
+        const content = tokens[idx + 1].type === 'fence' ? tokens[idx + 1].content : 'content';
         const source = tokens[idx + 2].type === 'fence' ? tokens[idx + 2].content : 'source';
         return `<demo-block>
-        ${description ? `<div>${md.render(description)}</div>` : ''}
-        // <!--element-demo: ${content}:element-demo-->
-        <div>${source}</div>
+        ${str1}
+        ${content}
+        ${source}
         `;
       }
       return '</demo-block>';
@@ -42,7 +43,6 @@ function overWriteFenceRule(md) {
     if (token.info === 'html' && isInDemoContainer) {
       return `<template slot="highlight"><pre v-pre><code class="html">${md.utils.escapeHtml(token.content)}</code></pre></template>`;
     }else if(token.info === 'source') {
-      console.log('source...')
       return `<template slot="source">${token.content}</template>`;
     }
     return defaultRender(tokens, idx, options, env, self);
@@ -55,7 +55,7 @@ module.exports = function (resource) {
     <template><div>${configMd.render(resource)}</div></template>
     <script>
       export default {
-        name: 'ButtonExample'
+        name: 'ComponentExample'
       }
     </script>
   `

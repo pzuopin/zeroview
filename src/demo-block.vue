@@ -1,5 +1,8 @@
 <template>
   <div class="demo-block">
+    <div class="description">
+      <slot name='description'></slot>
+    </div>
     <div class="source">
       <slot name="source"></slot>
     </div>
@@ -10,6 +13,7 @@
 </template>
 <script>
 import hljs from "highlight.js";
+import 'highlight.js/styles/github.css';
 export default {
   name: "DemoBlock",
   mounted() {
@@ -20,8 +24,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.highlight {
-  border: 1px solid #ccc;
-  padding: 20px;
+.demo-block {
+
 }
+
 </style>
