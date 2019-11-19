@@ -71,7 +71,7 @@ function pad(source) {
     .join('\n');
 }
 
-function compileComponent(template, script){
+function compileComponent(template, script) {
   const options = {
     source: `<div>${template}</div>`,
     filename: 'xxx',
@@ -80,22 +80,22 @@ function compileComponent(template, script){
   const compiled = compileTemplate(options)
 
   // tips
-  if(compiled.tips && compiled.tips.length > 0){
+  if (compiled.tips && compiled.tips.length > 0) {
     compiled.tips.forEach(tip => console.warn(tip))
   }
   // errors
   if (compiled.errors && compiled.errors.length) {
     console.error(
       `\n  Error compiling template:\n${pad(compiled.source)}\n` +
-        compiled.errors.map(e => `  - ${e}`).join('\n') +
-        '\n'
+      compiled.errors.map(e => `  - ${e}`).join('\n') +
+      '\n'
     );
   }
 
   script = script.trim()
-  if(script){
-    script = script.replace(/export\s+default/,'const compiledcomponentExport = ')
-  }else{
+  if (script) {
+    script = script.replace(/export\s+default/, 'const compiledcomponentExport = ')
+  } else {
     script = 'const compiledcomponentExport = {}'
   }
 
@@ -113,26 +113,41 @@ function compileComponent(template, script){
 
 module.exports = function (resource) {
   let output = []
+  let styles = []
   let content = configMd.render(resource)
   const startTag = '<!-- zViewDemo'
   const startTagLen = startTag.length
   const endTag = 'zViewDemo -->'
   const endTagLen = endTag.length
+  let id = 0
+  let start = 0
+  let componentString = ''
   let commentStart = content.indexOf(startTag)
-  output.push(content.slice(0, commentStart)) // 这是把 ```html fence 之前的输出
+  // output.push(content.slice(0, commentStart)) // 这是把 ```html fence 之前的输出
   let commentEnd = content.indexOf(endTag, commentStart + startTagLen)
-  let commentContent = content.slice(commentStart + startTagLen, commentEnd)
-  const template = stripTemplate(commentContent)
-  const script = stripScript(commentContent)
-  const style = stripStyle(commentContent)
-  let compiledComponent = compileComponent(template, script)
-  output.push(`<template slot='source'><demo0 /></template>`)  // 这是编译好的demo组件，一个这样的组件对应一个 :::demo 除开 css 的部分
-  output.push(content.slice(commentEnd + endTagLen))  // 这是把 <style>和 </demo-block> 闭合标签输出
+  while (commentStart !== -1 && commentEnd !== -1) {
+    output.push(content.slice(start, commentStart))
+    let commentContent = content.slice(commentStart + startTagLen, commentEnd)
+    const template = stripTemplate(commentContent)
+    const script = stripScript(commentContent)
+    const style = stripStyle(commentContent)
+    styles.push(style)
+    let compiledComponent = compileComponent(template, script)
+    componentString += `demo${id}:${compiledComponent},`
+    output.push(`<template slot='source'><demo${id} /></template>`)  // 这是编译好的demo组件，一个这样的组件对应一个 :::demo 除开 css 的部分
+
+    // 继续处理下一个 :::demo 块
+    id++
+    start = commentEnd + endTagLen
+    commentStart = content.indexOf(startTag, start)
+    commentEnd = content.indexOf(endTag, commentStart + startTagLen)
+  }
+  output.push(content.slice(start))  // 这是把 <style>和 </demo-block> 闭合标签输出
   let pageScript = `<script>
     export default {
       name: 'component-doc',
       components: {
-        "demo0": ${compiledComponent}
+        ${componentString}
       },
       mounted(){
         console.log('component-doc mounted..')
@@ -140,7 +155,7 @@ module.exports = function (resource) {
     }
   </script>
   <style>
-    ${style}
+    ${styles.join('')}
   </style>`
 
   let pageContent = `
