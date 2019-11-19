@@ -9,3 +9,15 @@ sudo: required
 before_script:
   - "sudo chown root /opt/google/chrome/chrome-sandbox"
   - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
+script:
+  - yarn test
+  - yarn build-example
+deploy:
+  provider: pages:git
+  token: $token
+  edge: true # opt in to dpl v2
+  skip-cleanup: true
+  local_dir: dist
+  keep-history: true
+  on:
+    branch: master
