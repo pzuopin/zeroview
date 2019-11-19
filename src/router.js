@@ -11,10 +11,10 @@ export default new Router({
       path: "/button",
       component: () => import('../docs/button.md')
     },
-    {
-      path: "/input",
-      component: () => import('../docs/input.md')
-    },
+    // {
+    //   path: "/input",
+    //   component: () => import('../docs/input.md')
+    // },
     // {
     //   path: "/icon",
     //   component: IconExample
