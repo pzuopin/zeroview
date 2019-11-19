@@ -38,9 +38,6 @@ function stripScript(content) {
 
 function stripStyle(content) {
   const result = content.match(/<(style)\s*>([\s\S]+)<\/\1>/);
-  console.log('stripStyle ')
-  console.log(result)
-  console.log('---end')
   return result && result[2] ? result[2].trim() : '';
 }
 // 除开 script 和 style 的部分
@@ -122,17 +119,15 @@ module.exports = function (resource) {
   const endTag = 'zViewDemo -->'
   const endTagLen = endTag.length
   let commentStart = content.indexOf(startTag)
-  output.push(content.slice(0, commentStart))
+  output.push(content.slice(0, commentStart)) // 这是把 ```html fence 之前的输出
   let commentEnd = content.indexOf(endTag, commentStart + startTagLen)
   let commentContent = content.slice(commentStart + startTagLen, commentEnd)
   const template = stripTemplate(commentContent)
   const script = stripScript(commentContent)
   const style = stripStyle(commentContent)
-  console.log('style...')
-  console.log(style)
   let compiledComponent = compileComponent(template, script)
-  output.push(`<template slot='source'><demo0 /></template>`)
-  output.push(content.slice(commentEnd))
+  output.push(`<template slot='source'><demo0 /></template>`)  // 这是编译好的demo组件，一个这样的组件对应一个 :::demo 除开 css 的部分
+  output.push(content.slice(commentEnd + endTagLen))  // 这是把 <style>和 </demo-block> 闭合标签输出
   let pageScript = `<script>
     export default {
       name: 'component-doc',
@@ -155,11 +150,6 @@ module.exports = function (resource) {
       </div>
     </template>
   `
-  // return pageContent
   return `${pageContent}${pageScript}`
-  // return `<template>
-  //   <div>
-  //     <pre v-pre>${content}</pre>
-  //   </div>
-  // </template>`
+
 }
