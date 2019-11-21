@@ -130,9 +130,9 @@ ol {
   padding-bottom: 20px;
   padding-top: 20px;
   .logo {
-    width: 10em;
-    height: 10em;
-    border: 1px solid red;
+    width: 5em;
+    height: 5em;
+    // border: 1px solid red;
     display: inline-block;
   }
 }
