@@ -15,7 +15,6 @@
 <script>
 import Icon from "../icon/icon.vue";
 export default {
-  // props: ["icon","position"],
   name: "zViewButton",
   components: {
     "z-icon": Icon
