@@ -149,9 +149,6 @@ module.exports = function (resource) {
       components: {
         ${componentString}
       },
-      mounted(){
-        console.log('component-doc mounted..')
-      }
     }
   </script>
   <style>

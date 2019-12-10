@@ -4,7 +4,6 @@
       <z-view-layout>
         <z-view-header class="header">
           <span class="logo">
-
             <svg
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +23,7 @@
               <!-- <rect x="0px" y="0px" width="100%" height="100%" fill="#ffffff" /> -->
               <g
                 class="logo-container-box logoContainerBox"
-                 transform="scale(2.5) translate(-190,-140)"
+                transform="scale(2.5) translate(-190,-140)"
               >
                 <g
                   class="container_1"
@@ -75,15 +74,21 @@
               </g>
             </svg>
           </span>
-          <h3>zView</h3>
-          <p>一套基于 vue 2.6 的 UI 组件库</p>
+          <!-- <h3>zView</h3> -->
+          <span class="description">一套基于 vue 2.6 的 UI 组件库</span>
         </z-view-header>
         <z-view-layout>
           <z-view-sider class="sider">
             <z-view-menu direction="vertical" class="nav-menu">
-              <z-view-menu-item name="intro">介绍</z-view-menu-item>
-              <z-view-menu-item name="install">安装</z-view-menu-item>
-              <z-view-menu-item name="quickstart">快速上手</z-view-menu-item>
+              <z-view-menu-item name="intro">
+                <router-link to="/"><p>介绍</p></router-link>
+              </z-view-menu-item>
+              <z-view-menu-item name="install">
+                <router-link to="/install"><p>安装</p></router-link>
+              </z-view-menu-item>
+              <z-view-menu-item name="quickstart">
+                <router-link to="quickstart"><p>快速上手</p></router-link>
+              </z-view-menu-item>
               <z-view-sub-menu name="components">
                 <template slot="title">组件</template>
                 <router-link to="/button">
@@ -123,23 +128,28 @@ ol {
 }
 #example {
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
 }
 .header {
   border-bottom: 1px solid #ccc;
   padding-bottom: 20px;
   padding-top: 20px;
+  display: flex;
+  align-items: center;
   .logo {
     width: 5em;
     height: 5em;
     // border: 1px solid red;
     display: inline-block;
   }
+  .description {
+    margin-left: 10px;
+  }
 }
 .sider {
   padding-top: 20px;
   width: 200px;
-  overflow: scroll;
+  // overflow: scroll;
   height: calc(100vh - 50px);
   .nav-menu {
     height: 100%;
@@ -149,7 +159,7 @@ ol {
   }
 }
 .content {
-  padding: 20px;
+  padding: 20px 40px;
   .component-doc {
     h2,
     h3,
