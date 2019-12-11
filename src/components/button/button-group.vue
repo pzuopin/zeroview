@@ -19,7 +19,7 @@ export default {
 .z-view-button-group {
     display: inline-flex;
     vertical-align: middle;
-    > .z-button {
+    > .z-view-button {
         &:not(:first-child){
             margin-left: -1px;
         }

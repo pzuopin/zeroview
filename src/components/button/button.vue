@@ -22,9 +22,20 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'normal',
-      validator(value){
-        return ['normal','primary','dashed','text'].indexOf(value) >= 0
+      default: "normal",
+      validator(value) {
+        return (
+          [
+            "normal",
+            "primary",
+            "dashed",
+            "text",
+            "success",
+            "error",
+            "warn",
+            "info"
+          ].indexOf(value) >= 0
+        );
       }
     },
     loading: {
@@ -83,7 +94,7 @@ export default {
     order: 2;
   }
   &.z-view-icon-right {
-    > .content {
+    > .z-view-button-content {
       order: 1;
     }
     > .z-view-icon {
@@ -104,6 +115,26 @@ export default {
     border-style: dashed;
   }
   &-text {
+    border: none;
+  }
+  &-success {
+    background: $--success-color;
+    color: white;
+    border: none;
+  }
+  &-warn {
+    background: $--warn-color;
+    color: white;
+    border: none;
+  }
+  &-info {
+    background: $--info-color;
+    color: white;
+    border: none;
+  }
+  &-error {
+    background: $--error-color;
+    color: white;
     border: none;
   }
 }
