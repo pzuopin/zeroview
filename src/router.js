@@ -25,6 +25,11 @@ export default new Router({
       path: "/icon",
       component: () => import('../docs/icon.md')
     },
+    {
+      path: "/input",
+      component: () => import('../docs/input.md')
+    },
+
 
   ]
 });
