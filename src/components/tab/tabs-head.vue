@@ -1,5 +1,5 @@
 <template>
-  <div class="z-view-tabs-head">
+  <div class="z-view-tabs-head" ref="tabs-head">
     <slot></slot>
     <div class="line" ref="line"></div>
     <div class="action-wrapper">
@@ -12,18 +12,13 @@ export default {
   name: "zViewTabsHead",
   inject: ["eventBus"],
   mounted() {
-    this.eventBus.$on('update:selected',(name, vm)=>{
-      // console.log(vm.$el)
-      let {width, height, left, top} = vm.$el.getBoundingClientRect()
-      // console.log(width, height, left, top)
-      let line = this.$refs.line
-      line.style.width = `${width}px`
-      line.style.left = `${left}px`
-      // console.log(line)
-      // console.log('tabs-head 收到了 update:selected 事件,', name, index)
-    })
-    // console.log('tabs-head 收到 tabs 提供的 eventBus')
-    // console.log(this.eventBus)
+    this.eventBus.$on("update:selected", (name, vm) => {
+      let { width, height, left, top } = vm.$el.getBoundingClientRect();
+      let { width: width2, left: left2 } = this.$refs['tabs-head'].getBoundingClientRect()
+      let line = this.$refs.line;
+      line.style.width = `${width}px`;
+      line.style.left = `${left - left2}px`;
+    });
   }
 };
 </script>
@@ -37,10 +32,10 @@ export default {
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  > .action-wrapper {
+  .action-wrapper {
     margin-left: auto;
   }
-  > .line {
+  .line {
     transition: width 350ms, left 350ms;
     position: absolute;
     bottom: 0;
