@@ -1,10 +1,17 @@
 <template>
-  <div>
-    <z-view-collapse :selected="['2','3']">
-      <z-view-collapse-item title="标题1" name="1">内容1</z-view-collapse-item>
-      <z-view-collapse-item title="标题2" name="2">内容2</z-view-collapse-item>
-      <z-view-collapse-item title="标题3" name="3">内容3</z-view-collapse-item>
-    </z-view-collapse>
+  <div style="margin-left: 100px; margin-top: 0px">
+    <z-view-tabs selected="2">
+      <z-view-tabs-head>
+        <z-view-tabs-item name="1">标签一</z-view-tabs-item>
+        <z-view-tabs-item name="2">标签二</z-view-tabs-item>
+        <z-view-tabs-item name="3">标签三</z-view-tabs-item>
+      </z-view-tabs-head>
+      <z-view-tabs-body>
+        <z-view-tabs-pane name="1">标签一的内容</z-view-tabs-pane>
+        <z-view-tabs-pane name="2">标签二的内容</z-view-tabs-pane>
+        <z-view-tabs-pane name="3">标签三的内容</z-view-tabs-pane>
+      </z-view-tabs-body>
+    </z-view-tabs>
   </div>
 </template>
 

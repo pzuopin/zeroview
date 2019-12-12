@@ -112,6 +112,9 @@
             <router-link to="/toast">
               <z-view-menu-item name="toast">Toast</z-view-menu-item>
             </router-link>
+            <router-link to="/tab">
+              <z-view-menu-item name="tab">Tab</z-view-menu-item>
+            </router-link>
           </z-view-sub-menu>
         </z-view-menu>
       </z-view-sider>

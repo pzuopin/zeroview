@@ -41,6 +41,11 @@ export default new Router({
       path: "/toast",
       component: () => import('../docs/toast.md')
     },
+    {
+      path: "/tab",
+      component: () => import('../docs/tab.md')
+    },
+
 
 
 
