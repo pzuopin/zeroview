@@ -7,6 +7,7 @@ import Tab from "./components/tab/index.js";
 import Toast from "./components/toast/index.js";
 import Collapse from "./components/collapse/index.js";
 import Menu from "./components/menu/index.js";
+import Popover from './components/popover/index.js'
 
 const components = [
   Button,
@@ -17,7 +18,8 @@ const components = [
   Tab,
   Toast,
   Collapse,
-  Menu
+  Menu,
+  Popover
 ];
 
 const install = Vue => {

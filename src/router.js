@@ -29,7 +29,10 @@ export default new Router({
       path: "/input",
       component: () => import('../docs/input.md')
     },
-
+    {
+      path: "/popover",
+      component: () => import('../docs/popover.md')
+    },
 
   ]
 });

@@ -103,6 +103,9 @@
             <router-link to="/input">
               <z-view-menu-item name="input">Input</z-view-menu-item>
             </router-link>
+            <router-link to="/popover">
+              <z-view-menu-item name="popover">Popover</z-view-menu-item>
+            </router-link>
           </z-view-sub-menu>
         </z-view-menu>
       </z-view-sider>
