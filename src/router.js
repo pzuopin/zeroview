@@ -37,6 +37,11 @@ export default new Router({
       path: "/collapse",
       component: () => import('../docs/collapse.md')
     },
+    {
+      path: "/toast",
+      component: () => import('../docs/toast.md')
+    },
+
 
 
   ]

@@ -5,7 +5,7 @@
         <slot v-if="!enableHTML"></slot>
         <div v-else class="content" v-html="$slots.default[0]"></div>
       </div>
-      <div class="line" ref="line"></div>
+      <div class="line" ref="line" v-if="closeButton"></div>
       <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
     </div>
   </div>
@@ -32,12 +32,12 @@ export default {
     // },
     closeButton: {
       type: Object,
-      default() {
-        return {
-          text: "close",
-          callback: undefined
-        };
-      }
+      // default() {
+      //   return {
+      //     text: "close",
+      //     callback: undefined
+      //   };
+      // }
     },
     position: {
       type: String,
