@@ -39,6 +39,9 @@ export default {
     }
   },
   mounted(){
+    if(!this.$refs.triggerWrapper){
+      return
+    }
     if(this.trigger === 'click'){
       this.$refs.triggerWrapper.addEventListener('click',this.onClick)
     }else if(this.trigger === 'hover'){
@@ -47,6 +50,9 @@ export default {
     }
   },
   destroyed(){
+    if(!this.$refs.triggerWrapper){
+      return
+    }
     if(this.trigger === 'click'){
       this.$refs.triggerWrapper.removeEventListener('click',this.onClick)
     }else if(this.trigger === 'hover'){
