@@ -28,7 +28,10 @@
               transform="scale(1) translate(220.109441280365,140.0456132888794)"
               fill="#8fe3ff"
             >
-              <g id="g10" transform="matrix(1.3333333,0,0,-1.3333333,0,533.33333)">
+              <g
+                id="g10"
+                transform="matrix(1.3333333,0,0,-1.3333333,0,533.33333)"
+              >
                 <g id="g12">
                   <g>
                     <g id="g14">
@@ -49,7 +52,10 @@
               class="containerBody"
               transform="scale(1.12) translate(-34.285714285714334,-25.714279992239824)"
             >
-              <g class="sampleTexts_1" transform="scale(1) translate(0,25.514211654663086)">
+              <g
+                class="sampleTexts_1"
+                transform="scale(1) translate(0,25.514211654663086)"
+              >
                 <g
                   class="logo--name svgLogoName_1 logoNameBox"
                   transform="scale(1) translate(218.65916800498962,238.5900001525879)"
@@ -115,6 +121,9 @@
             <router-link to="/tab">
               <z-view-menu-item name="tab">Tab</z-view-menu-item>
             </router-link>
+            <router-link to="/grid">
+              <z-view-menu-item name="grid">Grid</z-view-menu-item>
+            </router-link>
           </z-view-sub-menu>
         </z-view-menu>
       </z-view-sider>
@@ -157,7 +166,6 @@ ol {
   }
   .description {
     margin-left: 10px;
-
   }
 }
 .sider {
