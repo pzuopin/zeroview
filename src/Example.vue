@@ -106,6 +106,9 @@
             <router-link to="/popover">
               <z-view-menu-item name="popover">Popover</z-view-menu-item>
             </router-link>
+            <router-link to="/collapse">
+              <z-view-menu-item name="collapse">Collapse</z-view-menu-item>
+            </router-link>
           </z-view-sub-menu>
         </z-view-menu>
       </z-view-sider>
@@ -148,6 +151,7 @@ ol {
   }
   .description {
     margin-left: 10px;
+
   }
 }
 .sider {
@@ -168,17 +172,17 @@ ol {
 .content {
   padding: 20px 40px;
   .component-doc {
-    h2,
-    h3,
-    h4,
-    h5 {
+    > h2,
+    > h3,
+    > h4,
+    > h5 {
       font-weight: 400;
       color: #1f2f3d;
     }
-    h3 {
+    > h3 {
       font-size: 22px;
     }
-    p {
+    > p {
       margin: 14px 0;
       font-size: 14px;
       color: #5e6d82;

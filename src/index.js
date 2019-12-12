@@ -28,6 +28,6 @@ const install = Vue => {
   });
 };
 
-export { Button, Icon, ButtonGroup, Input, Grid, Tab, Toast, Menu, Collapse };
+export { Button, Icon, ButtonGroup, Input, Grid, Tab, Toast, Menu, Collapse , Popover};
 
 export default install;

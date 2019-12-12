@@ -32,6 +32,14 @@ export default {
   code {
     font-family: Menlo, Monaco, Consolas, Courier, monospace;
   }
+  .description {
+    > p {
+      margin: 14px 0;
+      font-size: 14px;
+      color: #5e6d82;
+      line-height: 1.5em;
+    }
+  }
   .content {
     border-radius: 3px;
     border: 1px solid #ebebeb;

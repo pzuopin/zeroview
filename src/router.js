@@ -33,6 +33,11 @@ export default new Router({
       path: "/popover",
       component: () => import('../docs/popover.md')
     },
+    {
+      path: "/collapse",
+      component: () => import('../docs/collapse.md')
+    },
+
 
   ]
 });
