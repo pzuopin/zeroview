@@ -28,10 +28,7 @@
               transform="scale(1) translate(220.109441280365,140.0456132888794)"
               fill="#8fe3ff"
             >
-              <g
-                id="g10"
-                transform="matrix(1.3333333,0,0,-1.3333333,0,533.33333)"
-              >
+              <g id="g10" transform="matrix(1.3333333,0,0,-1.3333333,0,533.33333)">
                 <g id="g12">
                   <g>
                     <g id="g14">
@@ -52,10 +49,7 @@
               class="containerBody"
               transform="scale(1.12) translate(-34.285714285714334,-25.714279992239824)"
             >
-              <g
-                class="sampleTexts_1"
-                transform="scale(1) translate(0,25.514211654663086)"
-              >
+              <g class="sampleTexts_1" transform="scale(1) translate(0,25.514211654663086)">
                 <g
                   class="logo--name svgLogoName_1 logoNameBox"
                   transform="scale(1) translate(218.65916800498962,238.5900001525879)"
@@ -82,7 +76,7 @@
     </z-view-header>
     <z-view-layout>
       <z-view-sider class="sider">
-        <z-view-menu direction="vertical" class="nav-menu">
+        <z-view-menu direction="vertical" class="nav-menu" selected="intro">
           <z-view-menu-item name="intro">
             <router-link to="/">
               <p>介绍</p>
@@ -98,35 +92,53 @@
               <p>快速上手</p>
             </router-link>
           </z-view-menu-item>
-          <z-view-sub-menu name="components">
+          <z-view-sub-menu name="components" open>
             <template slot="title">组件</template>
-            <router-link to="/button">
-              <z-view-menu-item name="button">Button</z-view-menu-item>
-            </router-link>
-            <router-link to="/icon">
-              <z-view-menu-item name="icon">Icon</z-view-menu-item>
-            </router-link>
-            <router-link to="/input">
-              <z-view-menu-item name="input">Input</z-view-menu-item>
-            </router-link>
-            <router-link to="/popover">
-              <z-view-menu-item name="popover">Popover</z-view-menu-item>
-            </router-link>
-            <router-link to="/collapse">
-              <z-view-menu-item name="collapse">Collapse</z-view-menu-item>
-            </router-link>
-            <router-link to="/toast">
-              <z-view-menu-item name="toast">Toast</z-view-menu-item>
-            </router-link>
-            <router-link to="/tab">
-              <z-view-menu-item name="tab">Tab</z-view-menu-item>
-            </router-link>
-            <router-link to="/grid">
-              <z-view-menu-item name="grid">Grid</z-view-menu-item>
-            </router-link>
-            <router-link to="/layout">
-              <z-view-menu-item name="layout">Layout</z-view-menu-item>
-            </router-link>
+            <z-view-menu-item name="button">
+              <router-link to="/button">
+                <p>Button</p>
+              </router-link>
+            </z-view-menu-item>
+            <z-view-menu-item name="icon">
+              <router-link to="/icon">
+                <p>Icon</p>
+              </router-link>
+            </z-view-menu-item>
+            <z-view-menu-item name="input">
+              <router-link to="/input">
+                <p>Input</p>
+              </router-link>
+            </z-view-menu-item>
+            <z-view-menu-item name="popover">
+              <router-link to="/popover">
+                <p>Popover</p>
+              </router-link>
+            </z-view-menu-item>
+            <z-view-menu-item name="collapse">
+              <router-link to="/collapse">
+                <p>Collapse</p>
+              </router-link>
+            </z-view-menu-item>
+            <z-view-menu-item name="toast">
+              <router-link to="/toast">
+                <p>Toast</p>
+              </router-link>
+            </z-view-menu-item>
+            <z-view-menu-item name="tab">
+              <router-link to="/tab">
+                <p>Tab</p>
+              </router-link>
+            </z-view-menu-item>
+            <z-view-menu-item name="grid">
+              <router-link to="/grid">
+                <p>Grid</p>
+              </router-link>
+            </z-view-menu-item>
+            <z-view-menu-item name="layout">
+              <router-link to="/layout">
+                <p>Layout</p>
+              </router-link>
+            </z-view-menu-item>
           </z-view-sub-menu>
         </z-view-menu>
       </z-view-sider>

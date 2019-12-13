@@ -43,6 +43,9 @@ export default {
   props: {
     name: {
       type: String
+    },
+    open: {
+      type: Boolean
     }
   },
   methods: {
@@ -57,7 +60,6 @@ export default {
       }
     },
     onOpenChange(name) {
-      console.log(`${this.name} openChange `, name);
       if (name === this.name || this.childMenuNames.indexOf(name) >= 0) {
         this.visible = true;
       } else {
@@ -67,7 +69,6 @@ export default {
     computeLevel() {
       let parent = this.$parent;
       let level = 0;
-      // console.log(parent.$options.name);
       while (parent.$options.name !== "zViewMenu") {
         parent = parent.$parent;
         level += 1;
@@ -128,9 +129,11 @@ export default {
   },
   inject: ["eventBus", "direction"],
   mounted() {
+    if(this.open && this.direction === 'vertical'){
+      this.visible = this.open
+    }
     this.computeLevel();
     if (this.direction === "vertical") {
-      console.log("this.direction = vertical");
       this.updateStyle();
     }
     this.childMenuNames = this.getChildMenuNames();
@@ -153,11 +156,20 @@ $active-bg: #e6f7ff;
 .z-view-sub-menu {
   display: inline-block;
   position: relative;
-  .title {
-    // background: #ccc;
+  &.horizontal {
+    .title {
     padding: 0.5em 2em;
+    }
+  }
+  &.vertical {
+    .title {
+      padding-left: 2em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
+  }
+  .title {
     display: flex;
-    // justify-content: space-between;
     align-items: center;
     &:hover {
       color: $active-color;

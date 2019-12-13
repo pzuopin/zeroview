@@ -24,7 +24,7 @@ import Menu from "./components/menu/menu.vue";
 import MenuItem from "./components/menu/menu-item.vue";
 import SubMenu from "./components/menu/sub-menu.vue";
 
-// import router from "./router";
+import router from "./router";
 // import store from "./store";
 
 // 注册为 Vue 的全局组件
@@ -47,15 +47,15 @@ Vue.component("z-view-tabs-pane", TabsPane);
 Vue.component("z-popover", Popover);
 Vue.component("z-view-collapse", Collapse);
 Vue.component("z-view-collapse-item", CollapseItem);
-Vue.component("z-menu", Menu);
-Vue.component("z-menu-item", MenuItem);
-Vue.component("z-sub-menu", SubMenu);
+Vue.component("z-view-menu", Menu);
+Vue.component("z-view-menu-item", MenuItem);
+Vue.component("z-view-sub-menu", SubMenu);
 
 Vue.config.productionTip = false;
 Vue.use(Toast);
 
 new Vue({
-  // router,
+  router,
   // store,
   render: h => h(App)
 }).$mount("#app");

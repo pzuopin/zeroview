@@ -1,23 +1,70 @@
 <template>
   <div>
-    <z-view-layout>
-      <z-view-header>Header</z-view-header>
-      <z-view-content>Content</z-view-content>
-    </z-view-layout>
-    <z-view-layout>
-      <z-view-header>Header</z-view-header>
-      <z-view-content>Content</z-view-content>
-      <z-view-footer>Footer</z-view-footer>
-    </z-view-layout>
-    <z-view-layout>
-      <z-view-header>Header</z-view-header>
-      <z-view-layout>
-        <z-view-sider>Sider</z-view-sider>
-        <z-view-content>Content</z-view-content>
-      </z-view-layout>
-
-      <z-view-footer>Footer</z-view-footer>
-    </z-view-layout>
+    <z-view-menu class="nav-menu" selected="intro">
+      <z-view-menu-item name="intro">
+        <router-link to="/">
+          <p>介绍</p>
+        </router-link>
+      </z-view-menu-item>
+      <z-view-menu-item name="install">
+        <router-link to="/install">
+          <p>安装</p>
+        </router-link>
+      </z-view-menu-item>
+      <z-view-menu-item name="quickstart">
+        <router-link to="quickstart">
+          <p>快速上手</p>
+        </router-link>
+      </z-view-menu-item>
+      <z-view-sub-menu name="components" open>
+        <template slot="title">组件</template>
+        <z-view-menu-item name="button">
+          <router-link to="/button">
+            <p>Button</p>
+          </router-link>
+        </z-view-menu-item>
+        <z-view-menu-item name="icon">
+          <router-link to="/icon">
+            <p>Icon</p>
+          </router-link>
+        </z-view-menu-item>
+        <z-view-menu-item name="input">
+          <router-link to="/input">
+            <p>Input</p>
+          </router-link>
+        </z-view-menu-item>
+        <z-view-menu-item name="popover">
+          <router-link to="/popover">
+            <p>Popover</p>
+          </router-link>
+        </z-view-menu-item>
+        <z-view-menu-item name="collapse">
+          <router-link to="/collapse">
+            <p>Collapse</p>
+          </router-link>
+        </z-view-menu-item>
+        <z-view-menu-item name="toast">
+          <router-link to="/toast">
+            <p>Toast</p>
+          </router-link>
+        </z-view-menu-item>
+        <z-view-menu-item name="tab">
+          <router-link to="/tab">
+            <p>Tab</p>
+          </router-link>
+        </z-view-menu-item>
+        <z-view-menu-item name="grid">
+          <router-link to="/grid">
+            <p>Grid</p>
+          </router-link>
+        </z-view-menu-item>
+        <z-view-menu-item name="layout">
+          <router-link to="/layout">
+            <p>Layout</p>
+          </router-link>
+        </z-view-menu-item>
+      </z-view-sub-menu>
+    </z-view-menu>
   </div>
 </template>
 

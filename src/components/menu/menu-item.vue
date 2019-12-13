@@ -31,7 +31,6 @@ export default {
   inject: ["eventBus", "direction"],
   methods: {
     onSelectedChange(name) {
-      // console.log(`item - ${this.name}, 收到 name: ${name}`)
       this.active = name === this.name;
     },
     onClick() {
@@ -40,7 +39,6 @@ export default {
     updateStyle() {
       let parent = this.$parent;
       let level = 0;
-      // console.log(parent.$options.name);
       while (parent.$options.name !== "zViewMenu") {
         parent = parent.$parent;
         level += 1;
@@ -66,9 +64,9 @@ export default {
 <style lang="scss" scoped>
 .z-view-menu-item {
   display: block;
-  padding: 0.5em 2em;
   position: relative;
   &.vertical {
+    padding: 0.5em 0 0.5em 2em;
     &.active {
       background: $active-bg;
       color: $active-color;
@@ -77,6 +75,7 @@ export default {
     }
   }
   &.horizontal {
+    padding: 0.5em 2em;
     &.active {
       color: $active-color;
       &::after {
