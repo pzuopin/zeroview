@@ -1,6 +1,6 @@
 <template>
   <div>
-    <z-view-menu class="nav-menu" selected="intro">
+    <z-view-menu style="display:none" class="nav-menu" selected="intro">
       <z-view-menu-item name="intro">
         <router-link to="/">
           <p>介绍</p>
@@ -65,12 +65,17 @@
         </z-view-menu-item>
       </z-view-sub-menu>
     </z-view-menu>
+
+    <div><abc /></div>
   </div>
 </template>
 
 
 <script>
 export default {
+  components: {
+    abc: () => import('../docs/api.md')
+  },
   name: "App",
   mounted() {},
   methods: {},
