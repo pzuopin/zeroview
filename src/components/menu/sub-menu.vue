@@ -163,9 +163,7 @@ $active-bg: #e6f7ff;
   }
   &.vertical {
     .title {
-      padding-left: 2em;
-      padding-top: 0.5em;
-      padding-bottom: 0.5em;
+      padding: 0.5em 1em 0.5em 2em;
     }
   }
   .title {

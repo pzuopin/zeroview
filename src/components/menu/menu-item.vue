@@ -66,7 +66,7 @@ export default {
   display: block;
   position: relative;
   &.vertical {
-    padding: 0.5em 0 0.5em 2em;
+    padding: 0.5em 1em 0.5em 2em;
     &.active {
       background: $active-bg;
       color: $active-color;
