@@ -124,6 +124,9 @@
             <router-link to="/grid">
               <z-view-menu-item name="grid">Grid</z-view-menu-item>
             </router-link>
+            <router-link to="/layout">
+              <z-view-menu-item name="layout">Layout</z-view-menu-item>
+            </router-link>
           </z-view-sub-menu>
         </z-view-menu>
       </z-view-sider>

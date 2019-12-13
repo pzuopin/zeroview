@@ -48,6 +48,11 @@ export default new Router({
     {
       path: "/grid",
       component: () => import("../docs/grid.md")
+    },
+    {
+      path: "/layout",
+      component: () => import("../docs/layout.md")
     }
+
   ]
 });
