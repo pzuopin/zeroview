@@ -246,3 +246,21 @@
 ```
 
 :::
+
+
+### 属性 API
+#### row 组件
+| 参数      | 说明    | 类型      | 可选值       | 默认值   | 必填 |
+|---------- |-------- |---------- |-------------  |-------- | ------- |
+| gutter     | 缝隙(单位是px)   | string,number    |   -  |     -    | 否 |
+| align  | 对齐方式 | string | left / right / center | left | 否 |
+
+#### col 组件
+| 参数      | 说明    | 类型      | 可选值       | 默认值   | 必填 |
+|---------- |-------- |---------- |-------------  |-------- | ------- |
+| span     | 宽度   | string,number    |   0-24 之间  |     -    | 是 |
+| offset  | 偏移量 | string,number | - | - | 否 |
+| ipad | 宽度在 ipad 下的 span 和 offset 设置 | object | - | - | 否 |
+| narrowPc | 宽度在 narrowPc 下的 span 和 offset 设置 | object | - | - | 否 |
+| pc | 宽度在 pc 下的 span 和 offset 设置 | object | - | - | 否 |
+| widePc | 宽度在 widePc 下的 span 和 offset 设置 | object | - | - | 否 |
