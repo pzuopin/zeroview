@@ -210,12 +210,39 @@ ol {
     }
     > h3 {
       font-size: 22px;
+      margin: 10px 0;
     }
     > p {
       margin: 14px 0;
       font-size: 14px;
       color: #5e6d82;
       line-height: 1.5em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #fff;
+      font-size: 14px;
+      margin-bottom: 45px;
+      line-height: 1.5em;
+      th:first-child {
+        padding-left: 10px;
+      }
+      th {
+        text-align: left;
+        white-space: nowrap;
+        color: #909399;
+        font-weight: 400;
+      }
+      td {
+        color: #606266;
+      }
+      th,
+      td {
+        border-bottom: 1px solid #dcdfe6;
+        padding: 15px;
+        max-width: 250px;
+      }
     }
   }
 }

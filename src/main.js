@@ -23,17 +23,18 @@ import CollapseItem from "./components/collapse/collapse-item.vue";
 import Menu from "./components/menu/menu.vue";
 import MenuItem from "./components/menu/menu-item.vue";
 import SubMenu from "./components/menu/sub-menu.vue";
-
+import DemoBlock from "./demo-block.vue";
 import router from "./router";
 // import store from "./store";
 
 // 注册为 Vue 的全局组件
-Vue.component("z-button", Button);
-Vue.component("z-icon", Icon);
-Vue.component("z-button-group", ButtonGroup);
-Vue.component("z-input", Input);
-Vue.component("z-col", Col);
-Vue.component("z-row", Row);
+Vue.component("demo-block", DemoBlock);
+Vue.component("z-view-button", Button);
+Vue.component("z-view-icon", Icon);
+Vue.component("z-view-button-group", ButtonGroup);
+Vue.component("z-view-input", Input);
+Vue.component("z-view-col", Col);
+Vue.component("z-view-row", Row);
 Vue.component("z-view-layout", Layout);
 Vue.component("z-view-header", Header);
 Vue.component("z-view-content", Content);
@@ -44,7 +45,7 @@ Vue.component("z-view-tabs-head", TabsHead);
 Vue.component("z-view-tabs-body", TabsBody);
 Vue.component("z-view-tabs-item", TabsItem);
 Vue.component("z-view-tabs-pane", TabsPane);
-Vue.component("z-popover", Popover);
+Vue.component("z-view-popover", Popover);
 Vue.component("z-view-collapse", Collapse);
 Vue.component("z-view-collapse-item", CollapseItem);
 Vue.component("z-view-menu", Menu);
