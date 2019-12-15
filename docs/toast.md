@@ -52,3 +52,11 @@ export default {
 ```
 :::
 
+### 属性 API
+| 参数      | 说明    | 类型      | 可选值       | 默认值   | 必填 |
+|---------- |-------- |---------- |-------------  |-------- | ------- |
+| enableHTML     | 使用 HTML   | boolean    |   -  |     false    | 否 |
+| autoClose     | 自动关闭   | boolean,number    |    false 或是其他数字  |     2    | 否 |
+| closeButton | 关闭按钮 | object | { text: 'close', callback: 'cb'} | - | 否 |
+| position | 弹出位置 | string | bottom / middle / top | top | 否
+
