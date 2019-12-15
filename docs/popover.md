@@ -40,3 +40,9 @@
 
 ```
 :::
+
+### 属性 API
+| 参数      | 说明    | 类型      | 可选值       | 默认值   | 必填 |
+|---------- |-------- |---------- |-------------  |-------- | ------- |
+| trigger     | 触发方式   | string    |   click / hover  |     hover    | 否 |
+| position     | 弹出方位   | string    |   top / bottom / left / right  |     top    | 否 |
