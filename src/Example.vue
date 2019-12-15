@@ -223,7 +223,8 @@ ol {
       width: 100%;
       background-color: #fff;
       font-size: 14px;
-      margin-bottom: 45px;
+      margin: 20px 0;
+      // margin-bottom: 45px;
       line-height: 1.5em;
       th:first-child {
         padding-left: 10px;
