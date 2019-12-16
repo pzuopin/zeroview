@@ -40,8 +40,10 @@ export default {
       let parent = this.$parent;
       let level = 0;
       while (parent.$options.name !== "zViewMenu") {
+        if (parent.$options.name !== "zViewMenuGroup") {
+          level += 1;
+        }
         parent = parent.$parent;
-        level += 1;
       }
       if (level > 0) {
         this.level = level;
@@ -56,7 +58,7 @@ export default {
   },
 
   mounted() {
-    this.reportToParent()
+    this.reportToParent();
     if (this.eventBus) {
       this.eventBus.$on("update:selected", this.onSelectedChange);
     }

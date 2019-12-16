@@ -54,7 +54,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.z-view-menu {
+.z-view-menu, .z-view-menu-group {
   display: flex;
   user-select: none;
   $border-color: #ccc;

@@ -23,6 +23,7 @@ import CollapseItem from "./components/collapse/collapse-item.vue";
 import Menu from "./components/menu/menu.vue";
 import MenuItem from "./components/menu/menu-item.vue";
 import SubMenu from "./components/menu/sub-menu.vue";
+import MenuGroup from "./components/menu/menu-group.vue";
 import DemoBlock from "./demo-block.vue";
 import router from "./router";
 // import store from "./store";
@@ -51,6 +52,7 @@ Vue.component("z-view-collapse-item", CollapseItem);
 Vue.component("z-view-menu", Menu);
 Vue.component("z-view-menu-item", MenuItem);
 Vue.component("z-view-sub-menu", SubMenu);
+Vue.component("z-view-menu-group", MenuGroup);
 
 Vue.config.productionTip = false;
 Vue.use(Toast);

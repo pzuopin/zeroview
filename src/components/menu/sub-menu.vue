@@ -72,8 +72,10 @@ export default {
       let parent = this.$parent;
       let level = 0;
       while (parent.$options.name !== "zViewMenu") {
+        if (parent.$options.name !== "zViewMenuGroup") {
+          level += 1;
+        }
         parent = parent.$parent;
-        level += 1;
       }
       this.level = level;
     },
@@ -88,7 +90,7 @@ export default {
       } else {
         this.active = false;
         if (this.direction === "horizontal") {
-          this.subMenusVisible = false
+          this.subMenusVisible = false;
         }
       }
     },
