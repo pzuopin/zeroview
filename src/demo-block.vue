@@ -16,14 +16,12 @@
   </div>
 </template>
 <script>
-import hljs from "highlight.js";
-import "highlight.js/styles/github.css";
+
+
 export default {
   name: "DemoBlock",
   mounted() {
-    document.querySelectorAll("pre code").forEach(block => {
-      hljs.highlightBlock(block);
-    });
+
   }
 };
 </script>

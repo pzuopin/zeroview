@@ -1,9 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
+import hljs from "highlight.js";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: "/",
@@ -55,4 +56,15 @@ export default new Router({
     }
 
   ]
-});
+})
+
+router.afterEach((to, from)=>{
+  Vue.nextTick(() => {
+    document.querySelectorAll("pre code").forEach(block => {
+      hljs.highlightBlock(block);
+    });
+  })
+
+})
+
+export default router

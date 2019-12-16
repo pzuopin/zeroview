@@ -149,6 +149,7 @@
   </z-view-layout>
 </template>
 <script>
+import "highlight.js/styles/github.css";
 export default {};
 </script>
 <style lang="scss">
@@ -199,6 +200,38 @@ ol {
   }
 }
 .content {
+  code {
+    font-family: Menlo, Monaco, Consolas, Courier, monospace;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    font-size: 85%;
+    margin: 0;
+    padding: 0.2em 0.4em;
+  }
+  pre {
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+  }
+  pre code {
+    background-color: transparent;
+    border: 0;
+    display: inline;
+    line-height: inherit;
+    margin: 0;
+    max-width: auto;
+    overflow: visible;
+    padding: 0;
+    word-wrap: normal;
+  }
+  a {
+    color: #0366d6;
+    text-decoration: none;
+  }
+
   padding: 20px 40px;
   .component-doc {
     > h2,
