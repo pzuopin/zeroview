@@ -34,6 +34,12 @@
           <z-view-menu-item name="test2">test2</z-view-menu-item>
           <z-view-menu-item name="test3">test3</z-view-menu-item>
         </z-view-sub-menu>
+        <z-view-sub-menu name="submenu2" open>
+          <template slot="title">次级sub2</template>
+          <z-view-menu-item name="test4">test4</z-view-menu-item>
+          <z-view-menu-item name="test5">test5</z-view-menu-item>
+          <z-view-menu-item name="test6">test6</z-view-menu-item>
+        </z-view-sub-menu>
         <z-view-menu-item name="input">
           <router-link to="/input">
             <p>Input</p>

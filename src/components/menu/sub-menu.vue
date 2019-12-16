@@ -3,7 +3,7 @@
     class="z-view-sub-menu"
     :data-name="name"
     :menu-level="this.level"
-    :class="{ 'sub-item-open': this.visible,
+    :class="{ 'sub-item-open': this.subMenusVisible,
      'horizontal': this.direction === 'horizontal',
      'vertical': this.direction === 'vertical',
      'active': this.active}"
@@ -21,13 +21,13 @@
     </div>
     <template v-if="this.direction === 'vertical'">
       <transition @enter="enter" @after-enter="afterEnter" @leave="leave" @after-leave="afterLeave">
-        <ul v-show="visible" class="sub-menu-list">
+        <ul v-show="subMenusVisible" class="sub-menu-list">
           <slot></slot>
         </ul>
       </transition>
     </template>
     <template v-else>
-      <ul v-show="visible" class="sub-menu-list">
+      <ul v-show="subMenusVisible" class="sub-menu-list">
         <slot></slot>
       </ul>
     </template>
@@ -51,20 +51,21 @@ export default {
   },
   methods: {
     onClick() {
-      this.visible = !this.visible;
-      if (this.visible) {
+      console.log("click");
+      this.subMenusVisible = !this.subMenusVisible;
+      if (this.subMenusVisible) {
         this.eventBus && this.eventBus.$emit("add:open", this.name);
       }
-      if (this.direction === "horizontal" && this.level === 0) {
-        // this.active = true;
+      if (this.direction === "horizontal") {
         this.eventBus && this.eventBus.$emit("update:selected", this.name);
       }
     },
     onOpenChange(name) {
+      console.log("open change");
       if (name === this.name || this.childMenuNames.indexOf(name) >= 0) {
-        this.visible = true;
+        this.subMenusVisible = true;
       } else {
-        this.visible = false;
+        this.subMenusVisible = false;
       }
     },
     computeLevel() {
@@ -87,7 +88,7 @@ export default {
       } else {
         this.active = false;
         if (this.direction === "horizontal") {
-          this.visible = false;
+          this.subMenusVisible = false
         }
       }
     },
@@ -121,7 +122,7 @@ export default {
     checkDirection() {
       if (this.direction === "vertical") {
         this.indentSelf();
-        this.visible = this.open;
+        this.subMenusVisible = this.open;
       }
     },
     reportNameToParent() {
@@ -137,13 +138,13 @@ export default {
   mounted() {
     this.computeLevel();
     this.checkDirection();
-    this.reportNameToParent()
+    this.reportNameToParent();
     this.eventBus && this.eventBus.$on("update:selected", this.onSelectChange);
     this.eventBus && this.eventBus.$on("update:open", this.onOpenChange);
   },
   data() {
     return {
-      visible: false,
+      subMenusVisible: false,
       level: 0,
       active: false,
       childMenuNames: []
@@ -155,7 +156,7 @@ export default {
 $active-color: rgb(24, 144, 255);
 $active-bg: #e6f7ff;
 .z-view-sub-menu {
-  display: inline-block;
+  display: block;
   position: relative;
   &.horizontal {
     .title {
