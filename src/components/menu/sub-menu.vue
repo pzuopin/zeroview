@@ -34,18 +34,19 @@
   </li>
 </template>
 <script>
-import Icon from '@/components/icon/icon.vue'
+import Icon from "@/components/icon/icon.vue";
 export default {
   name: "zViewSubMenu",
   components: {
-    'z-icon': Icon
+    "z-icon": Icon
   },
   props: {
     name: {
       type: String
     },
     open: {
-      type: Boolean
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -75,7 +76,7 @@ export default {
       }
       this.level = level;
     },
-    updateStyle() {
+    indentSelf() {
       if (this.level > 0) {
         this.$refs.title.style.paddingLeft = `${this.level + 2}em`; // 基础 paddingLeft = 2em
       }
@@ -90,17 +91,8 @@ export default {
         }
       }
     },
-    getChildMenuNames() {
-      const names = [];
-      this.$children.forEach(vm => {
-        names.push(vm.name);
-        if (vm.$options.name === "zViewSubMenu") {
-          names.push(...vm.getChildMenuNames());
-        }
-      });
-      // console.log(`我是${this.name},我的孩子有`);
-      // console.log(names);
-      return names;
+    addChild(name) {
+      this.childMenuNames.push(name);
     },
     enter(el, done) {
       let { height } = el.getBoundingClientRect();
@@ -125,18 +117,27 @@ export default {
     },
     afterLeave(el) {
       el.style.height = "auto";
+    },
+    checkDirection() {
+      if (this.direction === "vertical") {
+        this.indentSelf();
+        this.visible = this.open;
+      }
+    },
+    reportNameToParent() {
+      if (this.$parent.$options.name === "zViewSubMenu") {
+        this.childMenuNames.forEach(name => {
+          this.$parent.addChild(name);
+        });
+        this.$parent.addChild(this.name);
+      }
     }
   },
   inject: ["eventBus", "direction"],
   mounted() {
-    if(this.open && this.direction === 'vertical'){
-      this.visible = this.open
-    }
     this.computeLevel();
-    if (this.direction === "vertical") {
-      this.updateStyle();
-    }
-    this.childMenuNames = this.getChildMenuNames();
+    this.checkDirection();
+    this.reportNameToParent()
     this.eventBus && this.eventBus.$on("update:selected", this.onSelectChange);
     this.eventBus && this.eventBus.$on("update:open", this.onOpenChange);
   },
@@ -158,7 +159,7 @@ $active-bg: #e6f7ff;
   position: relative;
   &.horizontal {
     .title {
-    padding: 0.5em 2em;
+      padding: 0.5em 2em;
     }
   }
   &.vertical {

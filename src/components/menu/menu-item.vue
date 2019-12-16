@@ -36,7 +36,7 @@ export default {
     onClick() {
       this.eventBus && this.eventBus.$emit("update:selected", this.name);
     },
-    updateStyle() {
+    indentSelf() {
       let parent = this.$parent;
       let level = 0;
       while (parent.$options.name !== "zViewMenu") {
@@ -47,16 +47,21 @@ export default {
         this.level = level;
         this.$refs.menuItem.style.paddingLeft = `${level + 2}em`; // 基础 paddingLeft = 2em
       }
+    },
+    reportToParent() {
+      if (this.$parent.$options.name === "zViewSubMenu") {
+        this.$parent.addChild(this.name);
+      }
     }
   },
 
   mounted() {
-    // console.log('menu-item mounted..')
+    this.reportToParent()
     if (this.eventBus) {
       this.eventBus.$on("update:selected", this.onSelectedChange);
     }
     if (this.direction === "vertical") {
-      this.updateStyle();
+      this.indentSelf();
     }
   }
 };

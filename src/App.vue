@@ -28,6 +28,12 @@
             <p>Icon</p>
           </router-link>
         </z-view-menu-item>
+        <z-view-sub-menu name="submenu1" open>
+          <template slot="title">次级sub</template>
+          <z-view-menu-item name="test1">test1</z-view-menu-item>
+          <z-view-menu-item name="test2">test2</z-view-menu-item>
+          <z-view-menu-item name="test3">test3</z-view-menu-item>
+        </z-view-sub-menu>
         <z-view-menu-item name="input">
           <router-link to="/input">
             <p>Input</p>
@@ -66,7 +72,7 @@
       </z-view-sub-menu>
     </z-view-menu>
 
-    <z-view-menu direction="vertical" class="nav-menu" selected="intro" open>
+    <z-view-menu direction="vertical" class="nav-menu test2" selected="intro" open>
       <z-view-menu-item name="intro">
         <router-link to="/">
           <p>介绍</p>
@@ -94,6 +100,12 @@
             <p>Icon</p>
           </router-link>
         </z-view-menu-item>
+        <z-view-sub-menu name="submenu1" open>
+          <template slot="title">次级sub</template>
+          <z-view-menu-item name="test1">test1</z-view-menu-item>
+          <z-view-menu-item name="test2">test2</z-view-menu-item>
+          <z-view-menu-item name="test3">test3</z-view-menu-item>
+        </z-view-sub-menu>
         <z-view-menu-item name="input">
           <router-link to="/input">
             <p>Input</p>
@@ -156,11 +168,21 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  &:hover, &:visited, &:active {
+    // text-decoration: unset;
+    color: unset;
+  }
+  text-decoration: unset
+}
 ul,
 ol {
   list-style: none;
 }
 .nav-menu {
   margin: 100px;
+}
+.test2 {
+  margin-top: 500px;
 }
 </style>>
