@@ -13,7 +13,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .z-view-tabs-body {
 //   outline: 1px solid red;
 }

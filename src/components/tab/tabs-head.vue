@@ -22,7 +22,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 // $tab-height: 40px;
 .z-view-tabs-head {
   // outline: 1px solid red;

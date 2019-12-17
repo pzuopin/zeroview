@@ -42,7 +42,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 // $blue: blue;
 .z-view-tabs-pane {
   margin-top: 1em;
