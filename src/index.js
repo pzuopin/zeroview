@@ -8,6 +8,7 @@ import Toast from "./components/toast/index.js";
 import Collapse from "./components/collapse/index.js";
 import Menu from "./components/menu/index.js";
 import Popover from './components/popover/index.js'
+import Cascader from './components/cascader/index.js'
 
 const components = [
   Button,
@@ -19,7 +20,8 @@ const components = [
   Toast,
   Collapse,
   Menu,
-  Popover
+  Popover,
+  Cascader
 ];
 
 const install = Vue => {
@@ -28,6 +30,9 @@ const install = Vue => {
   });
 };
 
-export { Button, Icon, ButtonGroup, Input, Grid, Tab, Toast, Menu, Collapse , Popover};
+export {
+  Button, Icon, ButtonGroup, Input,
+  Grid, Tab, Toast, Menu, Collapse, Popover, Cascader
+};
 
 export default install;
