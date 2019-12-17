@@ -160,6 +160,10 @@ $active-bg: #e6f7ff;
 .z-view-sub-menu {
   display: block;
   position: relative;
+  .sub-menu-list {
+    background: #fff;
+    z-index: 3;
+  }
   &.horizontal {
     .title {
       padding: 0.5em 2em;

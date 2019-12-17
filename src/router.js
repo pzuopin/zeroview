@@ -53,12 +53,16 @@ const router = new Router({
     {
       path: "/layout",
       component: () => import("../docs/layout.md")
-    }
+    },
+    {
+      path: "/menu",
+      component: () => import("../docs/menu.md")
+    },
 
   ]
 })
 
-router.afterEach((to, from)=>{
+router.afterEach((to, from) => {
   Vue.nextTick(() => {
     document.querySelectorAll("pre code").forEach(block => {
       hljs.highlightBlock(block);

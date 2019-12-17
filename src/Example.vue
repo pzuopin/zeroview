@@ -94,51 +94,68 @@
           </z-view-menu-item>
           <z-view-sub-menu name="components" open>
             <template slot="title">组件</template>
-            <z-view-menu-item name="button">
-              <router-link to="/button">
-                <p>Button</p>
-              </router-link>
-            </z-view-menu-item>
-            <z-view-menu-item name="icon">
-              <router-link to="/icon">
-                <p>Icon</p>
-              </router-link>
-            </z-view-menu-item>
-            <z-view-menu-item name="input">
-              <router-link to="/input">
-                <p>Input</p>
-              </router-link>
-            </z-view-menu-item>
-            <z-view-menu-item name="popover">
-              <router-link to="/popover">
-                <p>Popover</p>
-              </router-link>
-            </z-view-menu-item>
-            <z-view-menu-item name="collapse">
-              <router-link to="/collapse">
-                <p>Collapse</p>
-              </router-link>
-            </z-view-menu-item>
-            <z-view-menu-item name="toast">
-              <router-link to="/toast">
-                <p>Toast</p>
-              </router-link>
-            </z-view-menu-item>
-            <z-view-menu-item name="tab">
-              <router-link to="/tab">
-                <p>Tab</p>
-              </router-link>
-            </z-view-menu-item>
-            <z-view-menu-item name="grid">
-              <router-link to="/grid">
-                <p>Grid</p>
-              </router-link>
-            </z-view-menu-item>
-            <z-view-menu-item name="layout">
-              <router-link to="/layout">
-                <p>Layout</p>
-              </router-link>
-            </z-view-menu-item>
+            <z-view-menu-group name="通用">
+              <z-view-menu-item name="button">
+                <router-link to="/button">
+                  <p>Button</p>
+                </router-link>
+              </z-view-menu-item>
+              <z-view-menu-item name="icon">
+                <router-link to="/icon">
+                  <p>Icon</p>
+                </router-link>
+              </z-view-menu-item>
+            </z-view-menu-group>
+            <z-view-menu-group name="布局">
+              <z-view-menu-item name="grid">
+                <router-link to="/grid">
+                  <p>Grid</p>
+                </router-link>
+              </z-view-menu-item>
+              <z-view-menu-item name="layout">
+                <router-link to="/layout">
+                  <p>Layout</p>
+                </router-link>
+              </z-view-menu-item>
+            </z-view-menu-group>
+            <z-view-menu-group name="导航">
+              <z-view-menu-item name="menu">
+                <router-link to="/menu">
+                  <p>Menu</p>
+                </router-link>
+              </z-view-menu-item>
+            </z-view-menu-group>
+            <z-view-menu-group name="数据展示">
+              <z-view-menu-item name="collapse">
+                <router-link to="/collapse">
+                  <p>Collapse</p>
+                </router-link>
+              </z-view-menu-item>
+              <z-view-menu-item name="tab">
+                <router-link to="/tab">
+                  <p>Tab</p>
+                </router-link>
+              </z-view-menu-item>
+            </z-view-menu-group>
+            <z-view-menu-group name="数据录入">
+              <z-view-menu-item name="input">
+                <router-link to="/input">
+                  <p>Input</p>
+                </router-link>
+              </z-view-menu-item>
+            </z-view-menu-group>
+            <z-view-menu-group name="反馈">
+              <z-view-menu-item name="popover">
+                <router-link to="/popover">
+                  <p>Popover</p>
+                </router-link>
+              </z-view-menu-item>
+              <z-view-menu-item name="toast">
+                <router-link to="/toast">
+                  <p>Toast</p>
+                </router-link>
+              </z-view-menu-item>
+            </z-view-menu-group>
           </z-view-sub-menu>
         </z-view-menu>
       </z-view-sider>

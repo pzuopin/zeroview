@@ -83,6 +83,7 @@ export default {
   }
   &.horizontal {
     padding: 0.5em 2em;
+    word-break: keep-all;
     &.active {
       color: $active-color;
       &::after {
