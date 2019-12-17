@@ -155,8 +155,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$active-color: rgb(24, 144, 255);
-$active-bg: #e6f7ff;
+
 .z-view-sub-menu {
   display: block;
   position: relative;

@@ -133,8 +133,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$border-color: #333;
-$border-radius: 4px;
+
 .z-view-popover {
   display: inline-block;
   vertical-align: top;
@@ -142,14 +141,14 @@ $border-radius: 4px;
 }
 .z-view-content-wrapper {
   position: absolute;
-  border: 1px solid $border-color;
+  border: 1px solid $--color;
   border-radius: $border-radius;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
   // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
   padding: 0.5em 1em;
   max-width: 20em;
   word-break: break-all;
-  background: #fff;
+  background: $bg-white;
 
   &::before,
   &::after {
@@ -168,11 +167,11 @@ $border-radius: 4px;
       transform: translateY(100%);
     }
     &::before {
-      border-top-color: #000;
+      border-top-color: $bg-black;
       bottom: 0;
     }
     &::after {
-      border-top-color: #fff;
+      border-top-color: $bg-white;
       bottom: 1px;
     }
   }
@@ -186,11 +185,11 @@ $border-radius: 4px;
       transform: translateY(-100%);
     }
     &::before {
-      border-bottom-color: #000;
+      border-bottom-color: $bg-black;
       top: 0;
     }
     &::after {
-      border-bottom-color: #fff;
+      border-bottom-color: $bg-white;
       top: 1px;
     }
   }
@@ -205,11 +204,11 @@ $border-radius: 4px;
       transform: translate(100%,-50%);
     }
     &::before {
-      border-left-color: #000;
+      border-left-color: $bg-black;
       right: 0;
     }
     &::after {
-      border-left-color: #fff;
+      border-left-color: $bg-white;
       right: 1px;
     }
   }
@@ -223,11 +222,11 @@ $border-radius: 4px;
       transform: translate(-100%,-50%);
     }
     &::before {
-      border-right-color: #000;
+      border-right-color: $bg-black;
       left: 0;
     }
     &::after {
-      border-right-color: #fff;
+      border-right-color: $bg-white;
       left: 1px;
     }
   }

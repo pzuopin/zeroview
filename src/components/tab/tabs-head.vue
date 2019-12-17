@@ -26,7 +26,7 @@ export default {
 // $tab-height: 40px;
 .z-view-tabs-head {
   // outline: 1px solid red;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $border-color-1;
   display: flex;
   // height: $tab-height;
   justify-content: flex-start;
@@ -40,7 +40,7 @@ export default {
     position: absolute;
     bottom: 0;
     // width: 100px;
-    border-bottom: 1px solid blue;
+    border-bottom: 1px solid $--primary-color;
   }
 }
 </style>

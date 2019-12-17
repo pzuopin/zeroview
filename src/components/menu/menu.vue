@@ -57,14 +57,14 @@ export default {
 .z-view-menu, .z-view-menu-group {
   display: flex;
   user-select: none;
-  $border-color: #ccc;
+
   &.direction-horizontal {
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $border-color-1;
   }
 
   &.direction-vertical {
     flex-direction: column;
-    border-right: 1px solid $border-color;
+    border-right: 1px solid $border-color-1;
   }
   &:hover {
     cursor: pointer;

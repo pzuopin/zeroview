@@ -50,15 +50,14 @@ export default {
 };
 </script>
 <style lang="scss">
-$blue: blue;
-$disabled-color: gray;
+
 .z-view-tabs-item {
     // flex-grow: 1;
     flex-shrink: 0;
     padding: 1em;
     cursor: pointer;
     &.active {
-      color: $blue;
+      color: $--primary-color;
     }
     &.disabled {
       color: $disabled-color;

@@ -89,10 +89,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-  $toast-bg: rgba(0, 0, 0, 0.75);
-  $font-size: 14px;
-  $toast-height: 40px;
-  $animation-duration: 300ms;
+
   @keyframes slide-up {
     0% { opacity: 0; transform: translateY(100%);}
     100% { opacity: 1; transform: translateY(0%);}
@@ -152,7 +149,7 @@ export default {
   min-height: $toast-height;
   font-size: $font-size;
   line-height: 1.8;
-  border-radius: 4px;
+  border-radius: $border-radius;
   display: flex;
   align-items: center;
   .message {
@@ -163,7 +160,7 @@ export default {
   }
   .line {
     height: 100%;
-    border: 1px solid #fff;
+    border: 1px solid $bg-white;
     margin: 0 16px;
   }
 }

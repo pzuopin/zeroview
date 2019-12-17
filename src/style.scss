@@ -15,15 +15,22 @@ $--warn-color: #f90;
 $--error-color: #ed4014;
 $--info-color: #2db7f5;
 
-// *,
-// *::before,
-// *::after {
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-// }
+$height: 32px;
+$border-color: #999;
+$border-color-hover: #666;
+$border-color-1: #ccc;
+$border-radius: 4px;
+$font-size: 12px;
+$box-shadow-color: rgba(10, 7, 7, 0.5);
+$error-color: #f1453d;
 
-// ul,
-// ol {
-//   list-style: none;
-// }
+$bg-white: #fff;
+$bg-black: #000;
+
+$disabled-color: gray;
+
+$toast-bg: rgba(0, 0, 0, 0.75);
+$font-size: 14px;
+$toast-height: 40px;
+$animation-duration: 300ms;
+

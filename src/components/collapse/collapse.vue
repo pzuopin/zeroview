@@ -59,7 +59,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$border-radius: 4px;
 .z-view-collapse {
   border: 1px solid #d9d9d9;
   border-radius: $border-radius;
