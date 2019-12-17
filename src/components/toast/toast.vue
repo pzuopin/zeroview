@@ -1,5 +1,5 @@
 <template>
-  <div class="z-view-wrapper" :class="toastClasses">
+  <div class="z-view-toast-wrapper" :class="toastClasses">
     <div class="z-view-toast" ref="toast" >
       <div class="message">
         <slot v-if="!enableHTML"></slot>
@@ -11,7 +11,6 @@
   </div>
 </template>
 <script>
-import { setTimeout } from "timers";
 export default {
   name: "zViewToast",
   props: {
@@ -56,7 +55,7 @@ export default {
   methods: {
     setAutoClose() {
       if (this.autoClose) {
-        setTimeout(() => {
+        window.setTimeout(() => {
           this.close();
         }, this.autoClose * 1000);
       }
@@ -65,7 +64,9 @@ export default {
       this.$nextTick(() => {
         let height = this.$refs.toast.getBoundingClientRect().height;
         // console.log("height", height);
-        this.$refs.line.style.height = `${height}px`;
+        if(this.$refs.line){
+          this.$refs.line.style.height = `${height}px`;
+        }
       });
     },
     close() {
@@ -103,7 +104,7 @@ export default {
     100% { opacity: 1;}
   }
   // 外层做定位
-.z-view-wrapper {
+.z-view-toast-wrapper {
   position: fixed;
   left: 50%;
   top: 0;
