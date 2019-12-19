@@ -1,7 +1,5 @@
 <template>
   <div class="z-view-cascader-item-wrapper" v-if="source && source.length > 0">
-    <div>selected: {{ selected && selected[level] && selected[level].label }}</div>
-    <div>level: {{ level }}</div>
     <div class="z-view-cascader-item-wrapper-left">
       <div
         class="z-view-cascader-item"
@@ -58,10 +56,12 @@ export default {
   },
   methods: {
     onClickLabel(item) {
+      console.log(item);
       // this.selected[this.level] = item;
       // this.$set(this.selected, this.level, item);
       let copy = JSON.parse(JSON.stringify(this.selected));
       copy[this.level] = item;
+      copy.splice(this.level + 1);
       this.$emit("update:selected", copy);
     },
     onUpdate(newSelected) {
