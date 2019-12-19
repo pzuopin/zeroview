@@ -1,9 +1,11 @@
 <template>
   <div class="z-view-cascader-item-wrapper" v-if="source && source.length > 0">
+    <div>selected: {{ selected && selected[level] && selected[level].label }}</div>
+    <div>level: {{ level }}</div>
     <div class="z-view-cascader-item-wrapper-left">
       <div
         class="z-view-cascader-item"
-        @click="leftSelected = item;"
+        @click="onClickLabel(item)"
         :key="index"
         v-for="(item,index) in source"
       >
@@ -16,7 +18,12 @@
       </div>
     </div>
     <div class="z-view-cascader-item-wrapper-right" v-if="rightItems">
-      <z-view-cascader-item :source="rightItems"></z-view-cascader-item>
+      <z-view-cascader-item
+        @update:selected="onUpdate($event)"
+        :source="rightItems"
+        :level="level+1"
+        :selected="selected"
+      ></z-view-cascader-item>
     </div>
   </div>
 </template>
@@ -31,19 +38,34 @@ export default {
     source: {
       type: Array,
       default: []
+    },
+    selected: {
+      type: Array,
+      default: () => []
+    },
+    level: {
+      type: Number,
+      default: 0
     }
-  },
-  data() {
-    return {
-      leftSelected: null
-    };
   },
   computed: {
     rightItems() {
-      if (this.leftSelected) {
-        return this.leftSelected.children;
+      if (this.selected && this.selected[this.level]) {
+        return this.selected[this.level].children;
       }
       return null;
+    }
+  },
+  methods: {
+    onClickLabel(item) {
+      // this.selected[this.level] = item;
+      // this.$set(this.selected, this.level, item);
+      let copy = JSON.parse(JSON.stringify(this.selected));
+      copy[this.level] = item;
+      this.$emit("update:selected", copy);
+    },
+    onUpdate(newSelected) {
+      this.$emit("update:selected", newSelected);
     }
   }
 };

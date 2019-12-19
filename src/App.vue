@@ -1,6 +1,6 @@
 <template>
   <div>
-    <z-view-cascader :options="options">
+    <z-view-cascader :options="options" :selected="selected" @update:selected="onUpdate($event)">
       <z-view-button>change location</z-view-button>
     </z-view-cascader>
   </div>
@@ -12,9 +12,14 @@ export default {
   components: {},
   name: "App",
   mounted() {},
-  methods: {},
+  methods: {
+    onUpdate(newSelected) {
+      this.selected = newSelected;
+    }
+  },
   data() {
     return {
+      selected: [],
       options: [
         {
           label: "四川",

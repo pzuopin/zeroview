@@ -4,7 +4,11 @@
       <slot />
     </div>
     <div class="z-view-cascader-popover-wrapper" v-if="visible">
-      <z-view-cascader-item :source="options"></z-view-cascader-item>
+      <z-view-cascader-item
+        :source="options"
+        @update:selected="onUpdate($event)"
+        :selected="selected"
+      ></z-view-cascader-item>
     </div>
   </div>
 </template>
@@ -17,10 +21,19 @@ export default {
   },
   props: {
     options: {
-      type: Array
+      type: Array,
+      default: () => []
+    },
+    selected: {
+      type: Array,
+      default: () => []
     }
   },
-  methods: {},
+  methods: {
+    onUpdate(newSelected) {
+      this.$emit("update:selected", newSelected);
+    }
+  },
   data() {
     return {
       selectedItem: null,
