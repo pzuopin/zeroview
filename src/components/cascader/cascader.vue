@@ -1,17 +1,10 @@
 <template>
   <div class="z-view-cascader">
-    <div class="z-view-cascader-trigger">
+    <div class="z-view-cascader-trigger" @click="visible = !visible">
       <slot />
     </div>
-    <div class="z-view-cascader-popover-wrapper">
-      <div class="z-view-cascader-popover-popover">
-        <div  @click="selectedItem = item" class="z-view-cascader-popover-left" :key="index" v-for="(item,index) in options">
-          {{ item.label }}
-        </div>
-        <div class="z-view-cascader-popover-right">
-          <z-view-cascader-item :children="selectedItemChildren"></z-view-cascader-item>
-        </div>
-      </div>
+    <div class="z-view-cascader-popover-wrapper" v-if="visible">
+      <z-view-cascader-item :source="options"></z-view-cascader-item>
     </div>
   </div>
 </template>
@@ -27,33 +20,32 @@ export default {
       type: Array
     }
   },
-  methods: {
-  },
-  data(){
+  methods: {},
+  data() {
     return {
       selectedItem: null,
-    }
+      visible: false
+    };
   },
-  computed:{
-    selectedItemChildren(){
-      if(this.selectedItem){
-        return this.selectedItem.children
+  computed: {
+    selectedItemChildren() {
+      if (this.selectedItem) {
+        return this.selectedItem.children;
       }
-      return null
+      return null;
     }
   }
 };
 </script>
 <style lang="scss" scoped>
 .z-view-cascader {
-  //   border: 1px solid red;
+  position: relative;
   margin: 10px;
   &-trigger {
-    // width: 100px;
-    // border: 1px solid black;
   }
   &-popover-wrapper {
-    height: 100px;
+    position: absolute;
+    @extend %box-shadow;
   }
 }
 </style>
