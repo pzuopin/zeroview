@@ -3,7 +3,7 @@
     <div class="z-view-cascader-item-wrapper-left">
       <div
         class="z-view-cascader-item"
-        @click="selected = item;"
+        @click="leftSelected = item;"
         :key="index"
         v-for="(item,index) in source"
       >
@@ -15,8 +15,8 @@
         ></z-view-icon>
       </div>
     </div>
-    <div class="z-view-cascader-item-wrapper-right" v-if="visible">
-      <z-view-cascader-item :source="selectedChildren"></z-view-cascader-item>
+    <div class="z-view-cascader-item-wrapper-right" v-if="rightItems">
+      <z-view-cascader-item :source="rightItems"></z-view-cascader-item>
     </div>
   </div>
 </template>
@@ -35,20 +35,15 @@ export default {
   },
   data() {
     return {
-      selected: null
+      leftSelected: null
     };
   },
   computed: {
-    selectedChildren() {
-      if (this.selected) {
-        return this.selected.children;
+    rightItems() {
+      if (this.leftSelected) {
+        return this.leftSelected.children;
       }
-      return [];
-    },
-    visible() {
-      if (this.selected && this.selected.children) {
-        return this.selected.children.length > 0;
-      }
+      return null;
     }
   }
 };
