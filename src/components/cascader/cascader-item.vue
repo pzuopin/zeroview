@@ -73,11 +73,14 @@ export default {
 <style lang="scss" scoped>
 .z-view-cascader-item-wrapper {
   display: flex;
+  height: 100%;
   &-left {
     background: $bg-white;
+    height: 100%;
   }
   &-right {
     border-left: 1px solid $border-color-1;
+    height: 100%;
   }
   .z-view-cascader-item {
     padding: 0.5em 1em;

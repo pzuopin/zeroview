@@ -1,7 +1,11 @@
 <template>
   <div class="z-view-cascader">
     <div class="z-view-cascader-trigger" @click="visible = !visible">
-      <slot />
+      <div v-if="$slots.default">
+        <div class="z-view-cascader-output">{{ output }}</div>
+        <slot />
+      </div>
+      <span v-else class="z-view-cascader-output-default">{{ output || '&nbsp;' }}</span>
     </div>
     <div class="z-view-cascader-popover-wrapper" v-if="visible">
       <z-view-cascader-item
@@ -46,6 +50,9 @@ export default {
         return this.selectedItem.children;
       }
       return null;
+    },
+    output() {
+      return this.selected.map(i => i.label).join("/");
     }
   }
 };
@@ -55,10 +62,26 @@ export default {
   position: relative;
   margin: 10px;
   &-trigger {
+    margin: 1px 0;
   }
   &-popover-wrapper {
     position: absolute;
+    height: 200px;
     @extend %box-shadow;
+  }
+  &-output {
+    margin-bottom: 2px;
+    font-size: 14px;
+  }
+  &-output-default {
+    display: inline-block;
+    height: $height;
+    line-height: $height;
+    border-radius: $border-radius;
+    border: 1px solid $border-color-1;
+    min-width: 8em;
+    padding: 0 1em;
+    font-size: 14px;
   }
 }
 </style>

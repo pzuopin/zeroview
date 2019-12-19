@@ -1,11 +1,8 @@
 <template>
   <div>
-    <div>{{ selected[0] && selected[0].label || '空'}}</div>
-    <div>{{ selected[1] && selected[1].label || '空'}}</div>
-    <div>{{ selected[2] && selected[2].label || '空'}}</div>
-    <z-view-cascader :options="options" :selected="selected" @update:selected="onUpdate($event)">
-      <z-view-button>change location</z-view-button>
-    </z-view-cascader>
+    <div style="margin-top: 50px">
+      <z-view-cascader :options="options" :selected="selected" @update:selected="onUpdate($event)"></z-view-cascader>
+    </div>
   </div>
 </template>
 
