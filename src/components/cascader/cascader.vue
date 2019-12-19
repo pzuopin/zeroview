@@ -4,8 +4,13 @@
       <slot />
     </div>
     <div class="z-view-cascader-popover-wrapper">
-      <div :key="index" v-for="(item,index) in options">
-        <z-view-cascader-item :item="item"></z-view-cascader-item>
+      <div class="z-view-cascader-popover-popover">
+        <div  @click="selectedItem = item" class="z-view-cascader-popover-left" :key="index" v-for="(item,index) in options">
+          {{ item.label }}
+        </div>
+        <div class="z-view-cascader-popover-right">
+          <z-view-cascader-item :children="selectedItemChildren"></z-view-cascader-item>
+        </div>
       </div>
     </div>
   </div>
@@ -21,6 +26,21 @@ export default {
     options: {
       type: Array
     }
+  },
+  methods: {
+  },
+  data(){
+    return {
+      selectedItem: null,
+    }
+  },
+  computed:{
+    selectedItemChildren(){
+      if(this.selectedItem){
+        return this.selectedItem.children
+      }
+      return null
+    }
   }
 };
 </script>
@@ -29,8 +49,8 @@ export default {
   //   border: 1px solid red;
   margin: 10px;
   &-trigger {
-    width: 100px;
-    border: 1px solid black;
+    // width: 100px;
+    // border: 1px solid black;
   }
   &-popover-wrapper {
     height: 100px;

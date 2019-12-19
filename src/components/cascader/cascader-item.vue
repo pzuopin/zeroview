@@ -1,8 +1,7 @@
 <template>
   <div class="z-view-cascader-item">
-    {{ item.label }}
-    <div v-if="item.children">
-      <z-view-cascader-item :key="index" v-for="(child,index) in item.children" :item="child"></z-view-cascader-item>
+    <div v-if="children && children.length > 0">
+      <div :key="index" v-for="(child,index) in children">{{ child.label }}</div>
     </div>
   </div>
 </template>
@@ -10,8 +9,8 @@
 export default {
   name: "zViewCascaderItem",
   props: {
-    item: {
-      type: Object
+    children: {
+      type:Array
     }
   }
 };

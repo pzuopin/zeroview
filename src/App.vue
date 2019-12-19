@@ -1,6 +1,8 @@
 <template>
   <div>
-    <z-view-cascader :options="options"></z-view-cascader>
+    <z-view-cascader :options="options">
+      <z-view-button>change location</z-view-button>
+    </z-view-cascader>
   </div>
 </template>
 
