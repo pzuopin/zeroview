@@ -79,7 +79,8 @@ export default {
     line-height: $height;
     border-radius: $border-radius;
     border: 1px solid $border-color-1;
-    min-width: 8em;
+    @extend %text-ellipsis;
+    width: 10em;
     padding: 0 1em;
     font-size: 14px;
   }

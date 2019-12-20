@@ -30,7 +30,7 @@ export default {
               value: "cd",
               children: [
                 {
-                  label: "天府新区",
+                  label: "天府新区天府新区天府新区",
                   value: "tfxq",
                   children: [
                     {

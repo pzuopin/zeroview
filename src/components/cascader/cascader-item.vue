@@ -7,7 +7,7 @@
         :key="index"
         v-for="(item,index) in source"
       >
-        {{ item.label }}
+        <span>{{ item.label }}</span>
         <z-view-icon
           class="z-view-cascader-item-icon"
           v-if="item.children && item.children.length > 0"
@@ -83,8 +83,13 @@ export default {
     height: 100%;
   }
   .z-view-cascader-item {
-    padding: 0.5em 1em;
-    font-size: 14px;
+    width: 6em;
+    > span {
+      padding: 0.5em 1em;
+      font-size: 14px;
+      @extend %text-ellipsis;
+      display: inline-block;
+    }
     &:hover {
       background: $active-color-light;
     }

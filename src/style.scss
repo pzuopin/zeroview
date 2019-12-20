@@ -38,4 +38,9 @@ $animation-duration: 300ms;
 %box-shadow {
     box-shadow: 0 0 6px 0 #ccc;
 }
+%text-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
