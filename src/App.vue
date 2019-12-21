@@ -40,7 +40,7 @@ export default {
                   ]
                 },
                 {
-                  label: "高新区",
+                  label: "高新区区",
                   value: "gx"
                 },
                 {

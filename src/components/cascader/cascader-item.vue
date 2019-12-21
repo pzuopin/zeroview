@@ -84,9 +84,11 @@ export default {
   }
   .z-view-cascader-item {
     width: 6em;
+    // justify-content: space-around;
     > span {
-      padding: 0.5em 1em;
+      padding: 0.5em;
       font-size: 14px;
+      width: 5em;
       @extend %text-ellipsis;
       display: inline-block;
     }
@@ -97,8 +99,9 @@ export default {
     align-items: center;
   }
   .z-view-cascader-item-icon {
-    margin-left: 0.5em;
+    margin: 10px;
     transform: scale(0.7);
+    width: 1em;
   }
 }
 </style>

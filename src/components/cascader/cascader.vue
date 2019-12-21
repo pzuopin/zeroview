@@ -80,7 +80,7 @@ export default {
     border-radius: $border-radius;
     border: 1px solid $border-color-1;
     @extend %text-ellipsis;
-    width: 10em;
+    width: 12em;
     padding: 0 1em;
     font-size: 14px;
   }
