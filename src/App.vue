@@ -8,88 +8,21 @@
 
 
 <script>
+import db from "../db.js";
+function ajax(parentId = 0) {
+  return db.filter(item => item.parent_id === parentId);
+}
+console.log(ajax());
+let data = ajax();
 export default {
   components: {},
   name: "App",
   mounted() {},
-  methods: {
-    onUpdate(newSelected) {
-      this.selected = newSelected;
-    }
-  },
+  methods: {},
   data() {
     return {
       selected: [],
-      options: [
-        {
-          label: "Sichuan",
-          value: "sc",
-          children: [
-            {
-              label: "Chengdu",
-              value: "cd",
-              children: [
-                {
-                  label: "高新区区",
-                  value: "gx1"
-                },
-                {
-                  label: "天府新区",
-                  value: "tfxq",
-                  children: [
-                    {
-                      label: "xxx",
-                      value: "xxx"
-                    }
-                  ]
-                },
-                {
-                  label: "高新区区",
-                  value: "gx"
-                },
-                {
-                  label: "锦江区",
-                  value: "jj"
-                }
-              ]
-            },
-            {
-              label: "泸州",
-              value: "lz",
-              children: [
-                {
-                  label: "龙马潭区",
-                  value: "lmtq"
-                },
-                {
-                  label: "江阳区",
-                  value: "jyq"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          label: "zhejiang",
-          value: "yn",
-          children: [
-            {
-              label: "hangzhou",
-              value: "km",
-              children: [
-                {
-                  label: "官渡区",
-                  value: "jkq"
-                },
-                {
-                  label: "西山区",
-                  value: "xsq"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      options: data
     };
   }
 };

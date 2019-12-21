@@ -75,6 +75,7 @@ export default {
   display: flex;
   height: 100%;
   &-left {
+    overflow: auto;
     background: $bg-white;
     height: 100%;
   }
