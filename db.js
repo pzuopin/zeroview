@@ -1,4 +1,5 @@
-export default [
+
+const db = [
     {
       "id": 1,
       "label": "北京",
@@ -42840,3 +42841,12 @@ export default [
       "k7": "0755"
     }
   ]
+
+const simpleDB = db.map(item => {
+  return {
+    id: item.id,
+    label: item.label,
+    parent_id: item.parent_id
+  }
+})
+export default simpleDB
