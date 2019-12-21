@@ -83,12 +83,12 @@ export default {
     height: 100%;
   }
   .z-view-cascader-item {
-    width: 6em;
+    width: 8em;
     // justify-content: space-around;
     > span {
       padding: 0.5em;
       font-size: 14px;
-      width: 5em;
+      width: 6em;
       @extend %text-ellipsis;
       display: inline-block;
     }

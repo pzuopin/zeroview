@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="margin-top: 50px">
-      <z-view-cascader :options="options" :selected="selected" @update:selected="onUpdate($event)"></z-view-cascader>
+      <z-view-cascader :options="options" :selected.sync="selected"></z-view-cascader>
     </div>
   </div>
 </template>
@@ -22,15 +22,19 @@ export default {
       selected: [],
       options: [
         {
-          label: "四川",
+          label: "Sichuan",
           value: "sc",
           children: [
             {
-              label: "成都",
+              label: "Chengdu",
               value: "cd",
               children: [
                 {
-                  label: "天府新区天府新区天府新区",
+                  label: "高新区区",
+                  value: "gx1"
+                },
+                {
+                  label: "天府新区",
                   value: "tfxq",
                   children: [
                     {
@@ -66,11 +70,11 @@ export default {
           ]
         },
         {
-          label: "云南",
+          label: "zhejiang",
           value: "yn",
           children: [
             {
-              label: "昆明",
+              label: "hangzhou",
               value: "km",
               children: [
                 {
