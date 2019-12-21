@@ -1,7 +1,6 @@
 ## Menu 导航菜单
 提供导航功能的菜单
 
-### 基础用法
 :::demo 水平的顶部导航栏
 ```html
 <z-view-menu selected="b">

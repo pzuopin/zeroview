@@ -1,7 +1,5 @@
 ## Layout 布局组件
 
-### 基础用法
-通过 layout sider header footer content 来做基本布局
 :::demo 基本的上中下布局和左右布局
 ```html
 <div class="layout-demo">
