@@ -70,7 +70,6 @@ export default {
       }
     },
     onOpenChange(name) {
-      console.log("open change");
       if (name === this.name || this.childMenuNames.indexOf(name) >= 0) {
         this.subMenusVisible = true;
       } else {
