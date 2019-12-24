@@ -7,6 +7,7 @@
      'horizontal': this.direction === 'horizontal',
      'vertical': this.direction === 'vertical',
      'active': this.active}"
+     v-click-outside="onClickOutSide"
   >
     <div class="title" :class="{ 'sub-item-selected': this.active }" ref="title" @click="onClick">
       <span>
@@ -35,10 +36,14 @@
 </template>
 <script>
 import Icon from "@/components/icon/icon.vue";
+import ClickOutside from '@/directives/click-outside.js'
 export default {
   name: "zViewSubMenu",
   components: {
     "z-icon": Icon
+  },
+  directives: {
+    ClickOutside
   },
   props: {
     name: {
@@ -50,8 +55,12 @@ export default {
     }
   },
   methods: {
+    onClickOutSide(){
+      if(this.direction === 'horizontal'){
+        this.subMenusVisible = false
+      }
+    },
     onClick() {
-      console.log("click");
       this.subMenusVisible = !this.subMenusVisible;
       if (this.subMenusVisible) {
         this.eventBus && this.eventBus.$emit("add:open", this.name);
