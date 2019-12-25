@@ -58,14 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
 .z-view-button {
   display: inline-flex;
   justify-content: center;
@@ -104,7 +97,7 @@ export default {
     }
   }
   .loading {
-    animation: spin 2s infinite linear;
+    animation: $spinAnimation;
   }
   &-primary {
     background: $--primary-color;
