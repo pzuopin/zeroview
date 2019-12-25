@@ -41,9 +41,6 @@ export default {
     onUpdate(newSelected) {
       this.$emit("update:selected", newSelected.map(item => ({ id: item.id, label: item.label})));
     },
-    resolveData(data){
-      // this.options.
-    }
   },
   data() {
     return {
