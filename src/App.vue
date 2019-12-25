@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="margin-top: 50px">
-      <z-view-cascader :options="options" @update:selected="update" :selected="selected" :load-data="loadData"></z-view-cascader>
+      <z-view-cascader :options="options" @update:selected="update" :selected="selected" :load-data="loadData" :loading="loading"></z-view-cascader>
     </div>
   </div>
 </template>
@@ -30,16 +30,20 @@ export default {
   mounted() {},
   methods: {
     loadData(selectedOptions, resolve){
-      console.log('App.vue loadData')
-      console.log(selectedOptions)
       let targetOption = selectedOptions[selectedOptions.length - 1]
+      // this.loading.push(targetOption.id)
+      // this.loading = Array.from(new Set(this.loading))
+      // console.log(this.loading)
+      if(this.loading.indexOf(targetOption.id) < 0){
+        this.loading.push(targetOption.id)
+        // console.log(this.loading)
+      }
       ajax(targetOption.id).then(data => {
+        this.loading = this.loading.filter(id => id !== targetOption.id)
         this.resolve(targetOption.id,data)
       })
     },
     update(newSelected) {
-      console.log('App.vue newSelected: ', newSelected)
-      console.log(newSelected);
       this.selected = newSelected
     },
     resolve(selectId,data){
@@ -47,8 +51,6 @@ export default {
       let target = this.options.find(option => option.id === selectId)
       if(target){
         this.found = true
-        console.log(1)
-        console.log(target)
         target.children = data
       }else if(!this.found){
         this.options.forEach(option => {
@@ -63,8 +65,6 @@ export default {
       if(children && children.length > 0){
         let target = children.find(option => option.id === selectId)
         if(target){
-          console.log(2)
-        console.log(target)
           this.found = true
           target.children = data
         }
@@ -76,6 +76,7 @@ export default {
       selected: [],
       options: [],
       found: false,
+      loading: []
     };
   },
   mounted() {

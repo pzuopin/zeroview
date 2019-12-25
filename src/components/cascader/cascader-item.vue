@@ -2,21 +2,26 @@
   <div class="z-view-cascader-item-wrapper" v-if="source && source.length > 0">
     <div class="z-view-cascader-item-wrapper-left">
       <div
-        class="z-view-cascader-item"
+        class="z-view-cascader-item" :class="{active: isActive(item)}"
         @click="onClickLeft(item)"
         :key="index"
         v-for="(item,index) in source"
+
       >
         <span>{{ item.label }}</span>
         <z-view-icon
           class="z-view-cascader-item-icon"
-          v-if="rightIconVisible(item)"
+          v-if="rightIconVisible(item) && !isLoading(item)"
           name="right"
         ></z-view-icon>
+        <z-view-icon name="loading" class="z-view-cascader-item-icon loading" v-if="isLoading(item)">
+
+        </z-view-icon>
       </div>
     </div>
     <div class="z-view-cascader-item-wrapper-right" v-if="rightItems">
       <z-view-cascader-item
+        :loading="loading"
         @update:selected="onClickRight($event)"
         :source="rightItems"
         :level="level+1"
@@ -48,14 +53,14 @@ export default {
     },
     loadData: {
       type: Function
+    },
+    loading: {
+      type: Array,
+      default: () => []
     }
   },
   computed: {
     rightItems() {
-      console.log('rightItems source...')
-      console.log(this.source)
-      console.log('selected')
-      console.log(this.selected.map(item => item.label))
       if (this.source && this.selected && this.selected[this.level]) {
         return this.source.filter(item => item.id === this.selected[this.level].id)[0].children;
       }
@@ -64,10 +69,22 @@ export default {
 
   },
   methods: {
+    isActive(item){
+      if(this.selected){
+        return this.selected.find(option => option.id === item.id) !== undefined
+      }
+      return false
+    },
+    isLoading(item){
+      // console.log('11')
+      // console.log(this.loading.length)
+      return this.loading.find(id => id === item.id) !== undefined
+    },
     rightIconVisible(item){
       return item.isLeaf === false || item.children && item.children.length > 0
     },
     onClickLeft(item) {
+      this.active = true
       let copy = JSON.parse(JSON.stringify(this.selected));
       copy[this.level] = item;
       copy.splice(this.level + 1);
@@ -96,6 +113,10 @@ export default {
     height: 100%;
   }
   .z-view-cascader-item {
+    &.active > span {
+      font-weight: bold;
+      background: $active-color-light;
+    }
     width: 8em;
     // justify-content: space-around;
     > span {
@@ -115,6 +136,9 @@ export default {
     // margin: 10px;
     transform: scale(0.7);
     width: 1em;
+  }
+  .loading {
+    animation: $spinAnimation;
   }
 }
 </style>

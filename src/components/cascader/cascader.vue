@@ -13,6 +13,7 @@
         :source="options"
         @update:selected="onUpdate($event)"
         :selected="selected"
+        :loading="loading"
       ></z-view-cascader-item>
     </div>
   </div>
@@ -35,6 +36,10 @@ export default {
     },
     loadData: {
       type: Function
+    },
+    loading: {
+      type: Array,
+      default: () => []
     }
   },
   methods: {
