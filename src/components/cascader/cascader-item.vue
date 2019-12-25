@@ -3,24 +3,25 @@
     <div class="z-view-cascader-item-wrapper-left">
       <div
         class="z-view-cascader-item"
-        @click="onClickLabel(item)"
+        @click="onClickLeft(item)"
         :key="index"
         v-for="(item,index) in source"
       >
         <span>{{ item.label }}</span>
         <z-view-icon
           class="z-view-cascader-item-icon"
-          v-if="item.children && item.children.length > 0"
+          v-if="rightIconVisible(item)"
           name="right"
         ></z-view-icon>
       </div>
     </div>
     <div class="z-view-cascader-item-wrapper-right" v-if="rightItems">
       <z-view-cascader-item
-        @update:selected="onUpdate($event)"
+        @update:selected="onClickRight($event)"
         :source="rightItems"
         :level="level+1"
         :selected="selected"
+        :load-data="loadData"
       ></z-view-cascader-item>
     </div>
   </div>
@@ -44,29 +45,40 @@ export default {
     level: {
       type: Number,
       default: 0
+    },
+    loadData: {
+      type: Function
     }
   },
   computed: {
     rightItems() {
-      if (this.selected && this.selected[this.level]) {
-        return this.selected[this.level].children;
+      console.log('rightItems source...')
+      console.log(this.source)
+      console.log('selected')
+      console.log(this.selected.map(item => item.label))
+      if (this.source && this.selected && this.selected[this.level]) {
+        return this.source.filter(item => item.id === this.selected[this.level].id)[0].children;
       }
       return null;
-    }
+    },
+
   },
   methods: {
-    onClickLabel(item) {
-      console.log(item);
-      // this.selected[this.level] = item;
-      // this.$set(this.selected, this.level, item);
+    rightIconVisible(item){
+      return item.isLeaf === false || item.children && item.children.length > 0
+    },
+    onClickLeft(item) {
       let copy = JSON.parse(JSON.stringify(this.selected));
       copy[this.level] = item;
       copy.splice(this.level + 1);
       this.$emit("update:selected", copy);
+      if(this.loadData){
+        this.loadData(copy)
+      }
     },
-    onUpdate(newSelected) {
+    onClickRight(newSelected) {
       this.$emit("update:selected", newSelected);
-    }
+    },
   }
 };
 </script>
@@ -87,7 +99,7 @@ export default {
     width: 8em;
     // justify-content: space-around;
     > span {
-      padding: 0.5em;
+      padding: 0.5em 0 0.5em 0.5em;
       font-size: 14px;
       width: 6em;
       @extend %text-ellipsis;
@@ -100,7 +112,7 @@ export default {
     align-items: center;
   }
   .z-view-cascader-item-icon {
-    margin: 10px;
+    // margin: 10px;
     transform: scale(0.7);
     width: 1em;
   }

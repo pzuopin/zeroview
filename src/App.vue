@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="margin-top: 50px">
-      <z-view-cascader :options="options" @update:selected="update" :selected.sync="selected"></z-view-cascader>
+      <z-view-cascader :options="options" @update:selected="update" :selected="selected" :load-data="loadData"></z-view-cascader>
     </div>
   </div>
 </template>
@@ -17,6 +17,7 @@ function ajax2(parentId = 0, successCallback) {
 }
 function ajax(parentId = 0) {
   let data = db.filter(item => item.parent_id === parentId);
+  data.forEach(item => item.isLeaf = db.filter(p => p.parent_id === item.id).length <= 0)
   return new Promise(function(resolve, reject) {
     setTimeout(() => {
       resolve(data);
@@ -28,17 +29,23 @@ export default {
   name: "App",
   mounted() {},
   methods: {
+    loadData(selectedOptions){
+      console.log('App.vue loadData')
+      console.log(selectedOptions)
+      let targetOption = selectedOptions[selectedOptions.length - 1]
+      ajax(targetOption.id).then(data => {
+        console.log('data')
+        console.log(data)
+        // TODO 这里找的是第一层的，这里不对
+        let target = this.options.find(option => option.id === targetOption.id)
+        target.children = data
+        this.options = JSON.parse(JSON.stringify(this.options))
+      })
+    },
     update(newSelected) {
+      console.log('App.vue newSelected: ', newSelected)
       console.log(newSelected);
-      ajax(newSelected[0].id).then(data => {
-        let lastSelected = this.selected.filter(
-          item => item.id === newSelected[0].id
-        )[0];
-        // lastSelected.children = data;
-        this.$set(lastSelected, "children", data);
-        console.log(222);
-        console.log(lastSelected);
-      });
+      this.selected = newSelected
     }
   },
   data() {

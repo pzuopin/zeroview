@@ -9,6 +9,7 @@
     </div>
     <div class="z-view-cascader-popover-wrapper" v-if="visible">
       <z-view-cascader-item
+        :load-data="loadData"
         :source="options"
         @update:selected="onUpdate($event)"
         :selected="selected"
@@ -31,11 +32,17 @@ export default {
     selected: {
       type: Array,
       default: () => []
+    },
+    loadData: {
+      type: Function
     }
   },
   methods: {
     onUpdate(newSelected) {
-      this.$emit("update:selected", newSelected);
+      this.$emit("update:selected", newSelected.map(item => ({ id: item.id, label: item.label})));
+    },
+    resolveData(data){
+      // this.options.
     }
   },
   data() {
