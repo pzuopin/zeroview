@@ -1,13 +1,13 @@
 <template>
-  <div class="z-view-cascader">
-    <div class="z-view-cascader-trigger" @click="visible = !visible">
+  <div class="z-view-cascader" v-click-outside="onClickOutside">
+    <div class="z-view-cascader-trigger" @click="visible = !visible" >
       <div v-if="$slots.default">
         <div class="z-view-cascader-output">{{ output }}</div>
         <slot />
       </div>
       <span v-else class="z-view-cascader-output-default">{{ output || '&nbsp;' }}</span>
     </div>
-    <div class="z-view-cascader-popover-wrapper" v-if="visible">
+    <div class="z-view-cascader-popover-wrapper" v-if="visible" >
       <z-view-cascader-item
         :load-data="loadData"
         :source="options"
@@ -20,11 +20,14 @@
 </template>
 <script>
 import zViewCascaderItem from "./cascader-item.vue";
+import ClickOutside from '@/directives/click-outside.js'
+
 export default {
   name: "zViewCascader",
   components: {
     zViewCascaderItem
   },
+  directives: {ClickOutside},
   props: {
     options: {
       type: Array,
@@ -43,6 +46,9 @@ export default {
     }
   },
   methods: {
+    onClickOutside(){
+      this.visible = false
+    },
     onUpdate(newSelected) {
       this.$emit("update:selected", newSelected.map(item => ({ id: item.id, label: item.label})));
     },
