@@ -58,6 +58,10 @@ const router = new Router({
       path: "/menu",
       component: () => import("../docs/menu.md")
     },
+    {
+      path: "/cascader",
+      component: () => import('../docs/cascader.md')
+    }
 
   ]
 })

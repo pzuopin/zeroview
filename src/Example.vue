@@ -143,6 +143,11 @@
                   <p>Input</p>
                 </router-link>
               </z-view-menu-item>
+              <z-view-menu-item name="cascader">
+                <router-link to="/cascader">
+                  <p>Cascader</p>
+                </router-link>
+              </z-view-menu-item>
             </z-view-menu-group>
             <z-view-menu-group name="反馈">
               <z-view-menu-item name="popover">
@@ -260,7 +265,7 @@ ol {
     }
     > h3 {
       font-size: 22px;
-      margin: 10px 0;
+      margin: 20px 0 10px;
     }
     > p {
       margin: 14px 0;
