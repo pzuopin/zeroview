@@ -81,8 +81,8 @@ export default {
     onClickDocument(event) {
       if (
         (this.$refs.contentWrapper &&
-          this.$refs.contentWrapper.contains(event.target)) ||
-        this.$refs.triggerWrapper.contains(event.target)
+          this.$refs.contentWrapper.contains(event.target)) || (this.$refs.triggerWrapper &&
+        this.$refs.triggerWrapper.contains(event.target))
       ) {
         // console.log("popover 自身的click 事件，document 不处理");
         return;
