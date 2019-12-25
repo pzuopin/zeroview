@@ -89,7 +89,7 @@ export default {
       copy[this.level] = item;
       copy.splice(this.level + 1);
       this.$emit("update:selected", copy);
-      if(this.loadData){
+      if(this.loadData && item.isLeaf === false){
         this.loadData(copy)
       }
     },
@@ -107,17 +107,21 @@ export default {
     overflow: auto;
     background: $bg-white;
     height: 100%;
+    width: 10em;
   }
   &-right {
     border-left: 1px solid $border-color-1;
     height: 100%;
   }
   .z-view-cascader-item {
-    &.active > span {
-      font-weight: bold;
+    &.active {
       background: $active-color-light;
+      & > span {
+        font-weight: bold;
+      }
+
     }
-    width: 8em;
+    // width: 8em;
     // justify-content: space-around;
     > span {
       padding: 0.5em 0 0.5em 0.5em;
@@ -136,6 +140,8 @@ export default {
     // margin: 10px;
     transform: scale(0.7);
     width: 1em;
+    margin-left: auto;
+    margin-right: 1em;
   }
   .loading {
     animation: $spinAnimation;

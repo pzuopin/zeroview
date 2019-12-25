@@ -21,7 +21,7 @@ function ajax(parentId = 0) {
   return new Promise(function(resolve, reject) {
     setTimeout(() => {
       resolve(data);
-    }, 3000);
+    }, 300);
   });
 }
 export default {
