@@ -83,6 +83,8 @@ export default {
     position: absolute;
     height: 200px;
     @extend %box-shadow;
+    background: $bg-white;
+    z-index: 2;
   }
   &-output {
     margin-bottom: 2px;

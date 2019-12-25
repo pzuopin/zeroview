@@ -103,6 +103,7 @@ export default {
 .z-view-cascader-item-wrapper {
   display: flex;
   height: 100%;
+
   &-left {
     overflow: auto;
     background: $bg-white;
