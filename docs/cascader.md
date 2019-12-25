@@ -83,7 +83,5 @@ export default {
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| type     | 类型   | string    |   normal / primary / dashed / text / success / error / warn / info / text |     normal    |
-| loading     | 是否加载中状态   | boolean    | — | false   |
-| icon  | 图标类名 | string   |  —  |  —  |
-| position | 图标位置 | string | left / right | left
+| options | 可选项 | array | - | [] |
+| selected | 选择项 | array | - | [] | 
